@@ -18,7 +18,7 @@ Route::get('/uniquecode','consumenController@unique_code');
 Route::get('/', 'gatewayController@indexlogin');
 Route::get('/login', 'gatewayController@indexlogin');
 Route::get('/dashboard/login', 'gatewayController@indexlogin');
-Route::get('/dashboard/logout', 'gatewayController@logout');
+Route::get('/logout', 'gatewayController@logout')->name('logout');
 
 // Route::group([
 //     'middleware' => 'checksession'

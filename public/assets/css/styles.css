@@ -1,0 +1,66 @@
+.logo-container{
+    left: 10px;
+    position: absolute;
+    top: 20px;
+     z-index: 3;
+}
+.logo-container .logo{
+    overflow: hidden;
+    /* border-radius: 50%; */
+    /* border: 1px solid #333333; */
+    width: 100px;
+    float: left;
+}
+
+.logo{
+  width: 100%;
+  margin-top: 23px;
+  position: absolute;
+  text-align: center;
+}
+
+.logo-container .logo img{
+    width: 100px;
+}
+
+.logo-container .brand{
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 20px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 160px
+}
+
+.step-tab {
+    background: #99cc34;
+    padding: 15px;
+    color: white;
+    font-size: 12pt;
+}
+
+.step-tab.active{
+    background: #3c763d;
+}
+
+.logout{
+    right: 33px;
+    position: absolute;
+    top: 20px;
+    z-index: 3;
+
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 20px;
+    float: right;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 160px;
+    text-align: right;
+}
+
+.logout:hover{
+  color: yellow;
+  text-decoration: none;
+}
