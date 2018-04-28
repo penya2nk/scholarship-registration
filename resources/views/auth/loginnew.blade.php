@@ -111,7 +111,7 @@ style="background:#42B549"
           <div class="row">
 
             {{-- <div class="col-md-6">
-              <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-default btn-block btn-flat buttongssi">Buat Akun Baru</a>
+              <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-default btn-block btn-flat buttongssi">Registrasi</a>
             </div>
             <div class="col-md-6">
               <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
@@ -140,7 +140,7 @@ style="background:#42B549"
         </div>
         <div class="row" style="width:390px; margin:auto">
           <div class="col-xs-6">
-            <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Buat Akun Baru</a>
+            <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
           </div>
           <div class="col-xs-6">
             <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
@@ -182,7 +182,7 @@ style="background:#42B549"
           <div class="col-xs-8">
             <div class="checkbox icheck">
               <label>
-                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                {{-- <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me --}}
               </label>
             </div>
           </div>
@@ -190,7 +190,7 @@ style="background:#42B549"
         <hr>
         <div class="row">
           <div class="col-md-12" style="text-align:center">
-            <a href="#" onclick="view('forgot')">I forgot my password</a><br>
+            <a href="#" onclick="view('forgot')">Lupa password</a><br>
           </div>
         </div>
       </form>
@@ -198,7 +198,7 @@ style="background:#42B549"
       <div class="text-center helper-registrasi">
         <p>atau</p>
         <hr>
-        <a href="#" onclick="view('signup')" class="btn btn-default btn-block btn-flat buttongssi">Buat Akun Baru</a>
+        <a href="#" onclick="view('signup')" class="btn btn-default btn-block btn-flat buttongssi">Registrasi</a>
         <span>
           <i></i>
         </span>
@@ -218,7 +218,7 @@ style="background:#42B549"
       </div>
       <div class="row" style="width:390px; margin:auto">
         <div class="col-xs-6">
-          <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Buat Akun Baru</a>
+          <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
         </div>
         <div class="col-xs-6">
           <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>

@@ -116,12 +116,12 @@ class RegisterController extends Controller
 
       $email_data = array('user' =>$user , );
 
-      Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
-          $message->to($data['email'])
-          ->trackClicks(true)
-          ->trackOpens(true)
-          ->subject('IPB Training User Verification');
-      });
+      // Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
+      //     $message->to($data['email'])
+      //     ->trackClicks(true)
+      //     ->trackOpens(true)
+      //     ->subject('Bazis Scholarship User Verification');
+      // });
 
         // $user = User::create([
         //     'name' => $data['name'],

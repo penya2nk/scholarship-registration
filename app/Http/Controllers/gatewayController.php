@@ -18,7 +18,7 @@ class gatewayController extends Controller
     public function indexlogin()
     {
       if (Auth::user()) {
-        return redirect('/dashboard');
+        return redirect('/scholarship/step/1/profile');
       }
 
       // dd(url(route('password.reset', 123, false)));
