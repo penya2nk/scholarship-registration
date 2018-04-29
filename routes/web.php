@@ -41,10 +41,12 @@ Route::group([
 ], function () {
 
 Route::get('/scholarship/step/1/profile', 'student\RegWizardController@profile')->name('step_profile');
+Route::post('/scholarship/step/1/profile/savedraft', 'student\RegWizardController@draft_profile')->name('step_profile_draft');
 Route::post('/scholarship/step/1/profile/save', 'student\RegWizardController@update_profile');
 
 Route::get('/scholarship/step/2/education', 'student\RegWizardController@education')->name('step_education');
 Route::post('/scholarship/step/2/education/save', 'student\RegWizardController@update_education');
+
 
 Route::get('/scholarship/step/3/achievement', 'student\RegWizardController@achievement')->name('step_achievement');
 Route::post('/scholarship/step/3/achievement/save', 'student\RegWizardController@update_achievement');

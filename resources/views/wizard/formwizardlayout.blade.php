@@ -13,12 +13,36 @@
 	<!--     Fonts and icons     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
+		<!--   Core JS Files   -->
+		<script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
+		<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+		<script src="{{asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
+
+		<!--  Plugin for the Wizard -->
+		<script src="{{asset('assets/js/gsdk-bootstrap-wizard.js')}}"></script>
+
+		<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+		<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+
+		{{-- Sweet Alert --}}
+<script src="{{asset('js/sweetalert/sweetalert2.js')}}"></script>
+<link href="{{asset('js/sweetalert/sweetalert2.css')}}" rel="stylesheet" />
+
 	<!-- CSS Files -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('assets/css/gsdk-bootstrap-wizard.css')}}" rel="stylesheet" />
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link href="{{asset('assets/css/styles.css')}}" rel="stylesheet" />
+	<script src="{{asset('js/jquery.mask.js')}}"></script>
+	<script type="text/javascript">
+  $(document).ready(function() {
+    $('.handphone').mask('+6200000000000000')
+  });
+
+  </script>
+
+
 </head>
 
 <body>
@@ -53,15 +77,12 @@
             <!--      Wizard container        -->
             <div class="wizard-container">
 
-                <div class="card wizard-card" data-color="green" id="wizardProfile">
-                    <form action="" method="">
+                <div class="card wizard-card" data-color="green" id="wizardProfile" style="background:#efefef">
+                    {{-- <form action="" method=""> --}}
                 <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                     	<div class="wizard-header">
-                        	{{-- <h3>
-                        	   <b>BUILD</b> YOUR PROFILE <br>
-                        	   <small>This information will let us know more about you.</small>
-                        	</h3> --}}
+                        	@yield('header-title')
                     	</div>
 
                       <div class="row">
@@ -72,7 +93,7 @@
                         </a>
                         <a href="#">
                           <div class="col-md-2 text-center step-tab">
-                            Riwayat Pendidikan
+                            Pendidikan
                           </div>
                         </a>
                         <a href="#">
@@ -105,26 +126,10 @@
                         </ul> --}}
                       </div>
 
+											@yield('content')
 
-                        <div class="tab-content">
-                          @yield('content')
-                          {{-- @extends('layouts.materialayout') --}}
 
-                        </div>
-                        <div class="wizard-footer height-wizard">
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
-
-                            </div>
-
-                            <div class="pull-left">
-                                <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </form>
+                    {{-- </form> --}}
                 </div>
             </div> <!-- wizard container -->
         </div>
@@ -141,15 +146,6 @@
 
 </body>
 
-	<!--   Core JS Files   -->
-	<script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
-	<script src="{{asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
 
-	<!--  Plugin for the Wizard -->
-	<script src="{{asset('assets/js/gsdk-bootstrap-wizard.js')}}"></script>
-
-	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
 
 </html>
