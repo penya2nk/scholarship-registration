@@ -602,6 +602,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary upload-result">Save</button>
+            <img style="width:30px; display:none" id="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
           </div>
         </div>
       </div>
@@ -675,6 +676,8 @@
 
             $('#upload').on('change', function () { readFile(this); });
             $('.upload-result').on('click', function (ev) {
+              $('#loading-upload').show();
+
               $('#main-cropper').croppie('result', {
                 type: 'base64',
                 size: 'original'
@@ -698,6 +701,7 @@
                   $("#uploadfoto").modal("hide");
                   $("#profileimage").attr('src',data.url);
                   $('#img-profile').val(data.url);
+                  $('#loading-upload').hide();
                 })
                 .fail(function() {
                   console.log("error");
