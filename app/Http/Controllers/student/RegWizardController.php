@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Carbon\Carbon;
+use Cloudder;
 
 
 
@@ -25,7 +27,7 @@ class RegWizardController extends Controller
     {
 
       $request = $_POST['data'];
-      
+
       $user = Auth::user();
       foreach ($request as $key => $value) {
         $variable = $value['name'];
@@ -187,5 +189,27 @@ class RegWizardController extends Controller
 
 
       return Response::json( $status  );
+    }
+
+    public function crop_profpic()
+    {
+      $data = $_POST['imageData'];
+      $waktu = Carbon::now();
+
+      //get the base-64 from data
+        $base64_str = substr($data, strpos($data, ",")+1);
+
+        $image = base64_decode($base64_str);
+        $png_url = "img-training-".$waktu->format('Y-m-d')."-".time().".jpg";
+        $path = public_path('images/trainingimage/' . $png_url);
+
+        $img = Image::make(file_get_contents($data))->resize(1500, 1500);
+        // ->save($path);
+        $response = array(
+          'url' => $png_url,
+        );
+
+
+      return Response::json( $response  );
     }
 }

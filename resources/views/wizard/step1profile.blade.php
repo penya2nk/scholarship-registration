@@ -9,12 +9,16 @@
 
 
 @section('content')
+  {{-- Cropper = Croppie Plugin --}}
+  <link  href="{{asset('cropper_new/croppie.css')}}" rel="stylesheet">
+  <script src="{{asset('cropper_new/croppie.js')}}"></script>
+
 
   <div class="row">
     <div class="col-sm-12">
       <form class="" id="form-data-input" action="index.html" method="post">
         <div class="tab-content">
-
+        
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-9">
@@ -548,9 +552,19 @@
                   </script>
                 </div>
                 {{-- End ibu Section --}}
-
-
               </div>
+
+              {{-- Profile Picture Section --}}
+              <div class="col-sm-3">
+                <label for="">Foto Diri</label>
+                <img @if($user->photo_profile == NULL) @if($user->gender = "L") src="{{asset('images/male-blank.jpg')}}" @else src="{{asset('images/female-blank.jpg')}}" @endif @else src="{{asset('images/profileimage/'.$user->photo_profile)}}" @endif  id="profileimage" class="img img-responsive" alt="">
+                <input type="hidden" name="primary_image" id="img-profile" @if ($user->photo_profile == NULL) value="" @else value="{{$user->photo_profile}}" @endif >
+                <a class="btn btn-sucess pull-right" data-toggle="modal" data-target="#uploadfoto">Upload Image</a>
+              </div>
+
+
+
+
             </div>
           </div>
 
@@ -569,6 +583,29 @@
         </div>
       </form>
     </div>
+  </div>
+
+
+  <div class="modal fade" id="uploadfoto" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <form class="" enctype="multipart/form-data" action="/upload-crop-photo" method="post">
+      {{ csrf_field() }}
+      <div class="modal-dialog" style="margin-top:10px">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id=""></h4>
+          </div>
+          <div class="modal-body">
+            <div id="main-cropper"></div>
+            <input type="file" id="upload" name="gambarprofile" value="Choose Image" accept="image/*">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary upload-result">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 
   <script type="text/javascript">
@@ -608,6 +645,72 @@
 
     });
   </script>
+
+  {{-- Croppie --}}
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var basic = $('#main-cropper').croppie({
+          viewport: { width: 350, height: 350 },
+          boundary: { width: 400, height: 400 },
+          showZoomer: true,
+        });
+        // $('#upload').on('change',function() {
+        // });
+
+          function readFile(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                $('#main-cropper').croppie('bind', {
+                  url: e.target.result
+                });
+                $('.actionDone').toggle();
+                $('.actionUpload').toggle();
+              }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+
+            $('#upload').on('change', function () { readFile(this); });
+            $('.upload-result').on('click', function (ev) {
+              $('#main-cropper').croppie('result', {
+                type: 'base64',
+                size: 'original'
+              }).then(function (resp) {
+                // console.log(resp);
+                // Resp = Result in 64encode
+
+                var imageData = resp;
+                // Uploading via Ajax
+
+                $.ajax({
+                  url: '/upload-crop-photo',
+                  type: 'POST',
+                  dataType: 'json',
+                  data: {"_token": "{{ csrf_token() }}",
+                          "imageData": imageData,
+
+                        },
+                })
+                .done(function(data) {
+                  $("#uploadfoto").modal("hide");
+                  $("#profileimage").attr('src','/images/profileimage/'+data.url);
+                  $('#img-profile').val(data.url);
+                })
+                .fail(function() {
+                  console.log("error");
+                })
+                .always(function() {
+                  console.log("complete");
+                });
+              });
+            });
+
+
+      });
+    </script>
 
 
 
