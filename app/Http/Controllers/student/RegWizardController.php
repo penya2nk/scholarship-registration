@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\student;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Intervention\Image\ImageManager;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\User;
 use Cloudder;
+use Image;
+
 
 
 
@@ -200,13 +203,24 @@ class RegWizardController extends Controller
         $base64_str = substr($data, strpos($data, ",")+1);
 
         $image = base64_decode($base64_str);
-        $png_url = "img-training-".$waktu->format('Y-m-d')."-".time().".jpg";
+        $png_url = "bazis/profpic/student-".str_replace(' ','-',Auth::user()->name)."-".time();
         $path = public_path('images/trainingimage/' . $png_url);
 
-        $img = Image::make(file_get_contents($data))->resize(1500, 1500);
+        $img = Image::make(file_get_contents($data))->resize(1000, 1000)->encode('data-url');
+
         // ->save($path);
+
+
+        $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
+        $photo_url = Cloudder::show($png_url);
+
+        // Save URL
+        $user = Auth::user();
+        $user->photo_profile = $photo_url;
+        $user->save();
+
         $response = array(
-          'url' => $png_url,
+          'url' => $photo_url,
         );
 
 

@@ -18,7 +18,7 @@
     <div class="col-sm-12">
       <form class="" id="form-data-input" action="index.html" method="post">
         <div class="tab-content">
-        
+
           <div class="container-fluid">
             <div class="row">
               <div class="col-sm-9">
@@ -557,7 +557,7 @@
               {{-- Profile Picture Section --}}
               <div class="col-sm-3">
                 <label for="">Foto Diri</label>
-                <img @if($user->photo_profile == NULL) @if($user->gender = "L") src="{{asset('images/male-blank.jpg')}}" @else src="{{asset('images/female-blank.jpg')}}" @endif @else src="{{asset('images/profileimage/'.$user->photo_profile)}}" @endif  id="profileimage" class="img img-responsive" alt="">
+                <img @if($user->photo_profile == NULL) @if($user->gender = "L") src="{{asset('images/male-blank.jpg')}}" @else src="{{asset('images/female-blank.jpg')}}" @endif @else src="{{$user->photo_profile}}" @endif  id="profileimage" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile" @if ($user->photo_profile == NULL) value="" @else value="{{$user->photo_profile}}" @endif >
                 <a class="btn btn-sucess pull-right" data-toggle="modal" data-target="#uploadfoto">Upload Image</a>
               </div>
@@ -696,7 +696,7 @@
                 })
                 .done(function(data) {
                   $("#uploadfoto").modal("hide");
-                  $("#profileimage").attr('src','/images/profileimage/'+data.url);
+                  $("#profileimage").attr('src',data.url);
                   $('#img-profile').val(data.url);
                 })
                 .fail(function() {

@@ -20,9 +20,9 @@ return [
     'apiSecret'  => env('CLOUDINARY_API_SECRET'),
 
     'scaling'    => [
-        'format' => 'png',
-        'width'  => 150,
-        'height' => 150,
+        'format' => 'jpg',
+        'width'  => 1000,
+        'height' => 1000,
         'crop'   => 'fit',
         'effect' => null
     ],
