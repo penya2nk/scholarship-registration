@@ -65,7 +65,7 @@
                     <div class="form-group">
                       <label for="">Tgl</label>
                       <select class="form-control" name="born_date">
-                        @for ($i = 1; $i < 31; $i++)
+                        @for ($i = 1; $i <= 31; $i++)
                           <option @if($date_lahir == $i) selected @endif value="{{$i}}">{{$i}}</option>
                         @endfor
                       </select>
@@ -102,7 +102,7 @@
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label for="">Alamat Tinggal</label>
-                      <textarea class="form-control" name="address" rows="4" cols="80"> @if($user->address !== NULL){{$user->address}}@endif</textarea>
+                      <textarea class="form-control" name="address" rows="4" cols="80">@if($user->address !== NULL){{$user->address}}@endif</textarea>
                     </div>
                   </div>
                 </div>
@@ -197,14 +197,16 @@
                     </div>
 
                     @php
-                      if ($user->ayah_born_date !== null) {
-                        $tgl_lahir = $user->ayah_born_date;
+
+
+                      if ($user->ayah_tanggal_lahir !== null) {
+                        $tgl_lahir = $user->ayah_tanggal_lahir;
                         $tgl_lahir = explode('-',$tgl_lahir);
                         $date_lahir = $tgl_lahir[2];
                         $month_lahir = $tgl_lahir[1];
                         $year_lahir = $tgl_lahir[0];
                       }else {
-                        $tgl_lahir = $user->ayah_born_date;
+                        $tgl_lahir = $user->ayah_tanggal_lahir;
                         $tgl_lahir = explode('-',$tgl_lahir);
                         $date_lahir = "1";
                         $month_lahir = "01";
@@ -217,7 +219,7 @@
                       <div class="form-group">
                         <label for="">Tgl</label>
                         <select class="form-control" name="ayah_born_date">
-                          @for ($i = 1; $i < 31; $i++)
+                          @for ($i = 1; $i <= 31; $i++)
                             <option @if($date_lahir == $i) selected @endif value="{{$i}}">{{$i}}</option>
                           @endfor
                         </select>
@@ -254,7 +256,7 @@
                     <div class="col-sm-12">
                       <div class="form-group">
                         <label for="">Alamat Saat Ini</label>
-                        <textarea class="form-control" name="ayah_alamat" rows="4" cols="80"> @if($user->ayah_alamat !== NULL){{$user->ayah_alamat}}@endif </textarea>
+                        <textarea class="form-control" name="ayah_alamat" rows="4" cols="80">@if($user->ayah_alamat !== NULL){{$user->ayah_alamat}}@endif</textarea>
                       </div>
                     </div>
                   </div>
@@ -322,7 +324,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-2" id="ayah-wafat" style="display:none">
+                    <div class="col-sm-2" id="ayah-wafat" @if($user->ayah_tulangpunggung !== NULL && $user->ayah_tulangpunggung == "0") @else style="display:none" @endif>
                       <div class="form-group">
                         <label for="">Wafat</label>
                         <select id="ayah-wafat-val"  class="form-control" name="ayah_wafat">
@@ -332,7 +334,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-6" id="ayah-tanggungan">
+                    <div class="col-sm-6" id="ayah-tanggungan" @if($user->ayah_tulangpunggung !== NULL && $user->ayah_tulangpunggung == "0") style="display:none" @else @endif>
                       <div class="form-group">
                         <label for="">Jumlah Tanggungan</label>
                         <div class="input-group">
@@ -346,10 +348,10 @@
                   <script type="text/javascript">
                     $('#ayah-tulangpunggung').on('change', function() {
                       var val = $(this).val();
-                      if (val == "true") {
+                      if (val == "1") {
                         $('#ayah-tanggungan').show();
                         // $('#ayah-tulangpunggung-warper').toggleClass('col-sm-10 col-sm-6');
-                        $('#ayah-wafat').val("false").hide();
+                        $('#ayah-wafat').val("0").hide();
                       }else {
                         $('#ayah-tanggungan').hide();
                         $('#ayah-tanggungan-val').val(0);
@@ -389,14 +391,14 @@
                     </div>
 
                     @php
-                      if ($user->ibu_born_date !== null) {
-                        $tgl_lahir = $user->ibu_born_date;
+                      if ($user->ibu_tanggal_lahir !== null) {
+                        $tgl_lahir = $user->ibu_tanggal_lahir;
                         $tgl_lahir = explode('-',$tgl_lahir);
                         $date_lahir = $tgl_lahir[2];
                         $month_lahir = $tgl_lahir[1];
                         $year_lahir = $tgl_lahir[0];
                       }else {
-                        $tgl_lahir = $user->ibu_born_date;
+                        $tgl_lahir = $user->ibu_tanggal_lahir;
                         $tgl_lahir = explode('-',$tgl_lahir);
                         $date_lahir = "1";
                         $month_lahir = "01";
@@ -408,7 +410,7 @@
                       <div class="form-group">
                         <label for="">Tgl</label>
                         <select class="form-control" name="ibu_born_date">
-                          @for ($i = 1; $i < 31; $i++)
+                          @for ($i = 1; $i <= 31; $i++)
                             <option @if($date_lahir == $i) selected @endif value="{{$i}}">{{$i}}</option>
                           @endfor
                         </select>
@@ -513,7 +515,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-2" id="ibu-wafat" style="display:none">
+                    <div class="col-sm-2" id="ibu-wafat" @if($user->ibu_tulangpunggung !== NULL && $user->ibu_tulangpunggung == "0") @else style="display:none" @endif>
                       <div class="form-group">
                         <label for="">Wafat</label>
                         <select id="ibu-wafat-val"  class="form-control" name="ibu_wafat">
@@ -523,7 +525,7 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-6" id="ibu-tanggungan">
+                    <div class="col-sm-6" id="ibu-tanggungan" @if($user->ibu_tulangpunggung !== NULL && $user->ibu_tulangpunggung == "0") style="display:none" @else @endif>
                       <div class="form-group">
                         <label for="">Jumlah Tanggungan</label>
                         <div class="input-group">
@@ -537,10 +539,10 @@
                   <script type="text/javascript">
                     $('#ibu-tulangpunggung').on('change', function() {
                       var val = $(this).val();
-                      if (val == "true") {
+                      if (val == "1") {
                         $('#ibu-tanggungan').show();
                         // $('#ibu-tulangpunggung-warper').toggleClass('col-sm-10 col-sm-6');
-                        $('#ibu-wafat').val("false").hide();
+                        $('#ibu-wafat').val("0").hide();
                       }else {
                         $('#ibu-tanggungan').hide();
                         $('#ibu-tanggungan-val').val(0);
@@ -613,7 +615,7 @@
   $('#save-draft').on('click',function() {
 
     var value = $('#form-data-input').serializeArray();
-    console.log(value);
+
 
     $.ajax({
       url: '{{route('step_profile_draft')}}',

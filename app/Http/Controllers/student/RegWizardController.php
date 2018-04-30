@@ -122,10 +122,10 @@ class RegWizardController extends Controller
         if ($ayah_tulangpunggung !== "") {
           $user->ayah_tulangpunggung = $ayah_tulangpunggung;
         }
-        if ($ayah_wafat !== "" && $ayah_tulangpunggung = "1") {
+        if ($ayah_tulangpunggung == "1") {
           $user->ayah_wafat = 0;
-        }elseif($ayah_tulangpunggung = "0") {
-          $user->ayah_wafat = $ayah_tulangpunggung;
+        }elseif($ayah_tulangpunggung == "0") {
+          $user->ayah_wafat = $ayah_wafat;
         }
         if ($ayah_tanggungan !== "") {
           $user->ayah_tanggungan = $ayah_tanggungan;
@@ -172,11 +172,13 @@ class RegWizardController extends Controller
         if ($ibu_tulangpunggung !== "") {
           $user->ibu_tulangpunggung = $ibu_tulangpunggung;
         }
-        if ($ibu_wafat !== "" && $ibu_tulangpunggung = "1") {
+        if ($ibu_tulangpunggung == "1") {
           $user->ibu_wafat = 0;
-        }elseif($ibu_tulangpunggung = "0") {
-          $user->ibu_wafat = $ibu_tulangpunggung;
+        }elseif($ibu_tulangpunggung == "0") {
+          $user->ibu_wafat = $ibu_wafat;
         }
+
+
 
         if ($ibu_tanggungan !== "") {
           $user->ibu_tanggungan = $ibu_tanggungan;
