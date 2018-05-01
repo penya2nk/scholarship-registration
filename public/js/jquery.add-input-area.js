@@ -46,6 +46,7 @@ $.addInputArea = function(elem, option) {
 
   var self = this;
   $(document).on('click', this.option.btn_add, function() {
+    // console.log($(self).find('input'))
     self._ehAddBtn.call(self);
   });
   $(self.elem).on('click', self.option.btn_del, function(ev) {
@@ -132,6 +133,7 @@ $.extend($.addInputArea.prototype, /** @lends external:jQuery.addInputArea.proto
     $(newArea)
       // Empty value of form field.
       .find('[name]').each(function() {
+
         self._initFieldVal.call(self, this);
       }).end()
       // Add to DOM.

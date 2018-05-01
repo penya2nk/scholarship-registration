@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 use App\models\organization;
 use App\models\position;
+use App\models\committee;
+use App\models\competition;
 
 use Carbon\Carbon;
 use App\User;
@@ -389,7 +391,7 @@ class RegWizardController extends Controller
     public function achievement()
     {
       $user = Auth::user();
-      $positions = position::all();
+      $positions = position::orderBy('id','desc')->get();
 
       $data = array(
         'user' =>$user,
@@ -401,16 +403,16 @@ class RegWizardController extends Controller
     public function update_achievement(Request $request)
     {
 
+      // dd($request);
+
       $user = Auth::user();
 
       // Organization
       $user->organizations()->delete();
-
       foreach ($request->organization as $key => $org) {
-
         $org = new organization;
         $org->user_id = $user->id;
-        $org->organization = "Halo";
+        $org->organization = $request->organization[$key];
         $org->position = $request->position[$key];
         $org->date_from = $request->date_from_org[$key];
         $org->date_end = $request->date_end_org[$key];
@@ -418,8 +420,42 @@ class RegWizardController extends Controller
         $org->save();
       }
 
+      // Committee
+      $user->committees()->delete();
+      foreach ($request->committee as $key => $com) {
+        $com = new committee;
+        $com->user_id = $user->id;
+        $com->committee_name = $request->committee[$key];
+        $com->position = $request->position_com[$key];
+        $com->date_from = $request->date_from_com[$key];
+        $com->date_end = $request->date_end_com[$key];
+        $com->position_id = $request->position_name_com[$key];
+        $com->save();
+      }
+
+      // Competition
+      $user->competitions()->delete();
+      foreach ($request->competition_name as $key => $com) {
+        $com = new competition;
+        $com->user_id = $user->id;
+        $com->level = $request->level_comp[$key];
+        $com->type = $request->type_comp[$key];
+        $com->title = $request->title_comp[$key];
+        $com->competition_name = $request->competition_name[$key];
+        $com->location = $request->location_comp[$key];
+        $com->year = $request->year_comp[$key];
+        $com->save();
+      }
+
+
+
+
+
+
+
+
       if ($request->save == "Save Draft") {
-        return redirect()->route('step_achievement');
+        return redirect()->route('step_achievement')->with('saved','Draft berhasil disimpan');
       }
 
 

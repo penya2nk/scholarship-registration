@@ -31,4 +31,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\models\organization', 'user_id');
     }
+
+    public function committees()
+    {
+        return $this->hasMany('App\models\committee', 'user_id');
+    }
+
+    public function competitions()
+    {
+        return $this->hasMany('App\models\competition', 'user_id');
+    }
 }

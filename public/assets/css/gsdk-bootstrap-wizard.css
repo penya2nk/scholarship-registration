@@ -21,6 +21,14 @@ a:hover, a:focus {
   color: #109CFF;
 }
 
+.border-none{
+  border:none !important;
+}
+
+.daftar-form ol{
+
+}
+
 a:focus, a:active,
 button::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,
