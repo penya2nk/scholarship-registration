@@ -12,6 +12,8 @@ use App\models\organization;
 use App\models\position;
 use App\models\committee;
 use App\models\competition;
+use App\models\charity;
+use App\models\publication;
 
 use Carbon\Carbon;
 use App\User;
@@ -444,14 +446,36 @@ class RegWizardController extends Controller
         $com->competition_name = $request->competition_name[$key];
         $com->location = $request->location_comp[$key];
         $com->year = $request->year_comp[$key];
+        $com->web = $request->web_comp[$key];
         $com->save();
       }
 
+      // Charities
+      $user->charities()->delete();
+      foreach ($request->activity_name as $key => $char) {
+        $char = new charity;
+        $char->user_id = $user->id;
+        $char->role       = $request->role_char[$key];
+        $char->activity_name = $request->activity_name[$key];
+        $char->location   = $request->location_char[$key];
+        $char->date_from  = $request->date_from_char[$key];
+        $char->date_end   = $request->date_end_char[$key];
+        $char->person_impacted = $request->person_impacted[$key];
+        $char->save();
+      }
 
-
-
-
-
+      // Publications
+      $user->publications()->delete();
+      foreach ($request->publication_name as $key => $pub) {
+        $pub = new publication;
+        $pub->user_id = $user->id;
+        $pub->publication_name  = $request->publication_name[$key];
+        $pub->role  = $request->role_pub[$key];
+        $pub->author  = $request->author_pub[$key];
+        $pub->abstract  = $request->abstract_pub[$key];
+        $pub->year  = $request->year_pub[$key];
+        $pub->save();
+      }
 
 
       if ($request->save == "Save Draft") {

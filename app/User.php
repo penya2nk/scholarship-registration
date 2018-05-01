@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\models\competition', 'user_id');
     }
+
+    public function charities()
+    {
+        return $this->hasMany('App\models\charity', 'user_id');
+    }
+
+    public function publications()
+    {
+        return $this->hasMany('App\models\publication', 'user_id');
+    }
 }

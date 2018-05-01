@@ -68,6 +68,42 @@
             }
           });
         });
+
+        $(function() {
+          $('#pengalaman-kerelawanan').addInputArea({
+              area_var: '.charity_area',
+              btn_add: '.charity_add',
+              btn_del: '.charity_del',
+              maximum : 10,
+              after_add: function() {
+                // $('.chosen-select').chosen({})
+                // $('.tagtrainercategory').materialtags('items');
+                $('.hingga').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+                $('.dari').bootstrapMaterialDatePicker({ weekStart : 0, time: false }).on('change', function(e, date)
+                {
+                $('.hingga').bootstrapMaterialDatePicker('setMinDate', date);
+                });
+              }
+            });
+          });
+
+          $(function() {
+            $('#pengalaman-publikasi').addInputArea({
+                area_var: '.publication_area',
+                btn_add: '.publication_add',
+                btn_del: '.publication_del',
+                maximum : 10,
+                after_add: function() {
+                  // $('.chosen-select').chosen({})
+                  // $('.tagtrainercategory').materialtags('items');
+                  $('.hingga').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+                  $('.dari').bootstrapMaterialDatePicker({ weekStart : 0, time: false }).on('change', function(e, date)
+                  {
+                  $('.hingga').bootstrapMaterialDatePicker('setMinDate', date);
+                  });
+                }
+              });
+            });
   </script>
 
   <div class="row">
@@ -138,7 +174,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="organization_del btn btn-danger btn-sm">X</button>
+                      <button type="button" class="organization_del btn btn-danger btn-blcok btn-fill btn-block btn-sm">X</button>
                     </div>
 
                   </div>
@@ -199,7 +235,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="organization_del btn btn-danger btn-fill btn-sm">X</button>
+                      <button type="button" class="organization_del btn btn-danger btn-block btn-fill btn-sm">X</button>
                     </div>
 
                   </div>
@@ -273,7 +309,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="committee_del btn btn-danger btn-sm">X</button>
+                      <button type="button" class="committee_del btn btn-danger btn-block btn-fill btn-sm">X</button>
                     </div>
 
                   </div>
@@ -334,7 +370,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="committee_del btn btn-danger btn-fill btn-sm">X</button>
+                      <button type="button" class="committee_del btn btn-danger btn-block btn-fill btn-sm">X</button>
                     </div>
 
                   </div>
@@ -408,16 +444,13 @@
 
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <input type="text"
                         name="location_comp[0]"
                         data-name-format="location_comp[%d]"
                         class="form-control" id="" placeholder="Lokasi">
                       </div>
-                    </div>
-                    <div class="col-sm-4">
-
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
@@ -436,7 +469,7 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="competition_del btn btn-danger btn-sm">X</button>
+                      <button type="button" class="competition_del btn btn-danger btn-block btn-fill btn-sm">X</button>
                     </div>
 
                   </div>
@@ -497,7 +530,7 @@
 
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <div class="form-group">
                         <input type="text"
                         name="location_comp[0]"
@@ -505,9 +538,6 @@
                         value="{{$comp->location}}"
                         class="form-control" id="" placeholder="Lokasi">
                       </div>
-                    </div>
-                    <div class="col-sm-4">
-
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
@@ -528,18 +558,346 @@
                       </div>
                     </div>
                     <div class="col-sm-1">
-                      <button type="button" class="competition_del btn btn-danger btn-sm">X</button>
+                      <button type="button" class="competition_del btn btn-danger btn-block btn-fill btn-sm">X</button>
                     </div>
 
                   </div>
+                </li>
               @endforeach
-            </li>
             </ol>
             </div>
               @endif
             </div>
             <div class="row">
               <a href="#pengalaman-kepanitiaan" class="competition_add btn btn-fill btn-success btn-sm btn-block" id="addcommittee">Add</a>
+            </div>
+            {{--  --}}
+
+            {{-- Pengalaman Aktivitas Sosial dan Kerelawanan --}}
+
+            <div class="row">
+              <div class="col-sm-12">
+                <h2><b>Aktivitas Sosial dan Kerelawanan</b></h2>
+                <hr>
+              </div>
+            </div>
+
+            <div class="daftar-form" >
+              @if ($user->charities->count() == 0)
+                <div class="">
+                  <ol class="" id="pengalaman-kerelawanan">
+                    <li class="charity_area">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="text"
+                            name="activity_name[0]"
+                            data-name-format="activity_name[%d]"
+                            class="form-control" id="" placeholder="Nama Kegiatan Kerelawanan">
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="text"
+                            name="role_char[0]"
+                            data-name-format="role_char[%d]"
+                            class="form-control" id="" placeholder="Peran">
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                        name="location_char[0]"
+                        data-name-format="location_char[%d]"
+                        class="form-control" id="" placeholder="Lokasi">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                        name="date_from_char[0]"
+                        data-name-format="date_from_char[%d]"
+                        class="form-control dari" id="" placeholder="Tanggal Mulai">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                        name="date_end_char[0]"
+                        data-name-format="date_end_char[%d]"
+                        class="form-control hingga" id="" placeholder="Tanggal Selesai">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">+/-</span>
+                          <input type="number"
+                          name="person_impacted[0]"
+                          data-name-format="person_impacted[%d]"
+                          class="form-control" id="" placeholder="Juml. Penerima Manfaat">
+                          <span class="input-group-addon">orang</span>
+
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="col-sm-1">
+                      <button type="button" class="charity_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                    </div>
+
+                  </div>
+                    </li>
+                  </ol>
+                </div>
+              @else
+                <div class="">
+                  <ol class="" id="pengalaman-kerelawanan">
+              @foreach ($user->charities as $key => $char)
+
+                <li class="charity_area">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <input type="text"
+                        name="activity_name[0]"
+                        data-name-format="activity_name[%d]"
+                        value="{{$char->activity_name}}"
+                        class="form-control" id="" placeholder="Nama Kegiatan Kerelawanan">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <input type="text"
+                        name="role_char[0]"
+                        data-name-format="role_char[%d]"
+                        value="{{$char->role}}"
+                        class="form-control" id="" placeholder="Peran">
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="row">
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="text"
+                    name="location_char[0]"
+                    data-name-format="location_char[%d]"
+                    value="{{$char->location}}"
+                    class="form-control" id="" placeholder="Lokasi">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="text"
+                    name="date_from_char[0]"
+                    data-name-format="date_from_char[%d]"
+                    value="{{$char->date_from}}"
+                    class="form-control dari" id="" placeholder="Tanggal Mulai">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <input type="text"
+                    name="date_end_char[0]"
+                    data-name-format="date_end_char[%d]"
+                    value="{{$char->date_end}}"
+                    class="form-control hingga" id="" placeholder="Tanggal Selesai">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">+/-</span>
+                      <input type="number"
+                      name="person_impacted[0]"
+                      data-name-format="person_impacted[%d]"
+                      value="{{$char->person_impacted}}"
+                      class="form-control" id="" placeholder="Juml. Penerima Manfaat">
+                      <span class="input-group-addon">orang</span>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-1">
+                  <button type="button" class="charity_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                </div>
+
+              </div>
+                </li>
+              @endforeach
+            </ol>
+            </div>
+              @endif
+            </div>
+            <div class="row">
+              <a href="#pengalaman-kerelawanan" class="charity_add btn btn-fill btn-success btn-sm btn-block" id="addcommittee">Add</a>
+            </div>
+            {{--  --}}
+
+            {{-- Buku atau Publikasi --}}
+
+            <div class="row">
+              <div class="col-sm-12">
+                <h2><b>Artikel dan/atau karya tulis yang pernah dipublikasikan</b></h2>
+                <hr>
+              </div>
+            </div>
+
+            <div class="daftar-form" >
+              @if ($user->publications->count() == 0)
+                <div class="">
+                  <ol class="" id="pengalaman-publikasi">
+                    <li class="publication_area">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <input type="text"
+                            name="publication_name[0]"
+                            data-name-format="publication_name[%d]"
+                            class="form-control" id="" placeholder="Judul Karya">
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <textarea class="form-control"
+                            name="abstract_pub[0]"
+                            data-name-format="abstract_pub[%d]"
+                            rows="8" cols="80" placeholder="Abstract"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="form-group">
+                              <input type="text"
+                              name="role_pub[0]"
+                              data-name-format="role_pub[%d]"
+                              class="form-control" id="" placeholder="Peran">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="text"
+                              name="author_pub[0]"
+                              data-name-format="author_pub[%d]"
+                              class="form-control" id="" placeholder="Author">
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <input type="number"
+                              name="year_pub[0]"
+                              data-name-format="year_pub[%d]"
+                              class="form-control" id="" placeholder="Tahun Rilis">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="col-sm-1">
+                      <button type="button" class="publication_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <hr>
+                    </div>
+                  </div>
+                  </li>
+                  </ol>
+                </div>
+              @else
+                <div class="">
+                  <ol class="" id="pengalaman-publikasi">
+              @foreach ($user->publications as $key => $pub)
+                <li class="publication_area">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <input type="text"
+                        name="publication_name[0]"
+                        data-name-format="publication_name[%d]"
+                        value="{{$pub->publication_name}}"
+                        class="form-control" id="" placeholder="Judul Karya">
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <textarea class="form-control"
+                        name="abstract_pub[0]"
+                        data-name-format="abstract_pub[%d]"
+                        rows="8" cols="80" placeholder="Abstract">{{$pub->abstract}}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <input type="text"
+                          name="role_pub[0]"
+                          data-name-format="role_pub[%d]"
+                          value="{{$pub->role}}"
+                          class="form-control" id="" placeholder="Peran">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="text"
+                          name="author_pub[0]"
+                          data-name-format="author_pub[%d]"
+                          value="{{$pub->author}}"
+                          class="form-control" id="" placeholder="Author">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <input type="number"
+                          name="year_pub[0]"
+                          data-name-format="year_pub[%d]"
+                          value="{{$pub->year}}"
+                          class="form-control" id="" placeholder="Tahun Rilis">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-sm-1">
+                  <button type="button" class="publication_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <hr>
+                </div>
+              </div>
+              </li>
+
+              @endforeach
+            </ol>
+            </div>
+              @endif
+            </div>
+            <div class="row">
+              <a href="#pengalaman-publikasi" class="publication_add btn btn-fill btn-success btn-sm btn-block" id="addcommittee">Add</a>
             </div>
             {{--  --}}
 
