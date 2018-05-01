@@ -16,7 +16,8 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <form class="" id="form-data-input" action="index.html" method="post">
+      <form class="" id="form-data-input" action="{{route('step_profile_save')}}" method="post">
+        {{ csrf_field() }}
         <div class="tab-content">
 
           <div class="container-fluid">
@@ -574,7 +575,7 @@
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
             <input type='button' class='btn btn-next btn-fill btn-default btn-wd btn-sm' id="save-draft" name='finish' value='Save Draft' />
-            <input type='button' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='next' value='Next' />
+            <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='next' value='Next' />
 
           </div>
 

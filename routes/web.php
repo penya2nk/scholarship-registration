@@ -42,7 +42,7 @@ Route::group([
 
 Route::get('/scholarship/step/1/profile', 'student\RegWizardController@profile')->name('step_profile');
 Route::post('/scholarship/step/1/profile/savedraft', 'student\RegWizardController@draft_profile')->name('step_profile_draft');
-Route::post('/scholarship/step/1/profile/save', 'student\RegWizardController@update_profile');
+Route::post('/scholarship/step/1/profile/save', 'student\RegWizardController@update_profile')->name('step_profile_save');
 Route::post('/upload-crop-photo', 'student\RegWizardController@crop_profpic');
 
 Route::get('/scholarship/step/2/education', 'student\RegWizardController@education')->name('step_education');
@@ -50,12 +50,13 @@ Route::post('/scholarship/step/2/education/save', 'student\RegWizardController@u
 
 
 Route::get('/scholarship/step/3/achievement', 'student\RegWizardController@achievement')->name('step_achievement');
-Route::post('/scholarship/step/3/achievement/save', 'student\RegWizardController@update_achievement');
+Route::post('/scholarship/step/3/achievement/savedraft', 'student\RegWizardController@draft_achievement')->name('step_achievement_draft');
+Route::post('/scholarship/step/3/achievement/save', 'student\RegWizardController@update_achievement')->name('step_achievement_save');
 
 Route::get('/scholarship/step/4/motivation', 'student\RegWizardController@motivation')->name('step_motivation');
 Route::post('/scholarship/step/4/motivation/save', 'student\RegWizardController@update_motivation');
 
-Route::get('/scholarship/step/5/document', 'student\RegWizardController@document')->name('step_profile');
+Route::get('/scholarship/step/5/document', 'student\RegWizardController@document')->name('step_document');
 Route::post('/scholarship/step/5/document/save', 'student\RegWizardController@update_document');
 
 Route::get('/scholarship/step/6/other', 'student\RegWizardController@other')->name('step_other');

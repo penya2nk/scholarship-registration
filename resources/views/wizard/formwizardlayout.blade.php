@@ -12,11 +12,19 @@
 
 	<!--     Fonts and icons     -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons"rel="stylesheet" type="text/css">
+
 
 		<!--   Core JS Files   -->
 		<script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
 		<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 		<script src="{{asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
+		<script src="{{asset('js/material.min.js')}}" type="text/javascript"></script>
+		<script src="{{asset('js/moment.min.js')}}"></script>
+		<link rel="stylesheet" href="{{asset('css/bootstrap-material-datetimepicker.css')}}">
+		<script src="{{asset('js/bootstrap-material-datetimepicker.js')}}"></script>
+
+
 
 		<!--  Plugin for the Wizard -->
 		<script src="{{asset('assets/js/gsdk-bootstrap-wizard.js')}}"></script>
@@ -37,7 +45,8 @@
 	<script src="{{asset('js/jquery.mask.js')}}"></script>
 	<script type="text/javascript">
   $(document).ready(function() {
-    $('.handphone').mask('+6200000000000000')
+    $('.handphone').mask('+6200000000000000');
+		$('.tahun').mask('0000');
   });
 
   </script>
@@ -86,7 +95,7 @@
                     	</div>
 
                       <div class="row">
-                        <a href="#">
+                        <a href="{{route('step_profile')}}">
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_profile') ? 'active' : ''}}">
                             Data Pribadi
                           </div>
@@ -96,8 +105,9 @@
                             Pendidikan
                           </div>
                         </a>
-                        <a href="#">
-                          <div class="col-md-2 text-center step-tab">
+
+                        <a href="{{route('step_achievement')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
                             Prestasi
                           </div>
                         </a>
@@ -143,6 +153,7 @@
     </div>
 
 </div>
+
 
 </body>
 
