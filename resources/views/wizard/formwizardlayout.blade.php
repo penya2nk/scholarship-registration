@@ -66,7 +66,7 @@
          <div class="logo-container">
             <div class="brand">
                 Halo
-                Bagus Dwi Utama
+                {{Auth::user()->name}}
             </div>
         </div>
     </span>
@@ -111,18 +111,18 @@
                             Prestasi
                           </div>
                         </a>
-                        <a href="#">
-                          <div class="col-md-2 text-center step-tab">
+                        <a href="{{route('step_motivation')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_motivation') ? 'active' : ''}}">
                             Motivasi
                           </div>
                         </a>
-                        <a href="#">
-                          <div class="col-md-2 text-center step-tab">
+                        <a href="{{route('step_document')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_document') ? 'active' : ''}}">
                             Berkas
                           </div>
                         </a>
-                        <a href="#">
-                          <div class="col-md-2 text-center step-tab">
+                        <a href="{{route('step_preview')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_preview') ? 'active' : ''}}">
                             Review
                           </div>
                         </a>

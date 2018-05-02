@@ -54,15 +54,20 @@ Route::post('/scholarship/step/3/achievement/savedraft', 'student\RegWizardContr
 Route::post('/scholarship/step/3/achievement/save', 'student\RegWizardController@update_achievement')->name('step_achievement_save');
 
 Route::get('/scholarship/step/4/motivation', 'student\RegWizardController@motivation')->name('step_motivation');
-Route::post('/scholarship/step/4/motivation/save', 'student\RegWizardController@update_motivation');
+Route::post('/scholarship/step/4/motivation/save', 'student\RegWizardController@update_motivation')->name('step_motivation_save');
 
 Route::get('/scholarship/step/5/document', 'student\RegWizardController@document')->name('step_document');
-Route::post('/scholarship/step/5/document/save', 'student\RegWizardController@update_document');
+Route::post('/scholarship/step/5/document/save', 'student\RegWizardController@update_document')->name('step_document_save');
 
-Route::get('/scholarship/step/6/other', 'student\RegWizardController@other')->name('step_other');
-Route::post('/scholarship/step/6/other/save', 'student\RegWizardController@update_other');
+Route::get('/scholarship/step/6/preview', 'student\RegWizardController@preview')->name('step_preview');
+Route::post('/scholarship/step/6/preview/save', 'student\RegWizardController@update_preview')->name('step_preview_save');
+
+// Route::get('/scholarship/step/6/other', 'student\RegWizardController@other')->name('step_other');
+// Route::post('/scholarship/step/6/other/save', 'student\RegWizardController@update_other');
 
 
+Route::post('/upload-crop-photo-ktp', 'student\RegWizardController@upload_ktp');
+Route::post('/upload-crop-photo-kk', 'student\RegWizardController@upload_kk');
 
 
 

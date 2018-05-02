@@ -562,11 +562,8 @@
                 <label for="">Foto Diri</label>
                 <img @if($user->photo_profile == NULL) @if($user->gender = "L") src="{{asset('images/male-blank.jpg')}}" @else src="{{asset('images/female-blank.jpg')}}" @endif @else src="{{$user->photo_profile}}" @endif  id="profileimage" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile" @if ($user->photo_profile == NULL) value="" @else value="{{$user->photo_profile}}" @endif >
-                <a class="btn btn-sucess pull-right" data-toggle="modal" data-target="#uploadfoto">Upload Image</a>
+                <a class="btn btn-success pull-right" data-toggle="modal" data-target="#uploadfoto">Upload Image</a>
               </div>
-
-
-
 
             </div>
           </div>
