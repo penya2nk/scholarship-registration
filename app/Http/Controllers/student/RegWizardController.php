@@ -480,6 +480,8 @@ class RegWizardController extends Controller
 
       if ($request->save == "Save Draft") {
         return redirect()->route('step_achievement')->with('saved','Draft berhasil disimpan');
+      }else {
+        return redirect()->route('step_motivation');
       }
 
 
@@ -599,8 +601,7 @@ class RegWizardController extends Controller
         $base64_str = substr($data, strpos($data, ",")+1);
 
         $image = base64_decode($base64_str);
-        $png_url = "bazis/ktm/ktm-".str_replace(' ','-',Auth::user()->name)."-".time();
-        $path = public_path('images/trainingimage/' . $png_url);
+        $png_url = "bazis/photo_ktm/ktm-".str_replace(' ','-',Auth::user()->name)."-".time();
 
         $img = Image::make(file_get_contents($data))->resize(2500, 1503)->encode('data-url');
 
@@ -623,7 +624,9 @@ class RegWizardController extends Controller
       return Response::json( $response  );
     }
 
-    public function upload_photo_sktm()
+
+
+    public function upload_home_front()
     {
       $data = $_POST['imageData'];
       $waktu = Carbon::now();
@@ -632,8 +635,7 @@ class RegWizardController extends Controller
         $base64_str = substr($data, strpos($data, ",")+1);
 
         $image = base64_decode($base64_str);
-        $png_url = "bazis/photo_sktm/photo_sktm-".str_replace(' ','-',Auth::user()->name)."-".time();
-        $path = public_path('images/trainingimage/' . $png_url);
+        $png_url = "bazis/photo_home/home-front-".str_replace(' ','-',Auth::user()->name)."-".time();
 
         $img = Image::make(file_get_contents($data))->resize(2500, 1503)->encode('data-url');
 
@@ -645,16 +647,139 @@ class RegWizardController extends Controller
 
         // Save URL
         $user = Auth::user();
-        $user->photo_photo_sktm = $photo_url;
+        $user->photo_home_front = $photo_url;
         $user->save();
 
         $response = array(
           'url' => $photo_url,
         );
 
+      return Response::json( $response  );
+    }
+
+    public function upload_home_out()
+    {
+      $data = $_POST['imageData'];
+      $waktu = Carbon::now();
+
+        //get the base-64 from data
+        $base64_str = substr($data, strpos($data, ",")+1);
+
+        $image = base64_decode($base64_str);
+        $png_url = "bazis/photo_home/home-out-".str_replace(' ','-',Auth::user()->name)."-".time();
+
+        $img = Image::make(file_get_contents($data))->resize(2500, 1503)->encode('data-url');
+
+        // ->save($path);
+
+        // Lempar langsung ke Cloudinary Setting ada di env
+        $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
+        $photo_url = Cloudder::show($png_url);
+
+        // Save URL
+        $user = Auth::user();
+        $user->photo_home_out = $photo_url;
+        $user->save();
+
+        $response = array(
+          'url' => $photo_url,
+        );
 
       return Response::json( $response  );
     }
+
+    public function upload_home_side()
+    {
+      $data = $_POST['imageData'];
+      $waktu = Carbon::now();
+
+        //get the base-64 from data
+        $base64_str = substr($data, strpos($data, ",")+1);
+
+        $image = base64_decode($base64_str);
+        $png_url = "bazis/photo_home/home-side-".str_replace(' ','-',Auth::user()->name)."-".time();
+
+        $img = Image::make(file_get_contents($data))->resize(2500, 1503)->encode('data-url');
+
+        // ->save($path);
+
+        // Lempar langsung ke Cloudinary Setting ada di env
+        $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
+        $photo_url = Cloudder::show($png_url);
+
+        // Save URL
+        $user = Auth::user();
+        $user->photo_home_side = $photo_url;
+        $user->save();
+
+        $response = array(
+          'url' => $photo_url,
+        );
+
+      return Response::json( $response  );
+    }
+
+    public function upload_home_in()
+    {
+      $data = $_POST['imageData'];
+      $waktu = Carbon::now();
+
+        //get the base-64 from data
+        $base64_str = substr($data, strpos($data, ",")+1);
+
+        $image = base64_decode($base64_str);
+        $png_url = "bazis/photo_home/home-in-".str_replace(' ','-',Auth::user()->name)."-".time();
+
+        $img = Image::make(file_get_contents($data))->resize(2500, 1503)->encode('data-url');
+
+        // ->save($path);
+
+        // Lempar langsung ke Cloudinary Setting ada di env
+        $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
+        $photo_url = Cloudder::show($png_url);
+
+        // Save URL
+        $user = Auth::user();
+        $user->photo_home_in = $photo_url;
+        $user->save();
+
+        $response = array(
+          'url' => $photo_url,
+        );
+
+      return Response::json( $response  );
+    }
+
+    public function upload_sktm(Request $request)
+    {
+
+      $this->validate($request,[
+           'file_sktm'=>'required|mimes:pdf|between:1, 2000',
+       ]);
+
+      $file_ext = $request->file('file_sktm')->getClientOriginalExtension();
+      $data = $request->file('file_sktm')->getRealPath();
+
+      $doc_url = "bazis/sktm/sktm-".str_replace(' ','-',Auth::user()->name)."-".time().".".$file_ext;
+
+      // Lempar langsung ke Cloudinary Setting ada di env
+      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("resource_type" =>"raw"));
+      $doc_url = Cloudder::show($doc_url);
+
+      // Save URL
+      $user = Auth::user();
+      $user->photo_sktm = $doc_url;
+      $user->save();
+
+      $response = array(
+        'url' => $doc_url,
+      );
+
+    return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
+    }
+
+
+
 
 
 

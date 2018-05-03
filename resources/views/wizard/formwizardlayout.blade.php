@@ -16,7 +16,11 @@
 
 
 		<!--   Core JS Files   -->
-		<script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
+		{{-- <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script> --}}
+		<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 		<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 		<script src="{{asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
 		<script src="{{asset('js/material.min.js')}}" type="text/javascript"></script>

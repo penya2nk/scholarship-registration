@@ -68,6 +68,21 @@ Route::post('/scholarship/step/6/preview/save', 'student\RegWizardController@upd
 
 Route::post('/upload-crop-photo-ktp', 'student\RegWizardController@upload_ktp');
 Route::post('/upload-crop-photo-kk', 'student\RegWizardController@upload_kk');
+Route::post('/upload-crop-photo-ktm', 'student\RegWizardController@upload_ktm');
+
+Route::post('/upload-crop-photo-front', 'student\RegWizardController@upload_home_front');
+Route::post('/upload-crop-photo-out', 'student\RegWizardController@upload_home_out');
+Route::post('/upload-crop-photo-side', 'student\RegWizardController@upload_home_side');
+Route::post('/upload-crop-photo-in', 'student\RegWizardController@upload_home_in');
+
+Route::post('/upload-crop-photo-sktm', 'student\RegWizardController@upload_sktm');
+Route::post('/upload-crop-parent-sallary', 'student\RegWizardController@upload_parent_sallary');
+Route::post('/upload-crop-transcript-score', 'student\RegWizardController@upload_transcript_score');
+Route::post('/upload-crop-active-student', 'student\RegWizardController@upload_active_student');
+
+Route::get('/validate', 'admin\ValidationController@count_null');
+
+
 
 
 
