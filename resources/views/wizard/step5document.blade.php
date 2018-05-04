@@ -284,12 +284,13 @@
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
             {{-- <input type='submit' class='btn btn-next btn-fill btn-default btn-wd btn-sm' id="save-draft" name='save' value='Save Draft' /> --}}
-            <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' />
+            {{-- <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' /> --}}
 
           </div>
 
           <div class="pull-left">
-            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+            {{-- <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' /> --}}
+            <a href="{{route('step_motivation')}}" class='btn btn-previous btn-fill btn-default btn-wd btn-sm'> Previous</a>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -657,7 +658,7 @@
             $('#upload-ktp').on('change', function () { readFile(this); });
             $('.upload-result-ktp').on('click', function (ev) {
               $('.loading-upload').show();
-              $(this).hide();              
+              $(this).hide();
 
               $('#main-cropper-ktp').croppie('result', {
                 type: 'base64',

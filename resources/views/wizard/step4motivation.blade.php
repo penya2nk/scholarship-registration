@@ -174,7 +174,7 @@
           </div>
 
           <div class="pull-left">
-            <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+            <a href="{{route('step_achievement')}}" class='btn btn-previous btn-fill btn-default btn-wd btn-sm'> Previous</a>
           </div>
           <div class="clearfix"></div>
         </div>

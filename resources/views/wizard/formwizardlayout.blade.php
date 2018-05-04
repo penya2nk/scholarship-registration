@@ -100,7 +100,7 @@
 
                       <div class="row">
                         <a href="{{route('step_profile')}}">
-                          <div class="col-md-2 text-center step-tab {{($routename == 'step_profile') ? 'active' : ''}}">
+                          <div class="col-md-3 text-center step-tab {{($routename == 'step_profile') ? 'active' : ''}}">
                             Data Pribadi
                           </div>
                         </a>
@@ -111,21 +111,21 @@
                         </a> --}}
 
                         <a href="{{route('step_achievement')}}">
-                          <div class="col-md-2 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
+                          <div class="col-md-3 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
                             Prestasi
                           </div>
                         </a>
                         <a href="{{route('step_motivation')}}">
-                          <div class="col-md-2 text-center step-tab {{($routename == 'step_motivation') ? 'active' : ''}}">
+                          <div class="col-md-3 text-center step-tab {{($routename == 'step_motivation') ? 'active' : ''}}">
                             Motivasi
                           </div>
                         </a>
                         <a href="{{route('step_document')}}">
-                          <div class="col-md-2 text-center step-tab {{($routename == 'step_document') ? 'active' : ''}}">
+                          <div class="col-md-3 text-center step-tab {{($routename == 'step_document') ? 'active' : ''}}">
                             Berkas
                           </div>
                         </a>
-                        <a href="{{route('step_preview')}}">
+                        {{-- <a href="{{route('step_preview')}}">
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_preview') ? 'active' : ''}}">
                             Review
                           </div>
@@ -134,7 +134,7 @@
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_final_submit') ? 'active' : ''}}">
                             Submit
                           </div>
-                        </a>
+                        </a> --}}
                         {{-- <ul class="nav nav-pills">
                             <li><a href="#about" class="active">Data Pribadi</a></li>
                             <li><a href="#account" >Pendidikan</a></li>

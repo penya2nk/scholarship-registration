@@ -655,9 +655,9 @@
 
           </div>
 
-          <div class="pull-left">
+          {{-- <div class="pull-left">
             <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
-          </div>
+          </div> --}}
           <div class="clearfix"></div>
         </div>
       </form>
