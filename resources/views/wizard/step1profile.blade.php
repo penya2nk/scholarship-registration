@@ -38,6 +38,22 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">E-mail</label>
+                      <input disabled type="text" @if($user->email !== NULL) value="{{$user->email}}" @endif name="email" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">No Hp (WA)</label>
+                      <input type="text" @if($user->phone) !== NULL) value="{{$user->phone}}" @endif name="phone" class="form-control handphone" id="" placeholder="">
+                    </div>
+                  </div>
+                </div>
+
                 {{-- LINE 2 --}}
                 <div class="row">
                   <div class="col-sm-4">
@@ -98,6 +114,64 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="">Agama</label>
+                      <input type="text" name="religion" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="">Jenis Kelamin</label>
+                      <select class="form-control" name="gender">
+                        <option @if($user->gender == "L") selected @endif value="L">Lak-Laki</option>
+                        <option @if($user->gender == "P") selected @endif value="P">Perempuan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="">Tinggi Badan</label>
+                      <div class="input-group">
+                        <input type="number" value="{{$user->body_length}}" name="body_length" min="100" class="form-control" id="" placeholder="">
+                        <span class="input-group-addon">cm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="">Berat Badan</label>
+                      <div class="input-group">
+                        <input type="number" value="{{$user->body_weight}}" name="body_weight" min="0" class="form-control" id="" placeholder="">
+                        <span class="input-group-addon">Kg</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">Facebook (Jika Ada)</label>
+                      <div class="input-group">
+                        <span class="input-group-addon">http://www.facebook.com/</span>
+                        <input name="facebook_id" value="{{$user->facebook_id}}" type="text" class="form-control" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">Instagram (Jika Ada)</label>
+                      <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input name="instagram_id" value="{{$user->instagram_id}}" type="text" class="form-control" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 {{-- LINE 3 --}}
                 <div class="row">
                   <div class="col-sm-12">
@@ -129,7 +203,12 @@
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label for="">Perguruan Tinggi</label>
-                      <input type="text" @if($user->university_id !== NULL) value="{{$user->university_id}}" @endif class="form-control" name="university_id" id="" placeholder="">
+                      <select class="form-control" name="university_id">
+                        <option value="">-- Pilih Perguruan Tinggi --</option>
+                        @foreach ($insti as $inst)
+                          <option @if($user->university_id == $inst->id) selected @endif value="{{$inst->id}}">{{$inst->institution_name}}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -153,7 +232,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label for="">Angkatan</label>
-                      <input type="text" @if($user->generation !== NULL) value="{{$user->generation}}" @endif name="generation" class="form-control" id="" placeholder="">
+                      <input type="number" min="0" @if($user->generation !== NULL) value="{{$user->generation}}" @endif name="generation" class="form-control" id="" placeholder="">
                     </div>
                   </div>
                   <div class="col-sm-6">

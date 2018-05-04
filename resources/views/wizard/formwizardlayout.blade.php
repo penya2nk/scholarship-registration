@@ -104,11 +104,11 @@
                             Data Pribadi
                           </div>
                         </a>
-                        <a href="#">
+                        {{-- <a href="#">
                           <div class="col-md-2 text-center step-tab">
                             Pendidikan
                           </div>
-                        </a>
+                        </a> --}}
 
                         <a href="{{route('step_achievement')}}">
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
@@ -128,6 +128,11 @@
                         <a href="{{route('step_preview')}}">
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_preview') ? 'active' : ''}}">
                             Review
+                          </div>
+                        </a>
+												<a href="{{route('step_final_submit')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_final_submit') ? 'active' : ''}}">
+                            Submit
                           </div>
                         </a>
                         {{-- <ul class="nav nav-pills">

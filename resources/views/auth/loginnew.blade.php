@@ -139,11 +139,12 @@ style="background:#42B549"
           <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
         </div>
         <div class="row" style="width:390px; margin:auto">
-          <div class="col-xs-6">
-            <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
-          </div>
+
           <div class="col-xs-6">
             <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
+          </div>
+          <div class="col-xs-6">
+            <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
           </div>
         </div>
 
@@ -217,11 +218,12 @@ style="background:#42B549"
           <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
       </div>
       <div class="row" style="width:390px; margin:auto">
-        <div class="col-xs-6">
-          <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
-        </div>
+
         <div class="col-xs-6">
           <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
+        </div>
+        <div class="col-xs-6">
+          <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
         </div>
       </div>
 
@@ -230,16 +232,16 @@ style="background:#42B549"
 
         <form role="form" data-toggle="validator" action="{{ route('register') }}" method="post">
           {{ csrf_field() }}
-          <div class="form-group form-input has-feedback">
+          {{-- <div class="form-group form-input has-feedback">
             <select class="form-control form-input" name="title" required>
               <option value="">Jenis Kelamin</option>
               <option value="L">Laki-Laki</option>
               <option value="P">Perempuan</option>
             </select>
-            {{-- <input type="text" class="form-control" name="title" placeholder="Nick Name" required> --}}
+
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
             <div class="help-block with-errors"></div>
-          </div>
+          </div> --}}
           <div class="form-group has-feedback">
             <input type="text" class="form-control form-input" name="name" placeholder="Nama Lengkap" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>

@@ -14,7 +14,8 @@
         "jcf/geocode": "^1.4",
         "jrm2k6/cloudder": "^0.5.1",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

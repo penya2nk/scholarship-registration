@@ -100,7 +100,7 @@ class RegisterController extends Controller
       $user = new User;
       $user->name = $data['name'];
       $user->email = $data['email'];
-      $user->gender = $data['title'];
+      // $user->gender = $data['title'];
 
       $phone_subs = substr($data['handphone'],0,4);
       if ($phone_subs == "+620") {
@@ -116,12 +116,12 @@ class RegisterController extends Controller
 
       $email_data = array('user' =>$user , );
 
-      // Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
-      //     $message->to($data['email'])
-      //     ->trackClicks(true)
-      //     ->trackOpens(true)
-      //     ->subject('Bazis Scholarship User Verification');
-      // });
+      Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
+          $message->to($data['email'])
+          ->trackClicks(true)
+          ->trackOpens(true)
+          ->subject('Bazis Scholarship User Verification');
+      });
 
         // $user = User::create([
         //     'name' => $data['name'],

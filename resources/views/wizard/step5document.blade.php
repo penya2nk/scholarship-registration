@@ -158,7 +158,7 @@
                         <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
                         @php
                          $link_photo_sktm = explode('/',$user->photo_sktm);
-                         $link_photo_sktm = $link_photo_sktm[10];
+                         $link_photo_sktm = $link_photo_sktm[9];
                         @endphp
                     @endif
 
@@ -176,10 +176,17 @@
                   <div class="input-group">
                     @if ($user->photo_parent_sallary == NULL)
                       <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
+                        @php
+                          $link_photo_parent_sallary = "";
+                        @endphp
                       @else
                         <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
+                        @php
+                         $link_photo_parent_sallary = explode('/',$user->photo_parent_sallary);
+                         $link_photo_parent_sallary = $link_photo_parent_sallary[9];
+                        @endphp
                     @endif
-                    <input type="text" readonly value="{{$user->photo_parent_sallary}}" class="form-control input-lg" id="" placeholder="">
+                    <input type="text" readonly value="{{$link_photo_parent_sallary}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-parent-sallary" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
                   </div>
                 </div>
@@ -191,12 +198,19 @@
                 <div class="form-group">
                   <label for="">Upload Transkrip Nilai Terakhir, atau raport kelas 11-12 untuk pendaftar dari Poltek</label>
                   <div class="input-group">
-                    @if ($user->transcript_score == NULL)
+                    @if ($user->photo_transcript_score == NULL)
+                        @php
+                          $link_photo_transcript_score = "";
+                        @endphp
                       <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
                       @else
                         <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
+                        @php
+                         $link_photo_transcript_score = explode('/',$user->photo_transcript_score);
+                         $link_photo_transcript_score = $link_photo_transcript_score[9];
+                        @endphp
                     @endif
-                    <input type="text" readonly value="{{$user->transcript_score}}" class="form-control input-lg" id="" placeholder="">
+                    <input type="text" readonly value="{{$link_photo_transcript_score}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-transcript-score" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
                   </div>
                 </div>
@@ -210,10 +224,17 @@
                   <div class="input-group">
                     @if ($user->photo_active_student == NULL)
                       <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
+                        @php
+                          $link_photo_active_student = "";
+                        @endphp
                       @else
                         <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
+                        @php
+                         $link_photo_active_student = explode('/',$user->photo_active_student);
+                         $link_photo_active_student = $link_photo_active_student[9];
+                        @endphp
                     @endif
-                    <input type="text" readonly value="{{$user->photo_active_student}}" class="form-control input-lg" id="" placeholder="">
+                    <input type="text" readonly value="{{$link_photo_active_student}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-active-student" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
                   </div>
                 </div>
@@ -262,7 +283,7 @@
         </div>
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
-            <input type='submit' class='btn btn-next btn-fill btn-default btn-wd btn-sm' id="save-draft" name='save' value='Save Draft' />
+            {{-- <input type='submit' class='btn btn-next btn-fill btn-default btn-wd btn-sm' id="save-draft" name='save' value='Save Draft' /> --}}
             <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' />
 
           </div>
@@ -430,7 +451,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary upload-result-sktm">Save</button>
+            <button type="submit" class="btn btn-primary upload-result-sktm upload">Upload</button>
             <img style="width:30px; display:none" id="" class="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
           </div>
         </div>
@@ -452,7 +473,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary upload-result-parent-sallary">Save</button>
+            <button type="submit" class="btn btn-primary upload-result-parent-sallary upload">Upload</button>
             <img style="width:30px; display:none" id="" class="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
           </div>
         </div>
@@ -474,7 +495,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary upload-result-transcript-score">Save</button>
+            <button type="submit" class="btn btn-primary upload-result-transcript-score upload">Upload</button>
             <img style="width:30px; display:none" id="" class="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
           </div>
         </div>
@@ -496,7 +517,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary upload-result-active-student">Save</button>
+            <button type="submit" class="btn btn-primary upload-result-active-student upload">Upload</button>
             <img style="width:30px; display:none" id="" class="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
           </div>
         </div>
@@ -586,6 +607,15 @@
 
   });
   </script> --}}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.upload').on('click', function() {
+        $('.loading-upload').show();
+        $(this).hide();
+        $(this).hide();
+      });
+    });
+  </script>
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -627,6 +657,7 @@
             $('#upload-ktp').on('change', function () { readFile(this); });
             $('.upload-result-ktp').on('click', function (ev) {
               $('.loading-upload').show();
+              $(this).hide();              
 
               $('#main-cropper-ktp').croppie('result', {
                 type: 'base64',
@@ -707,6 +738,7 @@
               $('#upload-kk').on('change', function () { readFile(this); });
               $('.upload-result-kk').on('click', function (ev) {
                 $('.loading-upload').show();
+                $(this).hide();
 
                 $('#main-cropper-kk').croppie('result', {
                   type: 'base64',
@@ -786,6 +818,7 @@
                 $('#upload-ktm').on('change', function () { readFile(this); });
                 $('.upload-result-ktm').on('click', function (ev) {
                   $('.loading-upload').show();
+                  $(this).hide();
 
                   $('#main-cropper-ktm').croppie('result', {
                     type: 'base64',
@@ -865,6 +898,7 @@
                   $('#upload-home-front').on('change', function () { readFile(this); });
                   $('.upload-result-home-front').on('click', function (ev) {
                     $('.loading-upload').show();
+                    $(this).hide();
 
                     $('#main-cropper-home-front').croppie('result', {
                       type: 'base64',
@@ -944,6 +978,7 @@
                     $('#upload-home-out').on('change', function () { readFile(this); });
                     $('.upload-result-home-out').on('click', function (ev) {
                       $('.loading-upload').show();
+                      $(this).hide();
 
                       $('#main-cropper-home-out').croppie('result', {
                         type: 'base64',
@@ -1023,6 +1058,7 @@
                       $('#upload-home-side').on('change', function () { readFile(this); });
                       $('.upload-result-home-side').on('click', function (ev) {
                         $('.loading-upload').show();
+                        $(this).hide();
 
                         $('#main-cropper-home-side').croppie('result', {
                           type: 'base64',
@@ -1102,6 +1138,7 @@
                         $('#upload-home-in').on('change', function () { readFile(this); });
                         $('.upload-result-home-in').on('click', function (ev) {
                           $('.loading-upload').show();
+                          $(this).hide();
 
                           $('#main-cropper-home-in').croppie('result', {
                             type: 'base64',

@@ -14,6 +14,7 @@ use App\models\committee;
 use App\models\competition;
 use App\models\charity;
 use App\models\publication;
+use App\models\institution;
 
 use Carbon\Carbon;
 use App\User;
@@ -28,7 +29,11 @@ class RegWizardController extends Controller
     public function profile()
     {
       $user = Auth::user();
-      $data = array('user' =>$user , );
+      $insti = institution::all();
+      $data = array(
+        'user' =>$user ,
+        'insti' =>$insti
+      );
 
       return view('wizard.step1profile')->with($data);
     }
@@ -52,6 +57,47 @@ class RegWizardController extends Controller
         if ($nickname !== "") {
           $user->nickname = $nickname;
         }
+
+
+
+        if ($phone !== "") {
+          $phone_change = substr($phone,0,4);
+          if ($phone == "+620") {
+
+            $phone = substr_replace($phone_change,"+62",0,4);
+          }else {
+            $phone = $phone;
+          }
+
+          $user->phone = $phone;
+        }
+
+        if ($religion !== "") {
+          $user->religion = $religion;
+        }
+
+        if ($gender !== "") {
+          $user->gender = $gender;
+        }
+
+        if ($body_length !== "") {
+          $user->body_length = $body_length;
+        }
+
+        if ($body_weight !== "") {
+          $user->body_weight = $body_weight;
+        }
+
+        if ($facebook_id !== "") {
+          $user->facebook_id = $facebook_id;
+        }
+
+        if ($instagram_id !== "") {
+          $user->instagram_id = $instagram_id;
+        }
+
+
+
         if ($born_place !== "") {
           $user->born_place = $born_place;
         }
@@ -246,6 +292,44 @@ class RegWizardController extends Controller
       if ($request->nickname !== "") {
         $user->nickname = $request->nickname;
       }
+
+      if ($request->phone !== "") {
+        $phone = substr($request->phone,0,4);
+        if ($phone == "+620") {
+          $phone = substr_replace($request->phone,"+62",0,4);
+        }else {
+          $phone = $phone;
+        }
+        $user->phone = $phone;
+      }
+
+      if ($request->religion !== "") {
+        $user->religion = $request->religion;
+      }
+
+      if ($request->gender !== "") {
+        $user->gender = $request->gender;
+      }
+
+      if ($request->body_length !== "") {
+        $user->body_length = $request->body_length;
+      }
+
+      if ($request->body_weight !== "") {
+        $user->body_weight = $request->body_weight;
+      }
+
+      if ($request->facebook_id !== "") {
+        $user->facebook_id = $request->facebook_id;
+      }
+
+      if ($request->instagram_id !== "") {
+        $user->instagram_id = $request->instagram_id;
+      }
+
+
+
+
       if ($request->born_place !== "") {
         $user->born_place = $request->born_place;
       }
@@ -760,11 +844,13 @@ class RegWizardController extends Controller
       $file_ext = $request->file('file_sktm')->getClientOriginalExtension();
       $data = $request->file('file_sktm')->getRealPath();
 
-      $doc_url = "bazis/sktm/sktm-".str_replace(' ','-',Auth::user()->name)."-".time().".".$file_ext;
+      $doc_url = "bazis/sktm/sktm-".str_replace(' ','-',strtolower(Auth::user()->name))
+      ."-".time();
 
       // Lempar langsung ke Cloudinary Setting ada di env
-      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("resource_type" =>"raw"));
-      $doc_url = Cloudder::show($doc_url);
+      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("format" =>"pdf"));
+      $result = $upload_cloudinary->getResult();
+      $doc_url = $result['secure_url'];
 
       // Save URL
       $user = Auth::user();
@@ -777,6 +863,98 @@ class RegWizardController extends Controller
 
     return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
     }
+
+    public function upload_parent_sallary(Request $request)
+    {
+
+      $this->validate($request,[
+           'file_parent_sallary'=>'required|mimes:pdf|between:1, 2000',
+       ]);
+
+      $file_ext = $request->file('file_parent_sallary')->getClientOriginalExtension();
+      $data = $request->file('file_parent_sallary')->getRealPath();
+
+      $doc_url = "bazis/parent_sallary/slipgaji-orangtua-".str_replace(' ','-',strtolower(Auth::user()->name))
+      ."-".time();
+
+      // Lempar langsung ke Cloudinary Setting ada di env
+      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("format" =>"pdf"));
+      $result = $upload_cloudinary->getResult();
+      $doc_url = $result['secure_url'];
+
+      // Save URL
+      $user = Auth::user();
+      $user->photo_parent_sallary = $doc_url;
+      $user->save();
+
+      $response = array(
+        'url' => $doc_url,
+      );
+
+    return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
+    }
+
+    public function upload_transcript_score(Request $request)
+    {
+
+      $this->validate($request,[
+           'file_transcript_score'=>'required|mimes:pdf|between:1, 2000',
+       ]);
+
+      $file_ext = $request->file('file_transcript_score')->getClientOriginalExtension();
+      $data = $request->file('file_transcript_score')->getRealPath();
+
+      $doc_url = "bazis/transcript_score/transkrip-nilai-".str_replace(' ','-',strtolower(Auth::user()->name))
+      ."-".time();
+
+      // Lempar langsung ke Cloudinary Setting ada di env
+      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("format" =>"pdf"));
+      $result = $upload_cloudinary->getResult();
+      $doc_url = $result['secure_url'];
+
+      // Save URL
+      $user = Auth::user();
+      $user->photo_transcript_score = $doc_url;
+      $user->save();
+
+      $response = array(
+        'url' => $doc_url,
+      );
+
+    return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
+    }
+
+
+    public function upload_active_student(Request $request)
+    {
+
+      $this->validate($request,[
+           'file_active_student'=>'required|mimes:pdf|between:1, 2000',
+       ]);
+
+      $file_ext = $request->file('file_active_student')->getClientOriginalExtension();
+      $data = $request->file('file_active_student')->getRealPath();
+
+      $doc_url = "bazis/active_student/surat-keterangan-aktif-".str_replace(' ','-',strtolower(Auth::user()->name))
+      ."-".time();
+
+      // Lempar langsung ke Cloudinary Setting ada di env
+      $upload_cloudinary = Cloudder::upload($data,$doc_url,array("format" =>"pdf"));
+      $result = $upload_cloudinary->getResult();
+      $doc_url = $result['secure_url'];
+
+      // Save URL
+      $user = Auth::user();
+      $user->photo_active_student = $doc_url;
+      $user->save();
+
+      $response = array(
+        'url' => $doc_url,
+      );
+
+    return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
+    }
+
 
 
 
