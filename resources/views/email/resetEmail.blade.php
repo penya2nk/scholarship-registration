@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h1>Reset Account Password IPB International Certified Training</h1>
-    <a href="{{url('/')}}/password/reset/{{$token}}">Klik Di Sini</a><p>untuk mengaktifkan akun IPB Training</p>
+    <h1>Reset Account Password</h1>
+    <a href="{{url('/')}}/password/reset/{{$token}}">Klik Di Sini</a><p>untuk mengaktifkan akun Bazis Beasiswa</p>
   </body>
 </html>
