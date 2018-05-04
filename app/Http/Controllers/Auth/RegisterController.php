@@ -111,6 +111,7 @@ class RegisterController extends Controller
 
       $user->phone = $phone_subs;
       $user->token = str_random(20);
+      $user->status = 1;
       $user->password =bcrypt($data['password']);
       $user->save();
 
