@@ -72,6 +72,14 @@ class RegWizardController extends Controller
           $user->phone = $phone;
         }
 
+        if ($blog_address !== "") {
+          $user->blog_address = $blog_address;
+        }
+
+        if ($nik_ktp !== "") {
+          $user->nik_ktp = $nik_ktp;
+        }
+
         if ($religion !== "") {
           $user->religion = $religion;
         }
@@ -293,14 +301,24 @@ class RegWizardController extends Controller
         $user->nickname = $request->nickname;
       }
 
+
       if ($request->phone !== "") {
         $phone = substr($request->phone,0,4);
         if ($phone == "+620") {
           $phone = substr_replace($request->phone,"+62",0,4);
         }else {
-          $phone = $phone;
+          $phone = $request->phone;
         }
+
         $user->phone = $phone;
+      }
+
+      if ($request->blog_address !== NULL) {
+        $user->blog_address = $request->blog_address;
+      }
+
+      if ($request->nik_ktp !== NULL) {
+        $user->nik_ktp = $request->nik_ktp;
       }
 
       if ($request->religion !== "") {

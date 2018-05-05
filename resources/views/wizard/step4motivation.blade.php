@@ -118,6 +118,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <h2><b>Lifeplan Summary </b></h2>
+                <p>Uraikan rangkuman rencana hidup Anda</p>
                 <hr>
               </div>
             </div>
@@ -133,6 +134,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <h2><b>Komitmen Kontribusi untuk Bazis </b></h2>
+                <p>Uraikan komitmen kontribusi yang akan Anda berikan untuk Bazis </p>
                 <hr>
               </div>
             </div>
@@ -148,6 +150,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <h2><b>Apa yang membuat anda layak diterima pada program ini ? </b></h2>
+                <p>Uraikan alasan anda mengapa kami layak menerima Anda untuk program beasiswa ini</p>
                 <hr>
               </div>
             </div>

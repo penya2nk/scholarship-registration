@@ -119,7 +119,7 @@
                   <div class="col-sm-3">
                     <div class="form-group">
                       <label for="">Agama</label>
-                      <input type="text" name="religion" class="form-control" id="" placeholder="">
+                      <input type="text" name="religion" class="form-control" id="" value="{{$user->religion}}" placeholder="">
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -172,6 +172,24 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">Blog (Jika Ada)</label>
+                      <div class="input-group">
+                        <span class="input-group-addon">http://www.</span>
+                        <input name="blog_address" value="{{$user->blog_address}}" type="text" class="form-control" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="">NIK / No KTP</label>
+                        <input name="nik_ktp" value="{{$user->nik_ktp}}" type="number" min="0" class="form-control" placeholder="">
+                    </div>
+                  </div>
+                </div>
                 {{-- LINE 3 --}}
                 <div class="row">
                   <div class="col-sm-12">
@@ -216,8 +234,9 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="">Fakultas</label>
+                      <label for="">Fakultas / Jurusan *</label>
                       <input type="text" @if($user->faculty !== NULL) value="{{$user->faculty}}" @endif name="faculty" class="form-control" id="" placeholder="">
+                      <small>* Bagi calon mahasiswa poltek silahkan isi nama jurusan yg dipilih</small>
                     </div>
                   </div>
                   <div class="col-sm-6">

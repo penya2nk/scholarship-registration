@@ -133,7 +133,7 @@
 
               <div class="col-sm-4">
 
-                <label for="">Foto Kartu Tanda Mahasiswa (KTM)</label>
+                <label for="">Foto Kartu Tanda Mahasiswa/Pelajar (KTM/KTP)</label>
                 <img @if ($user->photo_ktm == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_ktm}}"  @endif id="profileimage-ktm" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile-ktm" @if ($user->photo_ktm == NULL) value="" @else value="{{$user->photo_ktm}}" @endif >
                 <a class="btn btn-default btn-fill pull-right" data-toggle="modal" data-target="#uploadfoto-ktm">Upload Image</a>
@@ -172,7 +172,7 @@
             <div class="row">
               <div class="col-sm-10 col-sm-offset-1">
                 <div class="form-group">
-                  <label for="">Upload Slip Gaji Orang Tua atau Surat Keterangan Penghasilan Orang Tua</label>
+                  <label for="">Upload slip gaji orang tua atau surat keterangan penghasilan orang tua</label>
                   <div class="input-group">
                     @if ($user->photo_parent_sallary == NULL)
                       <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
@@ -196,7 +196,7 @@
             <div class="row">
               <div class="col-sm-10 col-sm-offset-1">
                 <div class="form-group">
-                  <label for="">Upload Transkrip Nilai Terakhir, atau raport kelas 11-12 untuk pendaftar dari Poltek</label>
+                  <label for="">Upload transkrip nilai terakhir, atau raport kelas 11-12 untuk pendaftar dari Poltek</label>
                   <div class="input-group">
                     @if ($user->photo_transcript_score == NULL)
                         @php
@@ -220,7 +220,7 @@
             <div class="row">
               <div class="col-sm-10 col-sm-offset-1">
                 <div class="form-group">
-                  <label for="">Upload Surat Keterangan Mahasiswa Aktif dari Fakultas atau Departemen, atau dari Sekolah asal</label>
+                  <label for="">Upload surat keterangan mahasiswa aktif dari fakultas atau departemen atau surat pengantar dari sekolah</label>
                   <div class="input-group">
                     @if ($user->photo_active_student == NULL)
                       <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
