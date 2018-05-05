@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\models\publication', 'user_id');
     }
+
+    public function trainings()
+    {
+        return $this->hasMany('App\models\training', 'user_id');
+    }
 }

@@ -15,6 +15,7 @@ use App\models\competition;
 use App\models\charity;
 use App\models\publication;
 use App\models\institution;
+use App\models\training;
 
 use Carbon\Carbon;
 use App\User;
@@ -421,7 +422,7 @@ class RegWizardController extends Controller
         }else {
           $phone_subs_ayah = $request->ayah_phone;
         }
-        $user->ayah_phone = $request->phone_subs_ayah;
+        $user->ayah_phone = $phone_subs_ayah;
       }
       if ($request->ayah_tulangpunggung !== "") {
         $user->ayah_tulangpunggung = $request->ayah_tulangpunggung;
@@ -471,7 +472,9 @@ class RegWizardController extends Controller
         }else {
           $phone_subs_ibu = $request->ibu_phone;
         }
-        $user->ibu_phone = $request->phone_subs_ibu;
+
+
+        $user->ibu_phone = $phone_subs_ibu;
       }
       if ($request->ibu_tulangpunggung !== "") {
         $user->ibu_tulangpunggung = $request->ibu_tulangpunggung;
@@ -534,6 +537,18 @@ class RegWizardController extends Controller
         $com->date_from = $request->date_from_com[$key];
         $com->date_end = $request->date_end_com[$key];
         $com->position_id = $request->position_name_com[$key];
+        $com->save();
+      }
+
+      // Training
+      $user->trainings()->delete();
+      foreach ($request->training as $key => $com) {
+        $com = new training;
+        $com->user_id = $user->id;
+        $com->training = $request->training[$key];
+        $com->date = $request->date_train[$key];
+        $com->organizer = $request->organizer_train[$key];
+        $com->content = $request->content_train[$key];
         $com->save();
       }
 

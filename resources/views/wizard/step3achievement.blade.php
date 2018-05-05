@@ -104,6 +104,24 @@
                 }
               });
             });
+
+            $(function() {
+              $('#pengalaman-pelatihan').addInputArea({
+                  area_var: '.training_area',
+                  btn_add: '.training_add',
+                  btn_del: '.training_del',
+                  maximum : 10,
+                  after_add: function() {
+                    // $('.chosen-select').chosen({})
+                    // $('.tagtrainercategory').materialtags('items');
+                    $('.hingga').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+                    $('.dari').bootstrapMaterialDatePicker({ weekStart : 0, time: false }).on('change', function(e, date)
+                    {
+                    $('.hingga').bootstrapMaterialDatePicker('setMinDate', date);
+                    });
+                  }
+                });
+              });
   </script>
 
   <div class="row">
@@ -249,7 +267,7 @@
             {{--  --}}
 
 
-            {{-- Pengalaman Organisasi --}}
+            {{-- Pengalaman Kepanitiaan --}}
 
             <div class="row">
               <div class="col-sm-12">
@@ -380,6 +398,109 @@
             </div>
             <div class="row">
               <a href="#pengalaman-kepanitiaan" class="committee_add btn btn-fill btn-success btn-sm btn-block" id="addcommittee">Add</a>
+            </div>
+            {{--  --}}
+
+            {{-- Pengalaman Pelatihan --}}
+
+            <div class="row">
+              <div class="col-sm-12">
+                <h2><b>Pengalaman Pelatihan / Kursus</b></h2>
+                <hr>
+              </div>
+            </div>
+
+            <div class="" id="pengalaman-pelatihan">
+              @if ($user->trainings->count() == 0)
+                <div class="training_area">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="text"
+                          name="training[0]"
+                          data-name-format="training[%d]"
+                        class="form-control" id="" placeholder="Nama Pelatihan / Kursus">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                          name="date_train[0]"
+                          data-name-format="date_train[%d]"
+                         class="form-control dari" id="" placeholder="Tanggal Pelaksanaan">
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                          <input type="text"
+                          name="content_train[0]"
+                          data-name-format="content_train[%d]"
+                          class="form-control" id="" placeholder="Konten Pelatihan / Kursus">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                          name="organizer_train[0]"
+                          data-name-format="organizer_train[%d]"
+                         class="form-control" id="" placeholder="Penyelenggara">
+                      </div>
+                    </div>
+                    <div class="col-sm-1">
+                      <button type="button" class="training_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                    </div>
+                  </div>
+                </div>
+              @else
+              @foreach ($user->trainings as $key => $train)
+                <div class="training_area">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="text"
+                          name="training[0]"
+                          value="{{$train->training}}"
+                          data-name-format="training[%d]"
+                        class="form-control" id="" placeholder="Nama Pelatihan / Kursus">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="date"
+                          name="date_train[0]"
+                          value="{{$train->date}}"
+                          data-name-format="date_train[%d]"
+                         class="form-control dari" id="" placeholder="Tanggal Pelaksanaan">
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                          <input type="text"
+                          value="{{$train->content}}"
+                          name="content_train[0]"
+                          data-name-format="content_train[%d]"
+                          class="form-control" id="" placeholder="Konten Pelatihan / Kursus">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <input type="text"
+                          name="organizer_train[0]"
+                          value="{{$train->organizer}}"
+                          data-name-format="organizer_train[%d]"
+                         class="form-control" id="" placeholder="Penyelenggara">
+                      </div>
+                    </div>
+                    <div class="col-sm-1">
+                      <button type="button" class="training_del btn btn-danger btn-block btn-fill btn-sm">X</button>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+              @endif
+            </div>
+            <div class="row">
+              <a href="#pengalaman-pelatihan" class="training_add btn btn-fill btn-success btn-sm btn-block" id="addcommittee">Add</a>
             </div>
             {{--  --}}
 
