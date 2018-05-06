@@ -138,7 +138,7 @@ style="background:#42B549"
           <br>
           <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
         </div>
-        <div class="row" style="width:390px; margin:auto">
+        <div class="row login-scholarship-nav" style="width:390px; margin:auto" >
 
           <div class="col-xs-6">
             <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
@@ -217,7 +217,7 @@ style="background:#42B549"
         <b class="helper-registrasi">Registrasi</b><br>
           <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
       </div>
-      <div class="row" style="width:390px; margin:auto">
+      <div class="row login-scholarship-nav" style="width:390px; margin:auto">
 
         <div class="col-xs-6">
           <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
@@ -314,9 +314,9 @@ style="background:#42B549"
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
-                <label>
+                {{-- <label>
                   <input type="checkbox" required> I agree to the <a href="#">terms</a>
-                </label>
+                </label> --}}
               </div>
             </div>
             <!-- /.col -->

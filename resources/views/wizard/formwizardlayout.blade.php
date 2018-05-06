@@ -100,8 +100,8 @@
 
                       <div class="row">
                         <a href="{{route('step_profile')}}">
-                          <div class="col-md-3 text-center step-tab {{($routename == 'step_profile') ? 'active' : ''}}">
-                            Data Pribadi
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_profile') ? 'active' : ''}}">
+                            <i class="material-icons">contacts</i> Data Pribadi
                           </div>
                         </a>
                         {{-- <a href="#">
@@ -111,30 +111,30 @@
                         </a> --}}
 
                         <a href="{{route('step_achievement')}}">
-                          <div class="col-md-3 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
-                            Prestasi
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_achievement') ? 'active' : ''}}" >
+                            <i class="material-icons">star</i> Prestasi
                           </div>
                         </a>
                         <a href="{{route('step_motivation')}}">
-                          <div class="col-md-3 text-center step-tab {{($routename == 'step_motivation') ? 'active' : ''}}">
-                            Motivasi
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_motivation') ? 'active' : ''}}">
+                          <i class="material-icons">assistant</i> Motivasi
                           </div>
                         </a>
                         <a href="{{route('step_document')}}">
-                          <div class="col-md-3 text-center step-tab {{($routename == 'step_document') ? 'active' : ''}}">
-                            Berkas
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_document') ? 'active' : ''}}">
+                            <i class="material-icons">insert_drive_file</i> Berkas
                           </div>
                         </a>
-                        {{-- <a href="{{route('step_preview')}}">
-                          <div class="col-md-2 text-center step-tab {{($routename == 'step_preview') ? 'active' : ''}}">
-                            Review
+                        <a href="{{route('step_submit_review')}}">
+                          <div class="col-md-2 text-center step-tab {{($routename == 'step_submit_review') ? 'active' : ''}}">
+                            <i class="material-icons">rate_review</i> Review
                           </div>
                         </a>
 												<a href="{{route('step_final_submit')}}">
                           <div class="col-md-2 text-center step-tab {{($routename == 'step_final_submit') ? 'active' : ''}}">
-                            Submit
+                            <i class="material-icons">check_circle</i> Submit
                           </div>
-                        </a> --}}
+                        </a>
                         {{-- <ul class="nav nav-pills">
                             <li><a href="#about" class="active">Data Pribadi</a></li>
                             <li><a href="#account" >Pendidikan</a></li>
@@ -157,7 +157,7 @@
 
     <div class="footer">
         <div class="container">
-             {{-- Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a> --}}
+             Organized with <i class="fa fa-heart heart"></i> by <a href="http://www.maxima.id">Maxima.id</a>
         </div>
     </div>
 

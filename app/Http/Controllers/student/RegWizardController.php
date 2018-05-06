@@ -29,12 +29,17 @@ class RegWizardController extends Controller
 {
     public function profile()
     {
+
       $user = Auth::user();
       $insti = institution::all();
       $data = array(
         'user' =>$user ,
         'insti' =>$insti
       );
+
+      if ($user->final_submit == 1) {
+        return redirect()->route('step_final_submit');
+      }
 
       return view('wizard.step1profile')->with($data);
     }
@@ -275,7 +280,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -500,6 +506,11 @@ class RegWizardController extends Controller
       $user = Auth::user();
       $positions = position::orderBy('id','desc')->get();
 
+      if ($user->final_submit == 1) {
+        return redirect()->route('step_final_submit');
+      }
+
+
       $data = array(
         'user' =>$user,
         'positions' =>$positions,
@@ -612,6 +623,11 @@ class RegWizardController extends Controller
         'user' =>$user,
 
       );
+
+      if ($user->final_submit == 1) {
+        return redirect()->route('step_final_submit');
+      }
+
       return view('wizard.step4motivation')->with($data);
     }
 
@@ -640,6 +656,11 @@ class RegWizardController extends Controller
         'user' =>$user,
 
       );
+
+      if ($user->final_submit == 1) {
+        return redirect()->route('step_final_submit');
+      }
+
       return view('wizard.step5document')->with($data);
     }
 
@@ -661,7 +682,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -694,7 +716,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -726,7 +749,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -760,7 +784,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -791,7 +816,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -822,7 +848,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -853,7 +880,8 @@ class RegWizardController extends Controller
 
         // Lempar langsung ke Cloudinary Setting ada di env
         $upload_cloudinary = Cloudder::upload($img,$png_url,array("format" =>"jpg"));
-        $photo_url = Cloudder::show($png_url);
+        $result = $upload_cloudinary->getResult();
+        $photo_url = $result['secure_url'];
 
         // Save URL
         $user = Auth::user();
@@ -988,6 +1016,54 @@ class RegWizardController extends Controller
     return redirect()->route('step_document')->with('document_saved', 'Berkas berhasil disimpan');
     }
 
+
+    public function submit_review()
+    {
+
+      $user = Auth::user();
+      $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($user->email);
+
+
+      $data = array('user' =>$user ,
+                    'validation'=> $validation
+                    );
+
+      return view('wizard.step6preview')->with($data);
+
+    }
+
+    public function final_submit()
+    {
+      $user = Auth::user();
+      $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($user->email);
+      $data = array('user' =>$user ,
+                    'validation'=> $validation
+                    );
+
+
+
+      return view('wizard.step7submit')->with($data);
+
+    }
+
+    public function final_submit_save(Request $request)
+    {
+      $user = Auth::user();
+      $user->final_submit = 1;
+      $user->save();
+
+      if ($user) {
+        $status = "Success";
+      }else {
+        $status = "Gagal";
+      }
+
+      $output = array("status"  => $status,
+                    // "judul"   => $judul
+                  );
+
+    return response()->json($output);
+    }
 
 
 

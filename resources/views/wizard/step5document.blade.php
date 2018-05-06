@@ -283,6 +283,8 @@
         </div>
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
+            <a href="{{route('step_submit_review')}}" class='btn btn-previous btn-fill btn-success btn-wd btn-sm'> Next</a>
+
             {{-- <input type='submit' class='btn btn-next btn-fill btn-default btn-wd btn-sm' id="save-draft" name='save' value='Save Draft' /> --}}
             {{-- <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' /> --}}
 

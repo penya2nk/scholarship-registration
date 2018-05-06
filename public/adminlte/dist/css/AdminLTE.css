@@ -5678,6 +5678,12 @@ table.text-center th {
 
 /* CUSTOM BY BAGUS DWI UTAMA */
 
+@media only screen and (max-width:460px) {
+  .login-scholarship-nav {
+    display: none;
+  }
+}
+
 
 @media only screen and (max-width:500px) {
   .welcome-area-gssi{

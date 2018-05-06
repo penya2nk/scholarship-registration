@@ -64,6 +64,7 @@ Route::post('/scholarship/step/5/preview/save', 'student\RegWizardController@upd
 
 // Route::get('/scholarship/step/6/other', 'student\RegWizardController@other')->name('step_other');
 // Route::post('/scholarship/step/6/other/save', 'student\RegWizardController@update_other');
+Route::get('/scholarship/step/review_submit', 'student\RegWizardController@submit_review')->name('step_submit_review');
 
 Route::get('/scholarship/step/final_submit', 'student\RegWizardController@final_submit')->name('step_final_submit');
 Route::post('/scholarship/step/final_submit', 'student\RegWizardController@final_submit_save')->name('step_final_submit_save');
@@ -83,6 +84,8 @@ Route::post('/upload-crop-photo-sktm', 'student\RegWizardController@upload_sktm'
 Route::post('/upload-crop-photo-parent-sallary', 'student\RegWizardController@upload_parent_sallary');
 Route::post('/upload-crop-photo-transcript-score', 'student\RegWizardController@upload_transcript_score');
 Route::post('/upload-crop-photo-active-student', 'student\RegWizardController@upload_active_student');
+
+
 
 Route::get('/validate', 'admin\ValidationController@count_null');
 

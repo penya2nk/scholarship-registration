@@ -18,6 +18,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $dates = ['born_date', 'ibu_tanggal_lahir', 'ayah_tanggal_lahir'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -55,5 +57,10 @@ class User extends Authenticatable
     public function trainings()
     {
         return $this->hasMany('App\models\training', 'user_id');
+    }
+
+    public function institution()
+    {
+        return $this->belongsTo('App\models\institution', 'university_id');
     }
 }
