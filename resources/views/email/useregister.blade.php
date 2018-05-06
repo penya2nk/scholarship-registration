@@ -41,7 +41,7 @@
       <tr>
         <td class="header" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0; text-align: center;">
           <a href="{{url('/')}}" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #bbbfc3; font-size: 19px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">
-            <img src="{{asset('images/logo.png')}}" alt="" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; max-width: 100%; border: none;">
+            <img src="{{asset('images/logo.png')}}" alt="" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; max-width: 300px; border: none;">
           </a>
         </td>
       </tr>
@@ -69,7 +69,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
                               <tr>
                                 <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                                        <a href="{{url('/')}}/dashboard/{{$user->token}}/{{$user->id}}" class="button button-blue" target="_blank" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); color: #FFF; display: inline-block; text-decoration: none; -webkit-text-size-adjust: none; background-color: #3097D1; border-top: 10px solid #3097D1; border-right: 18px solid #3097D1; border-bottom: 10px solid #3097D1; border-left: 18px solid #3097D1;">
+                                        <a href="http://mahasiswacerdas.bazis.id/dashboard/{{$user->token}}/{{$user->id}}" class="button button-blue" target="_blank" style="font-family: Helvetica, sans-serif; box-sizing: border-box; border-radius: 3px; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16); color: #FFF; display: inline-block; text-decoration: none; -webkit-text-size-adjust: none; background-color: #3097D1; border-top: 10px solid #3097D1; border-right: 18px solid #3097D1; border-bottom: 10px solid #00923f; border-left: 18px solid #00923f;">
                                           Activate Account
                                         </a>
                                       </td>

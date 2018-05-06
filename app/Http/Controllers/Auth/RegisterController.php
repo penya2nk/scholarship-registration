@@ -37,7 +37,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/training';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -111,18 +111,20 @@ class RegisterController extends Controller
 
       $user->phone = $phone_subs;
       $user->token = str_random(20);
-      $user->status = 1;
+      $user->status = 0;
       $user->password =bcrypt($data['password']);
       $user->save();
 
       $email_data = array('user' =>$user , );
 
-      Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
-          $message->to($data['email'])
-          ->trackClicks(true)
-          ->trackOpens(true)
-          ->subject('Bazis Scholarship User Verification');
-      });
+      $this->guard()->login($user);
+
+      // Mailgun::send('email.useregister', $email_data, function ($message) use ($data) {
+      //     $message->to($data['email'])
+      //     ->trackClicks(true)
+      //     ->trackOpens(true)
+      //     ->subject('Bazis Scholarship User Verification');
+      // });
 
         // $user = User::create([
         //     'name' => $data['name'],
@@ -154,7 +156,7 @@ class RegisterController extends Controller
         return redirect('/dashboard/login')->with('warningverify', 'token not match');
       }
 
-      $user->status = 1;
+      $user->status = 0;
       $user->save();
 
       $this->guard()->login($user);
