@@ -157,7 +157,14 @@
 
     <div class="footer">
         <div class="container">
-             Organized with <i class="fa fa-heart heart"></i> by <a href="http://www.maxima.id" target="_blank">Maxima.id</a>
+					<div class="row text-center">
+						Dikelolah Oleh
+						{{-- <i class="fa fa-heart heart"></i>
+						by  --}}
+						<a href="http://www.maxima.id" target="_blank">
+							<img src="{{asset('images/logo-white-maxima.png')}}" style="width:100px; margin:auto" class="img img-responsive" alt="">
+						</a>
+					</div>
         </div>
     </div>
 

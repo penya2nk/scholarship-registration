@@ -594,7 +594,7 @@
 
             <div class="row">
               <div class="col-sm-12">
-                <h2><b>Prestasi Kompetisi dan Kejuaraan Terbaik</b></h2>
+                <h2><b>Prestasi Kompetisi dan Kejuaraan</b></h2>
                 <hr>
               </div>
             </div>
