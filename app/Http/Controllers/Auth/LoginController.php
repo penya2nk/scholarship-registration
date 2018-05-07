@@ -76,11 +76,11 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
           // Menguji apakah akun sudah aktif atau belum
-            if (Auth::user()->status == 0) {
-              Auth::logout();
-              session::flash('warningverify', 'Sorry, Account still Inactive. Please Check your email');
-              return redirect('/dashboard/login')->with('warningverify', 'Sorry, Account still Inactive. Please Check your email');
-            }
+            // if (Auth::user()->status == 0) {
+            //   Auth::logout();
+            //   session::flash('warningverify', 'Sorry, Account still Inactive. Please Check your email');
+            //   return redirect('/dashboard/login')->with('warningverify', 'Sorry, Account still Inactive. Please Check your email');
+            // }
             return $this->sendLoginResponse($request);
         }
 
