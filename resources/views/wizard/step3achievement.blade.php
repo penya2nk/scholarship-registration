@@ -132,6 +132,91 @@
 
           <div class="container-fluid">
 
+            {{-- Kinerja Akademik --}}
+            <div class="row">
+              <div class="col-sm-12">
+                <h2><b>Akademik</b></h2>
+                <hr>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <h5>Indeks Prestasi (IP)</h5>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IP Semester 1</label>
+                        <input type="number" name="ip_1" value="{{$user->ip_1}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IP Semester 2</label>
+                        <input type="number" name="ip_2" value="{{$user->ip_2}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IP Semester 3</label>
+                        <input type="number" name="ip_3" value="{{$user->ip_3}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IP Semester 4</label>
+                        <input type="number" name="ip_4" value="{{$user->ip_4}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <h5>Indeks Prestasi Kumulatif (IPK)</h5>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IPK Semester 1</label>
+                        <input type="number" name="ipk_1" value="{{$user->ipk_1}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IPK Semester 2</label>
+                        <input type="number" name="ipk_2" value="{{$user->ipk_2}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IPK Semester 3</label>
+                        <input type="number" name="ipk_3" value="{{$user->ipk_3}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">IPK Semester 4</label>
+                        <input type="number" name="ipk_4" value="{{$user->ipk_4}}" step="0.01" class="form-control" id="" min="0" max="4" placeholder="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <h5>TOEFL</h5>
+                    </div>
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="">Setara</label>
+                        <input type="number" name="toefl" value="{{$user->toefl}}" step="1" class="form-control" id="" min="0" max="800" placeholder="nilai">
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
             {{-- Pengalaman Organisasi --}}
 
             <div class="row">

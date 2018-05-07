@@ -524,6 +524,16 @@ class RegWizardController extends Controller
       // dd($request);
 
       $user = Auth::user();
+      $user->ip_1 = $request->ip_1;
+      $user->ip_2 = $request->ip_2;
+      $user->ip_3 = $request->ip_3;
+      $user->ip_4 = $request->ip_4;
+      $user->ipk_1 = $request->ipk_1;
+      $user->ipk_2 = $request->ipk_2;
+      $user->ipk_3 = $request->ipk_3;
+      $user->ipk_4 = $request->ipk_4;
+      $user->toefl = $request->toefl;
+      $user->save();
 
       // Organization
       $user->organizations()->delete();
