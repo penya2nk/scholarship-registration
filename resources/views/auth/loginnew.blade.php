@@ -341,7 +341,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
         </div>
         <div class="helper-registrasi">
           <a href="#" onclick="view('login')" class="btn btn-default btn-block btn-flat">Saya sudah pernah daftar sebelumnya</a>
-          <a href="#" onclick="view('resendemail')" class="btn btn-danger btn-block btn-flat">Saya tidak menerima email aktivasi</a>
+          {{-- <a href="#" onclick="view('resendemail')" class="btn btn-danger btn-block btn-flat">Saya tidak menerima email aktivasi</a> --}}
         </div>
 
       </div>
