@@ -191,7 +191,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
         <hr>
         <div class="row">
           <div class="col-md-12" style="text-align:center">
-            <a href="#" onclick="view('forgot')">Lupa password</a><br>
+            {{-- <a href="#" onclick="view('forgot')">Lupa password</a><br> --}}
           </div>
         </div>
       </form>
