@@ -63,7 +63,7 @@
 
     <a href="{{route('logout')}}" class="logout">logout</a>
 
-    <span href="http://creative-tim.com">
+    <span href="">
       <div class="logo">
           <img style="max-width:100px" src="{{asset('images/logo-white.png')}}">
       </div>
@@ -157,7 +157,7 @@
 
     <div class="footer">
         <div class="container">
-             Organized with <i class="fa fa-heart heart"></i> by <a href="http://www.maxima.id">Maxima.id</a>
+             Organized with <i class="fa fa-heart heart"></i> by <a href="http://www.maxima.id" target="_blank">Maxima.id</a>
         </div>
     </div>
 
