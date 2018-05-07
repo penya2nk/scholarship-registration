@@ -73,7 +73,7 @@
 </head>
 <body class="hold-transition login-page backgroundnya"
 {{-- style="background-image: url({{asset('images/'.$imglogin.'.jpg')}});" --}}
-style="background:#42B549"
+style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')}}'); background-size: 578px;"
 >
 
 @if (Session::has('registerstatus'))
