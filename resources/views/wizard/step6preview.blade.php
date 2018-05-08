@@ -596,7 +596,8 @@
         </div>
         <div class="wizard-footer height-wizard">
           <div class="pull-right">
-            <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' />
+            {{-- <input type='submit' class='btn btn-next btn-fill btn-success btn-wd btn-sm' name='save' value='Next' /> --}}
+            <a href="{{route('step_final_submit')}}" class="btn btn-next btn-fill btn-success btn-wd btn-sm">Next</a>
 
           </div>
 
