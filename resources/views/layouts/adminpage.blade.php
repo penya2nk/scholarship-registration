@@ -31,6 +31,11 @@
     <script src="{{asset('admin-ui/assets/js/plugins.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/main.js')}}"></script>
 
+    {{-- Sweet Alert --}}
+    <script src="{{asset('js/sweetalert/sweetalert2.js')}}"></script>
+    <link href="{{asset('js/sweetalert/sweetalert2.css')}}" rel="stylesheet" />
+
+
 </head>
 <body>
         <!-- Left Panel -->
@@ -48,8 +53,12 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="{{($routename == 'index.admin') ? 'active' : ''}}">
                         <a href="/admin"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+                    
+                    <li class="{{($routename == 'add_admin_index') ? 'active' : ''}}">
+                        <a href="/admin/adduseradmin"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -218,19 +227,23 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          @if (Auth::user()->photo_profile !== NULL)
                             <img class="user-avatar rounded-circle" src="{{Auth::user()->photo_profile}}" alt="User Avatar">
+                          @else
+                            <img class="user-avatar rounded-circle" src="{{asset('images/male-blank.jpg')}}" alt="User Avatar">
+                          @endif
                         </a>
                         <h6>{{Auth::user()->name}}</h6>
 
-                        {{-- <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                        <div class="user-menu dropdown-menu">
+                                {{-- <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
                                 <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 
-                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a> --}}
 
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
-                        </div> --}}
+                                <a class="nav-link" href="/logout"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
                     </div>
 
                     {{-- <div class="language-select dropdown" id="language-select">

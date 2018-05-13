@@ -6,32 +6,47 @@ Statistik
 
 @section('content')
   <div class="row">
-    <div class="col-md-6">
+
+    <div class="col-md-4">
       <div class="card">
           <div class="card-body">
               <div class="stat-widget-one">
-                  <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                  <div class="stat-icon dib"><i class="ti-user text-success border-success"></i></div>
                   <div class="stat-content dib">
-                      <div class="stat-text">Peserta Terdaftar (Registered)</div>
+                      <div class="stat-text">Peserta Terdaftar</div>
                       <div class="stat-digit">{{$user_registered}}</div>
                   </div>
               </div>
           </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="card">
           <div class="card-body">
               <div class="stat-widget-one">
                   <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
                   <div class="stat-content dib">
-                      <div class="stat-text">Peserta Submit (Final Submit)</div>
+                      <div class="stat-text">Peserta Submit</div>
                       <div class="stat-digit">{{$user_submitted}}</div>
                   </div>
               </div>
           </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-signal text-primary border-primary"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Users Online</div>
+                      <div class="stat-digit">{{$user_online}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
   </div>
   <div class="row">
 

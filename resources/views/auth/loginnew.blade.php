@@ -136,7 +136,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
       <div class="login-box" id="login-box" @if (Session::has('errorregistration')) style="display:none" @endif >
         <div class="login-logo">
           <br>
-          <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
+          <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
         </div>
         <div class="row login-scholarship-nav" style="width:390px; margin:auto" >
 
@@ -215,7 +215,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
     <div class="login-box" id="register-box" @if (Session::has('errorregistration')) @else style="display:none" @endif >
       <div class="register-logo" style="color:white">
         <b class="helper-registrasi">Registrasi</b><br>
-          <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
+          <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
       </div>
       <div class="row login-scholarship-nav" style="width:390px; margin:auto">
 
@@ -352,7 +352,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
     <div class="login-box" id="no-verf-box" @if (Session::has('errorregistration')) @else style="display:none" @endif>
       <div class="register-logo" style="color:white">
         <b>Resend Verification</b><br>
-          <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
+          <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
       </div>
 
       <div class="register-box-body">
@@ -388,7 +388,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
     <div class="login-box" id="forgot-box" @if (Session::has('errorregistration')) @else style="display:none" @endif>
       <div class="register-logo" style="color:white">
         <b>Reset</b><br>
-          <img src="{{asset('images/logo-white.png')}}" style="width: 232px" alt="">
+          <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
       </div>
       <div class="register-box-body">
         <p class="login-box-msg">Reset Password</p>

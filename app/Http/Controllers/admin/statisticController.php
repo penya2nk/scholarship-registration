@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-use App\User;
+use Illuminate\Http\Request;
 use App\models\institution;
+use Carbon\Carbon;
+use Activity;
+use App\User;
 
 class statisticController extends Controller
 {
@@ -18,6 +19,8 @@ class statisticController extends Controller
 
     public function index()
     {
+      $activities = Activity::users(1)->count();
+
 
       $start_day1 = Carbon::create(2018, 5, 7, 0, 0, 0, 'Asia/Jakarta');
       $start_day = $start_day1->setTime(0, 0, 0);
@@ -48,6 +51,7 @@ class statisticController extends Controller
         'user_registered' =>$user_registered,
         'user_submitted' =>$user_submitted,
         'university_labels'=>$university_label,
+        'user_online'=>$activities
        );
 
       return view('admin.statistic')->with($data);

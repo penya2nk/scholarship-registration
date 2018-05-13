@@ -89,12 +89,25 @@ Route::post('/upload-crop-photo-active-student', 'student\RegWizardController@up
 
 Route::get('/validate', 'admin\ValidationController@count_null');
 
-// Admin Page
-Route::get('/admin' ,'admin\adminController@index')->name('index.admin');
-Route::get('/admin/statistic' ,'admin\statisticController@index')->name('index.statistic');
-Route::get('/admin/statistic/registered', 'admin\statisticController@user_registered');
-Route::get('/admin/statistic/university', 'admin\statisticController@user_university');
+Route::group([
+     'middleware' => 'checkadmin'
+], function()
+{
 
+
+  // Admin Page
+  Route::get('/admin' ,'admin\adminController@index')->name('index.admin');
+  Route::get('/admin/statistic' ,'admin\statisticController@index')->name('index.statistic');
+  Route::get('/admin/statistic/registered', 'admin\statisticController@user_registered');
+  Route::get('/admin/statistic/university', 'admin\statisticController@user_university');
+
+
+  Route::get('/admin/adduseradmin', 'admin\usermanagementController@add_admin_index');
+  Route::post('/admin/adduseradmin/addremove', 'admin\usermanagementController@add_remove_admin')->name('add.remove.admin');
+
+
+
+});
 
 
 

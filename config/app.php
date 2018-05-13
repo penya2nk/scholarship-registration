@@ -161,6 +161,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Bogardo\Mailgun\MailgunServiceProvider::class,
+        Kim\Activity\ActivityServiceProvider::class,
 
     ],
 
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
+        'Activity' => Kim\Activity\ActivityFacade::class,
 
     ],
 
