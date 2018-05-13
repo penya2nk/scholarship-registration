@@ -26,7 +26,7 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-    <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{asset('admin-ui/assets/js/jquery-2.1.4.min.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/plugins.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/main.js')}}"></script>
@@ -56,7 +56,7 @@
                     <li class="{{($routename == 'index.admin') ? 'active' : ''}}">
                         <a href="/admin"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    
+
                     <li class="{{($routename == 'add_admin_index') ? 'active' : ''}}">
                         <a href="/admin/adduseradmin"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
