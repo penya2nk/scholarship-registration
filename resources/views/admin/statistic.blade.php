@@ -135,7 +135,7 @@ Statistik
   </div>
 
   @section('script')
-    <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    {{-- <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script> --}}
     <script src="{{asset('admin-ui/assets/js/lib/chart-js/Chart.bundle.js')}}"></script>
     {{-- <script src="{{asset('admin-ui/assets/js/lib/chart-js/chartjs-init.js')}}"></script> --}}
 
