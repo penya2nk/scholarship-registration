@@ -148,7 +148,7 @@ Statistik
             // data: {tahun: 2017}
           })
           .done(function(datane) {
-            console.log(datane)
+            // console.log(datane)
             // $('#loading-bar').modal('hide');
             var ctx = $("#user-register");
             var periodArray = new Array();
@@ -204,7 +204,7 @@ Statistik
           // data: {tahun: 2017}
         })
         .done(function(datane) {
-          console.log(datane)
+          // console.log(datane)
           // $('#loading-bar').modal('hide');
           var ctx = $("#user-university");
 
