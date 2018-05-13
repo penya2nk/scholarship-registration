@@ -26,7 +26,10 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-    <script src="{{asset('admin-ui/assets/js/jquery-2.1.4.min.js')}}"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
     <script src="{{asset('admin-ui/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/plugins.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/main.js')}}"></script>
