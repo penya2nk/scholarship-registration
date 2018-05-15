@@ -53,11 +53,11 @@ Admin Members
   @section('script')
     {{-- <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script> --}}
     <script type="text/javascript">
-      jQuery('#add-admin').on('click', function($) {
-        var email = $('#email-admin').val();
+      jQuery('#add-admin').on('click', function(jQuery) {
+        var email = jQuery('#email-admin').val();
 
         if (email !== "") {
-          $.ajax({
+          jQuery.ajax({
             url: '{{route('add.remove.admin')}}',
             type: 'POST',
             dataType: 'json',
@@ -98,11 +98,11 @@ Admin Members
     </script>
 
     <script type="text/javascript">
-      jQuery('#remove-admin').on('click', function($) {
-        var email = $('#email-admin-remove').val();
+      jQuery('#remove-admin').on('click', function(jQuery) {
+        var email = jQuery('#email-admin-remove').val();
 
         if (email !== "") {
-          $.ajax({
+          jQuery.ajax({
             url: '{{route('add.remove.admin')}}',
             type: 'POST',
             dataType: 'json',
