@@ -308,8 +308,7 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-
-
+    
 
         <!--  Chart js -->
     @yield('script')

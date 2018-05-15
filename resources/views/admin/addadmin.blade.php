@@ -53,7 +53,7 @@ Admin Members
   @section('script')
     <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
     <script type="text/javascript">
-      $('#add-admin').on('click', function() {
+      jQuery('#add-admin').on('click', function($) {
         var email = $('#email-admin').val();
 
         if (email !== "") {
@@ -98,7 +98,7 @@ Admin Members
     </script>
 
     <script type="text/javascript">
-      $('#remove-admin').on('click', function() {
+      JQuery('#remove-admin').on('click', function($) {
         var email = $('#email-admin-remove').val();
 
         if (email !== "") {
