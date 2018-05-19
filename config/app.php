@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Bogardo\Mailgun\MailgunServiceProvider::class,
         Kim\Activity\ActivityServiceProvider::class,
+        // Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 
@@ -213,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
         'Activity' => Kim\Activity\ActivityFacade::class,
+        // 'Datatables'=> Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
 

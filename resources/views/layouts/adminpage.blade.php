@@ -1,8 +1,9 @@
 <!doctype html>
+
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html  lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,18 +27,16 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="{{asset('admin-ui/assets/js/popper.min.js')}}"></script>
     <script src="{{asset('admin-ui/assets/js/plugins.js')}}"></script>
-    <script src="{{asset('admin-ui/assets/js/main.js')}}"></script>
+    {{-- <script src="{{asset('admin-ui/assets/js/main.js')}}"></script> --}}
 
     {{-- Sweet Alert --}}
     <script src="{{asset('js/sweetalert/sweetalert2.js')}}"></script>
     <link href="{{asset('js/sweetalert/sweetalert2.css')}}" rel="stylesheet" />
 
+    @yield('css-section')
 
 </head>
 <body>
@@ -57,11 +56,14 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{($routename == 'index.admin') ? 'active' : ''}}">
-                        <a href="/admin"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="{{route('index.admin')}}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+                    <li class="{{($routename == 'registered.index') ? 'active' : ''}}">
+                        <a href="{{route('registered.index')}}"> <i class="menu-icon fa fa-user"></i>Registered </a>
                     </li>
 
                     <li class="{{($routename == 'add_admin_index') ? 'active' : ''}}">
-                        <a href="/admin/adduseradmin"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
+                        <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -308,7 +310,7 @@
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
-    
+
 
         <!--  Chart js -->
     @yield('script')

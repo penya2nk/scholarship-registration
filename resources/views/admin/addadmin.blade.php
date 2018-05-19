@@ -98,7 +98,7 @@ Admin Members
     </script>
 
     <script type="text/javascript">
-      jQuery('#remove-admin').on('click', function() {
+      $('#remove-admin').on('click', function() {
         var email = jQuery('#email-admin-remove').val();
 
         if (email !== "") {

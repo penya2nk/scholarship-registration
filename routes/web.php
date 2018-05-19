@@ -102,9 +102,11 @@ Route::group([
   Route::get('/admin/statistic/university', 'admin\statisticController@user_university');
 
 
-  Route::get('/admin/adduseradmin', 'admin\usermanagementController@add_admin_index');
+  Route::get('/admin/adduseradmin', 'admin\usermanagementController@add_admin_index')->name('add.admin.index');
   Route::post('/admin/adduseradmin/addremove', 'admin\usermanagementController@add_remove_admin')->name('add.remove.admin');
 
+  Route::get('/admin/registered', 'admin\usermanagementController@registered_user')->name('registered.index');
+  Route::get('/admin/registered/data', 'admin\usermanagementController@data_user_registered')->name('member.registered.data');
 
 
 });
