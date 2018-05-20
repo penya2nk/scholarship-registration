@@ -108,6 +108,9 @@ Route::group([
   Route::get('/admin/registered', 'admin\usermanagementController@registered_user')->name('registered.index');
   Route::get('/admin/registered/data', 'admin\usermanagementController@data_user_registered')->name('member.registered.data');
 
+  Route::get('/admin/insight', 'admin\insightController@insight')->name('member.insight.index');
+
+
 
 });
 

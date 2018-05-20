@@ -62,9 +62,14 @@
                         <a href="{{route('registered.index')}}"> <i class="menu-icon fa fa-user"></i>Registered </a>
                     </li>
 
-                    <li class="{{($routename == 'add_admin_index') ? 'active' : ''}}">
+                    <li class="{{($routename == 'add.admin.index') ? 'active' : ''}}">
                         <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
+
+                    <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Insight People</a>
+                    </li>
+
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>

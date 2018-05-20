@@ -49,7 +49,7 @@ Members Registered
     $(document).ready(function() {
         $('.datatable').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             ajax: '{{route('member.registered.data')}}',
             columnDefs: [{
                 targets: [4],
