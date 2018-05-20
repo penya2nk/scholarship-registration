@@ -81,7 +81,7 @@ Members Registered
             { data: 'email'},
             { data: 'univ'},
             { data: 'phone'},
-            // { data: "progress"},
+            { data: "progress"},
 
           ]
 

@@ -67,7 +67,7 @@
                     </li>
 
                     <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
-                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Insight People</a>
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight Users</a>
                     </li>
 
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
