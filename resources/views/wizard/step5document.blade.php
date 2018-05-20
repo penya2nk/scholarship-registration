@@ -325,7 +325,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="">Foto KTP</h4>
+            <h4 class="modal-title" id="">Foto KK</h4>
           </div>
           <div class="modal-body">
             <div id="main-cropper-kk"></div>
@@ -345,7 +345,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="">Foto KTP</h4>
+            <h4 class="modal-title" id="">Foto KTM</h4>
           </div>
           <div class="modal-body">
             <div id="main-cropper-ktm"></div>
