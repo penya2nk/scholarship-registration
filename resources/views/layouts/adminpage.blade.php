@@ -66,9 +66,9 @@
                         <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
 
-                    <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
+                    {{-- <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
                         <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight Users</a>
-                    </li>
+                    </li> --}}
 
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
