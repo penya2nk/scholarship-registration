@@ -800,7 +800,6 @@
 
               function readFile(input) {
 
-
                 if (input.files && input.files[0] && input.files[0].size < 2000000) {
                   var reader = new FileReader();
 

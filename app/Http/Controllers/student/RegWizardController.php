@@ -41,6 +41,11 @@ class RegWizardController extends Controller
         return redirect()->route('step_final_submit');
       }
 
+
+      if (isset($_GET['admin'])) {
+        return redirect()->route('index.admin');
+      }
+
       return view('wizard.step1profile')->with($data);
     }
 
