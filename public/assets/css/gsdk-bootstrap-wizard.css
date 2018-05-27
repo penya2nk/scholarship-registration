@@ -991,6 +991,10 @@ label small {
   .main .container {
     margin-bottom: 50px;
   }
+
+  .margin-top-mobile{
+    margin-top: 57px;
+  }
 }
 @media (min-width: 768px) {
   .navbar-form {

@@ -124,14 +124,14 @@
                 <a class="btn btn-default btn-fill pull-right" data-toggle="modal" data-target="#uploadfoto-ktp">Upload Image</a>
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-sm-4 margin-top-mobile">
                 <label for="">Foto Kartu Keluarga (KK)</label>
                 <img @if ($user->photo_kk == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_kk}}"  @endif id="profileimage-kk" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile-kk" @if ($user->photo_kk == NULL) value="" @else value="{{$user->photo_kk}}" @endif >
                 <a class="btn btn-default btn-fill pull-right" data-toggle="modal" data-target="#uploadfoto-kk">Upload Image</a>
               </div>
 
-              <div class="col-sm-4">
+              <div class="col-sm-4 margin-top-mobile">
 
                 <label for="">Foto Kartu Tanda Mahasiswa/Pelajar (KTM/KTP)</label>
                 <img @if ($user->photo_ktm == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_ktm}}"  @endif id="profileimage-ktm" class="img img-responsive" alt="">
@@ -255,7 +255,7 @@
                 <a class="btn btn-default btn-fill pull-right" data-toggle="modal" data-target="#uploadfoto-home-front">Upload Image</a>
               </div>
 
-              <div class="col-sm-6">
+              <div class="col-sm-6 margin-top-mobile">
                 <label for="">Foto Rumah dari Belakang</label>
                 <img @if ($user->photo_home_out == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_out}}"  @endif id="profileimage-home-out" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile-home-out" @if ($user->photo_home_out == NULL) value="" @else value="{{$user->photo_home_out}}" @endif >
@@ -264,14 +264,14 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-6 margin-top-mobile">
                 <label for="">Foto Rumah dari Samping</label>
                 <img @if ($user->photo_home_side == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_side}}"  @endif id="profileimage-home-side" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile-home-side" @if ($user->photo_home_side == NULL) value="" @else value="{{$user->photo_home_side}}" @endif >
                 <a class="btn btn-default btn-fill pull-right" data-toggle="modal" data-target="#uploadfoto-home-side">Upload Image</a>
               </div>
 
-              <div class="col-sm-6">
+              <div class="col-sm-6 margin-top-mobile">
                 <label for="">Foto Rumah bagian Dalam</label>
                 <img @if ($user->photo_home_in == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_in}}"  @endif id="profileimage-home-in" class="img img-responsive" alt="">
                 <input type="hidden" name="primary_image" id="img-profile-home-in" @if ($user->photo_home_in == NULL) value="" @else value="{{$user->photo_home_in}}" @endif >
