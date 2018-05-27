@@ -12,4 +12,9 @@ class insightController extends Controller
     {
       return view('admin.insight');
     }
+
+    public function view_profile()
+    {
+      # code...
+    }
 }

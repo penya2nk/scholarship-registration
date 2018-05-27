@@ -110,6 +110,8 @@ Route::group([
 
   Route::get('/admin/insight', 'admin\insightController@insight')->name('member.insight.index');
 
+  Route::get('/admin/profile/view', 'admin\insightController@view_profile')->name('member.user.preview');
+
 
 
 });

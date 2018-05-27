@@ -50,12 +50,12 @@ Student Insight
               <aside class="profile-nav alt">
                   <section class="card">
                     <a href="#">
-                      <div class="card-header user-header alt bg-dark">
-                        <div class="media">
+                      <div class="card-header user-header alt bg-dark" style="background-image:url('https://res.cloudinary.com/baguskah/image/upload/v1525628669/bazis/profpic/student-Bagus-Dwi-Utama-1525628667.jpg'); background-size:cover;">
+                        <div class="media" style="background:rgba(0,0,0,0.7);">
                           <a href="#">
                           <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{Auth::user()->photo_profile}}">
                         </a>
-                        <div class="media-body">
+                        <div class="media-body background-opacity">
                           <h4 class="text-light display-6">Bagus Dwi Utama</h4>
                           <p>UNJ 2012</p>
                           <div class="button-edit">
