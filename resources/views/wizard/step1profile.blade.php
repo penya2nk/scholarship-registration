@@ -371,17 +371,17 @@
                       <div class="form-group">
                         <label for="">Pendidikan Terakhir</label>
                         <select class="form-control" name="ayah_pendidikan">
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "a. SD") selected @endif value="a. SD">SD</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "b. SMP") selected @endif value="b. SMP">SMP</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "c. SMA") selected @endif value="c. SMA">SMA</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "d. SMK") selected @endif value="d. SMK">SMK</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "e. D1") selected @endif value="e. D1">D1</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "f. D2") selected @endif value="f. D2">D2</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "g. D3") selected @endif value="g. D3">D3</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "h. D4") selected @endif value="h. D4">D4</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "i. S1") selected @endif value="i. S1">S1</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "j. S2") selected @endif value="j. S2">S2</option>
-                          <option @if($user->ibu_pendidikan !== NULL && $user->ibu_pendidikan == "k. S3") selected @endif value="k. S3">S3</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "a. SD") selected @endif value="a. SD">SD</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "b. SMP") selected @endif value="b. SMP">SMP</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "c. SMA") selected @endif value="c. SMA">SMA</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "d. SMK") selected @endif value="d. SMK">SMK</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "e. D1") selected @endif value="e. D1">D1</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "f. D2") selected @endif value="f. D2">D2</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "g. D3") selected @endif value="g. D3">D3</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "h. D4") selected @endif value="h. D4">D4</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "i. S1") selected @endif value="i. S1">S1</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "j. S2") selected @endif value="j. S2">S2</option>
+                          <option @if($user->ayah_pendidikan !== NULL && $user->ayah_pendidikan == "k. S3") selected @endif value="k. S3">S3</option>
                         </select>
                       </div>
                     </div>

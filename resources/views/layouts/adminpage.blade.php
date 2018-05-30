@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="{{asset('admin-ui/assets/css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('admin-ui/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bagus-style.css')}}">
+
     <link rel="stylesheet" href="{{asset('admin-ui/assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin-ui/assets/css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('admin-ui/assets/css/flag-icon.min.css')}}">
@@ -35,6 +37,7 @@
     {{-- Sweet Alert --}}
     <script src="{{asset('js/sweetalert/sweetalert2.js')}}"></script>
     <link href="{{asset('js/sweetalert/sweetalert2.css')}}" rel="stylesheet" />
+    <script src="{{asset('js/validator.js')}}"></script>
 
     @yield('css-section')
 
@@ -69,6 +72,10 @@
                     {{-- <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
                         <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight Users</a>
                     </li> --}}
+
+                    <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
+                        <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
+                    </li>
 
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
@@ -290,17 +297,18 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-sm-8">
+            <div class="col-sm-8">
                 <div class="page-header float-right">
                     <div class="page-title">
-                        <ol class="breadcrumb text-right">
+                      @yield('right-header')
+                        {{-- <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="#">Charts</a></li>
                             <li class="active">Chartjs</li>
-                        </ol>
+                        </ol> --}}
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <div class="content mt-3">
             <div class="animated fadeIn">

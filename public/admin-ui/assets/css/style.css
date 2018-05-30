@@ -10,6 +10,10 @@
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
+.help-block .with-errors{
+  color:#d14135 !important;
+}
+
 .background-opacity{
   background:#555555 !important;
 }

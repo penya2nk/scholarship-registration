@@ -16,13 +16,13 @@ return [
      * Domain name registered with Mailgun
      *
      */
-    'domain' => 'mail-bazis-beasiswa.ipbtraining.id',
+    'domain' => 'sandbox5dce52b7fbcd469e87b5d48c328a35a4.mailgun.org',
 
     /*
      * Mailgun (private) API key
      *
      */
-    'api_key' => 'key-656d42c59234b4e03d9de12f65df33c5',
+    'api_key' => 'key-8a016c834a7c85bb1d6580d9b36a39dd',
 
     /*
      * Mailgun public API key
@@ -37,8 +37,8 @@ return [
      *
      */
     'from' => [
-        'address' => 'bazis-beasiswa@ipbtraining.org',
-        'name' => 'Bazis Beasiswa'
+        'address' => 'no-reply@mahasiswacerdas.bazisjakarta.id',
+        'name' => 'Mahasiswa Cerdas Bazis Jakarta'
     ],
 
     /*

@@ -108,9 +108,17 @@ Route::group([
   Route::get('/admin/registered', 'admin\usermanagementController@registered_user')->name('registered.index');
   Route::get('/admin/registered/data', 'admin\usermanagementController@data_user_registered')->name('member.registered.data');
 
+  // Insight
   Route::get('/admin/insight', 'admin\insightController@insight')->name('member.insight.index');
 
+  // Profil Preview
   Route::get('/admin/profile/view', 'admin\insightController@view_profile')->name('member.user.preview');
+
+  // Email Blast
+  Route::get('/admin/email','admin\EmailBlastController@index')->name('admin.email');
+  Route::get('/admin/email/new','admin\EmailBlastController@create')->name('admin.email.create');
+  Route::post('/admin/email/new/send','admin\EmailBlastController@send')->name('admin.email.send');
+
 
 
 
