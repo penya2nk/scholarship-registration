@@ -4,8 +4,10 @@
 Members Registered
 @endsection
 
-@section('yieldsection')
+@section('css-section')
 
+  <link rel="stylesheet" href="{{asset('datatables/css/jquery.dataTables.css')}}">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 @endsection
 
 @section('content')
@@ -44,10 +46,26 @@ Members Registered
     {{-- <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script> --}}
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="{{asset('datatables/css/jquery.dataTables.css')}}">
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
   <script>
     $(document).ready(function() {
         $('.datatable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                // 'copy',
+                // 'csv',
+                'excel',
+                // 'pdf',
+                // 'print'
+              ],
             processing: true,
             serverSide: false,
             ajax: '{{route('member.registered.data')}}',
@@ -65,7 +83,6 @@ Members Registered
                     var classnya = 'progress-bar-danger';
                   }
 
-                  console.log(classnya)
 
                   return '<div class="progress">'
                   +'<div class="progress-bar '+classnya+' progress-bar-striped active" role="progressbar" aria-valuenow="'+full.progress+'" aria-valuemin="0" aria-valuemax="100" style="width:'+full.progress+'%">'
