@@ -73,9 +73,9 @@
                         <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight Users</a>
                     </li> --}}
 
-                    <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
+                    {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
-                    </li>
+                    </li> --}}
 
                     {{-- <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
