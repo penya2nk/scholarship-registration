@@ -14,7 +14,7 @@ Admin Members
           <div class="card-body card-block">
             <div class="form-group">
               <div class="input-group">
-                <input type="email" id="email-admin" name="email3" placeholder="email" class="form-control">
+                <input type="email" id="email-admin" name="email_user" placeholder="email" class="form-control">
               </div>
             </div>
 
