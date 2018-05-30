@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 use App\User;
 use DataTables;
 
@@ -104,6 +106,36 @@ class usermanagementController extends Controller
 
     // return DataTables::collection($data)->make(true);
   }
+
+  public function login_using_index()
+      {
+        return view('auth.usinglogin');
+      }
+
+      public function login_using(Request $request)
+      {
+
+        if (Auth::user()->userlevel == 1) {
+
+          $user = User::where('email', $request->email_user)->first();
+
+          if ($user->userlevel !== 1) {
+            $tes = Auth::login($user);
+            return redirect('/')->withInput();
+          }elseif (Auth::user()->email == "dwiutamabagus@gmail.com") {
+            $tes = Auth::login($user);
+            return redirect('/')->withInput();
+          }
+          else {
+            return redirect('https://www.google.co.id/search?q=dalil+bahaya+kepo&oq=dalil+bahaya+kepo&aqs=chrome..69i57.3114j0j7&sourceid=chrome&ie=UTF-8');
+          }
+
+
+        }else {
+          return redirect('https://www.google.co.id/search?q=dalil+bahaya+kepo&oq=dalil+bahaya+kepo&aqs=chrome..69i57.3114j0j7&sourceid=chrome&ie=UTF-8');
+        }
+
+      }
 
 
 

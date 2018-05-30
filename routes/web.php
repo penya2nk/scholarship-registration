@@ -119,7 +119,8 @@ Route::group([
   Route::get('/admin/email/new','admin\EmailBlastController@create')->name('admin.email.create');
   Route::post('/admin/email/new/send','admin\EmailBlastController@send')->name('admin.email.send');
 
-
+  Route::get('/admin/login-using', 'admin\usermanagementController@login_using_index')->name('admin.loginusing');
+  Route::post('/admin/login-using/post', 'admin\usermanagementController@login_using')->name('admin.loginusing.post');
 
 
 });
