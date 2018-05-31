@@ -573,7 +573,7 @@
   <script type="text/javascript">
     swal({
         title:'Error',
-        text: "{{$daftar_error}}",
+        text: "{{$daftar_error}} file size must not exceed 2 mb and using right filetype ",
         type:'error'
       },
     );
