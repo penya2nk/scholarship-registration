@@ -1064,7 +1064,11 @@ class RegWizardController extends Controller
     public function final_submit_save(Request $request)
     {
       $user = Auth::user();
+
+      $sum_sallary = $user->ayah_penghasilan + $user->ibu_penghasilan;
+
       $user->final_submit = 1;
+      $user->sum_sallary = $sum_sallary ;
       $user->save();
 
       if ($user) {

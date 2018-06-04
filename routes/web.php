@@ -110,6 +110,8 @@ Route::group([
 
   // Insight
   Route::get('/admin/insight', 'admin\insightController@insight')->name('member.insight.index');
+  Route::post('/admin/insight/dataload', 'admin\insightController@search')->name('member.insight.dataload');
+
 
   // Profil Preview
   Route::get('/admin/profile/view', 'admin\insightController@view_profile')->name('member.user.preview');

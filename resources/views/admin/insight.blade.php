@@ -17,30 +17,41 @@ Student Insight
               <label class="label">Urutkan</label>
             </div>
             <div class="col-md-3">
-              <select class="form-control" id="sortby" name="sort">
-                <option value="">-- Semua Kampus --</option>
+              <select class="form-control" id="institution" name="sort">
+                <option value="all">Semua Kampus</option>
                 @foreach ($inst as $inst)
-                  <option value="">{{$inst->institution_name}}</option>
+                  <option value="{{$inst->id}}">{{$inst->institution_name}}</option>
                 @endforeach
               </select>
             </div>
             <div class="col-md-3">
               <select class="form-control" id="sortby" name="sort">
-                <option value="">Gaji Orang Tua</option>
-                <option value="">IPK</option>
-                <option value="">Pengalaman Organisasi</option>
+                <option value="sum_sallary">Gaji Orang Tua</option>
+                <option value="ipk">IPK</option>
+                {{-- <option value="organization">Pengalaman Organisasi</option> --}}
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" id="sortby2" name="sort">
+                <option value="sum_sallary">Gaji Orang Tua</option>
+                <option value="ipk">IPK</option>
+                {{-- <option value="organization">Pengalaman Organisasi</option> --}}
               </select>
             </div>
             <div class="col-md-2">
-              <select class="form-control" id="sortbysum" name="sortsum">
+              <select class="form-control" id="sum" name="sortsum">
                 <option value="asc">Terbesar</option>
                 <option value="desc">Terkecil</option>
               </select>
             </div>
-            <div class="col-md-3">
-              <button type="button" class="btn btn-success">Cari</button>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12" style="padding:10px">
+                <button type="button" id="search" class="btn btn-block btn-success">Tampilkan</button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -49,59 +60,39 @@ Student Insight
 
 
   </div>
-  <div class="row">
+  <div class="row" id="search-result">
 
-    <div class="col-md-4">
-              <aside class="profile-nav alt">
-                  <section class="card">
-                    <a href="#">
-                      <div class="card-header user-header alt bg-dark" style="background-image:url('https://res.cloudinary.com/baguskah/image/upload/v1525628669/bazis/profpic/student-Bagus-Dwi-Utama-1525628667.jpg'); background-size:cover;">
-                        <div class="media" style="background:rgba(0,0,0,0.7);">
-                          <a href="#">
-                          <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{Auth::user()->photo_profile}}">
-                        </a>
-                        <div class="media-body background-opacity">
-                          <h4 class="text-light display-6">Bagus Dwi Utama</h4>
-                          <p>UNJ 2012</p>
-                          <div class="button-edit">
-                            <a href="#" class="btn btn-success btn-sm">View</a>
-                            {{-- <a href="#" class="btn btn-danger btn-sm">Delete</a> --}}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </a>
+    {{-- <div class="" id="search-result">
 
-                      <ul class="list-group list-group-flush">
-                          <li class="list-group-item">
-                              <a href="#">
-                                {{-- <i class="fa fa-envelope-o"></i> --}}
-                                Total Gaji Orang Tua <span class="badge badge-primary pull-right">0</span></a>
-                          </li>
-                          <li class="list-group-item">
-                              <a href="#">
-                                {{-- <i class="fa fa-tasks"></i> --}}
-                                IPK <span class="badge badge-danger pull-right">0</span></a>
-                          </li>
-                          <li class="list-group-item">
-                              <a href="#">
-                                {{-- <i class="fa fa-bell-o"></i> --}}
-                                Candidate <span class="badge badge-success pull-right">0</span></a>
-                          </li>
-                          {{-- <li class="list-group-item">
-                              <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>
-                          </li> --}}
-                      </ul>
-                  </section>
-              </aside>
-          </div>
-
+    </div>
+ --}}
 
   </div>
 
   @section('script')
     {{-- <script src="{{asset('admin-ui/assets/js/vendor/jquery-2.1.4.min.js')}}"></script> --}}
 
+    <script type="text/javascript">
+      $('#search').on('click', function() {
+        var institution = $('#institution').val();
+        var sortby = $('#sortby').val();
+        var sortby2 = $('#sortby2').val();
+        var sum = $('#sum').val();
+        var tes = searchproduct(institution, sortby, sortby2, sum);
+
+      });
+
+      function searchproduct(institution, sortby, sortby2, sum) {
+        $('#loading').show();
+        $('#search-result').load('/admin/insight/dataload',{
+        "institution":institution, "sortby":sortby, "sortby2":sortby2, "sum":sum, "_token": "{{ csrf_token() }}" },
+          function(){
+          $('#loading').hide();
+          $('#result-count').show();
+        });
+
+      }
+  </script>
 
   @endsection
 
