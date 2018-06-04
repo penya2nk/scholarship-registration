@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-md-3">
                           <h4><b>Berat Badan</b></h4>
-                          <p>{{$user->body_weight}} cm</p>
+                          <p>{{$user->body_weight}} kg</p>
                         </div>
                       </div>
 
@@ -218,7 +218,7 @@
                           @endif
 
                           @if ($user->committees()->count() !== 0)
-                          <h3><b>Pengalaman Organisasi</b></h3>
+                          <h3><b>Pengalaman Kepanitiaan</b></h3>
                           <div class="@if($user->committees()->count() >4) column-2 @endif">
                             <ul>
                               @foreach ($user->committees as $com)

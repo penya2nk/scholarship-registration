@@ -18,18 +18,23 @@ Student Insight
             </div>
             <div class="col-md-3">
               <select class="form-control" id="sortby" name="sort">
-                <option value="">-- Kampus --</option>
+                <option value="">-- Semua Kampus --</option>
+                @foreach ($inst as $inst)
+                  <option value="">{{$inst->institution_name}}</option>
+                @endforeach
               </select>
             </div>
             <div class="col-md-3">
               <select class="form-control" id="sortby" name="sort">
                 <option value="">Gaji Orang Tua</option>
+                <option value="">IPK</option>
+                <option value="">Pengalaman Organisasi</option>
               </select>
             </div>
             <div class="col-md-2">
               <select class="form-control" id="sortbysum" name="sortsum">
-                <option value="">Terbesar</option>
-                <option value="">Terkecil</option>
+                <option value="asc">Terbesar</option>
+                <option value="desc">Terkecil</option>
               </select>
             </div>
             <div class="col-md-3">
