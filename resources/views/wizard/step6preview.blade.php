@@ -22,7 +22,7 @@
         <div class="tab-content">
           <div class="container-fluid">
 
-            @if ($validation['fill_percent'] > 80)
+            @if ($validation['fill_percent'] > 70)
                 <div class="row">
                   <div class="col-sm-10 col-sm-offset-1">
 

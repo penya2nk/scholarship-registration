@@ -22,7 +22,7 @@
         <div class="tab-content">
           <div class="container-fluid">
 
-            @if ($validation['fill_percent'] > 80)
+            @if ($validation['fill_percent'] > 70)
               <div class="row">
                 <div class="col-md-10 col-md-offset-1 text-center">
                   <h4>“Dan Katakanlah: “Bekerjalah kamu, maka Allah dan Rasul-Nya serta
