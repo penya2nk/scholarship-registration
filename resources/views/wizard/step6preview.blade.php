@@ -53,7 +53,7 @@
                       <div class="row">
                         <div class="col-md-3">
                           <h4><b>Tempat, Tanggal Lahir</b></h4>
-                          <p>{{$user->born_place}}, <br> {{$user->born_date->format('d-m-Y')}}</p>
+                          <p>{{$user->born_place}}, <br> {{$user->born_date ? $user->born_date->format('d-m-Y'): ''}}</p>
                         </div>
                         <div class="col-md-3">
                           <h4><b>Agama</b></h4>
@@ -109,7 +109,7 @@
                               <tbody>
                                 <tr>
                                   <th>TTL</th>
-                                  <td>{{$user->ayah_tempat_lahir}}, {{$user->ayah_tanggal_lahir->format('d-m-Y')}}</td>
+                                  <td>{{$user->ayah_tempat_lahir}}, {{$user->ayah_tanggal_lahir ? $user->ayah_tanggal_lahir->format('d-m-Y'): ''}}</td>
                                 </tr>
                                 <tr>
                                   <th>Alamat</th>
@@ -132,7 +132,7 @@
                                 </tr>
                                 <tr>
                                   <th>Penghasilan / Bulan</th>
-                                  <td>Rp. {{format_uang($user->ayah_penghasilan)}}</td>
+                                  <td>Rp. {{$user->ayah_penghasilan ? format_uang($user->ayah_penghasilan) : ''}}</td>
                                 </tr>
                                 <tr>
                                   <th>Nomor HP</th>
@@ -153,7 +153,7 @@
                               <tbody>
                                 <tr>
                                   <th>TTL</th>
-                                  <td>{{$user->ibu_tempat_lahir}}, {{$user->ibu_tanggal_lahir->format('d-m-Y')}}</td>
+                                  <td>{{$user->ibu_tempat_lahir}}, {{$user->ibu_tanggal_lahir ? $user->ibu_tanggal_lahir->format('d-m-Y'): ''}}</td>
                                 </tr>
                                 <tr>
                                   <th>Alamat</th>
@@ -176,7 +176,7 @@
                                 </tr>
                                 <tr>
                                   <th>Penghasilan / Bulan</th>
-                                  <td>Rp. {{format_uang($user->ibu_penghasilan)}}</td>
+                                  <td>Rp. {{$user->ibu_penghasilan ? format_uang($user->ibu_penghasilan): ''}}</td>
                                 </tr>
                                 <tr>
                                   <th>Nomor HP</th>
@@ -208,7 +208,7 @@
                                   <h4 class="">
                                     <b>{{$org->organization}}</b>
                                   </h4>
-                                  <p class="no-margin">{{$org->date_from->format('d M Y')}} - {{$org->date_end->format('d M Y')}}</p>
+                                  <p class="no-margin">{{$org->date_from ? $org->date_from->format('d M Y'): ''}} - {{$org->date_end ? $org->date_end->format('d M Y'): ''}}</p>
                                   <p class="no-margin">{{$org->positions->position_name}} {{$org->position}}</p>
                                 </li>
                               @endforeach
@@ -226,8 +226,8 @@
                                   <h4 class="">
                                     <b>{{$com->committee_name}}</b>
                                   </h4>
-                                  <p class="no-margin">{{$com->date_from->format('d M Y')}} - {{$com->date_end->format('d M Y')}}</p>
-                                  <p class="no-margin">{{$com->positions->position_name}} {{$com->position}}</p>
+                                  <p class="no-margin">{{$com->date_from ? $com->date_from->format('d M Y'): ''}} - {{$com->date_end ? $com->date_end->format('d M Y') : ''}}</p>
+                                  <p class="no-margin">{{$com->date_from ? $com->positions->position_name : ''}} {{$com->position}}</p>
                                 </li>
                               @endforeach
                             </ul>
@@ -244,7 +244,7 @@
                                   <h4 class="">
                                     <b>{{$train->training}}</b>
                                   </h4>
-                                  <p class="no-margin">{{$train->date->format('d M Y')}}</p>
+                                  <p class="no-margin">{{$train->date ? $train->date->format('d M Y'): ''}}</p>
                                   <p class="no-margin">{{$train->content}} | {{$train->organizer}}</p>
                                 </li>
                               @endforeach
