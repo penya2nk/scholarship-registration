@@ -47,10 +47,13 @@ Student Insight
           </div>
 
           <div class="row">
-            <div class="col-md-12" style="padding:10px">
+            <div class="col-md-12 text-center" style="padding:10px">
                 <button type="button" id="search" class="btn btn-block btn-success">Tampilkan</button>
+                <img style="width:30px; display:none; margin:auto" id="loading" class="loading-upload" src="{{asset('gif/loading-small.gif')}}" alt="">
             </div>
           </div>
+
+
 
         </div>
       </div>
@@ -84,10 +87,12 @@ Student Insight
 
       function searchproduct(institution, sortby, sortby2, sum) {
         $('#loading').show();
+        $('#search').hide();
         $('#search-result').load('/admin/insight/dataload',{
         "institution":institution, "sortby":sortby, "sortby2":sortby2, "sum":sum, "_token": "{{ csrf_token() }}" },
           function(){
           $('#loading').hide();
+          $('#search').show();
           $('#result-count').show();
         });
 

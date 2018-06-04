@@ -70,7 +70,7 @@
                     </li>
 
                     <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
-                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight</a>
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Submitted Registered</a>
                     </li>
 
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
