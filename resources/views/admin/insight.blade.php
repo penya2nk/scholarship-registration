@@ -40,8 +40,8 @@ Student Insight
             </div>
             <div class="col-md-2">
               <select class="form-control" id="sum" name="sortsum">
-                <option value="asc">Terbesar</option>
-                <option value="desc">Terkecil</option>
+                <option value="desc">Terbesar</option>
+                <option value="asc">Terkecil</option>
               </select>
             </div>
           </div>

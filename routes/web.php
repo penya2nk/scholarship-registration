@@ -114,7 +114,7 @@ Route::group([
 
 
   // Profil Preview
-  Route::get('/admin/profile/view', 'admin\insightController@view_profile')->name('member.user.preview');
+  Route::get('/admin/profile/view/{id}', 'admin\insightController@view_profile')->name('member.user.preview');
 
   // Email Blast
   Route::get('/admin/email','admin\EmailBlastController@index')->name('admin.email');

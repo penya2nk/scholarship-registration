@@ -78,9 +78,12 @@ class insightController extends Controller
       dd("Berhasil");
     }
 
-    public function view_profile()
+    public function view_profile($id)
     {
-      # code...
+      $user = user::find($id);
+
+      $data = array('user' =>$user , );
+      return view('admin.view-personal')->with($data);
     }
 
 

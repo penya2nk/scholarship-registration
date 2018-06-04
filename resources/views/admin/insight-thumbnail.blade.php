@@ -13,7 +13,7 @@
                 <h4 class="text-light display-6">{{$user->name}}</h4>
                 <p>{{str_replace(')', '',explode('(',$user->institution->institution_name)[1])}} ({{$user->generation}})</p>
                 <div class="button-edit">
-                  <a href="#" class="btn btn-success btn-sm">View</a>
+                  <a href="{{route('member.user.preview',['id'=>$user->id])}}" class="btn btn-success btn-sm">View</a>
                   {{-- <a href="#" class="btn btn-danger btn-sm">Delete</a> --}}
                 </div>
               </div>
