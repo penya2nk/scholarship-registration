@@ -164,6 +164,12 @@
 
                     <input type="text" readonly value="{{$link_photo_sktm}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-sktm" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
+
+                    @if ($errors->has('file_sktm'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('file_sktm') }}</strong>
+                        </span>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -188,6 +194,12 @@
                     @endif
                     <input type="text" readonly value="{{$link_photo_parent_sallary}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-parent-sallary" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
+                    @if ($errors->has('file_parent_sallary'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('file_parent_sallary') }}</strong>
+                        </span>
+                    @endif
+
                   </div>
                 </div>
               </div>
@@ -212,6 +224,12 @@
                     @endif
                     <input type="text" readonly value="{{$link_photo_transcript_score}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-transcript-score" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
+                    @if ($errors->has('file_transcript_score'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('file_transcript_score') }}</strong>
+                        </span>
+                    @endif
+
                   </div>
                 </div>
               </div>
@@ -236,6 +254,12 @@
                     @endif
                     <input type="text" readonly value="{{$link_photo_active_student}}" class="form-control input-lg" id="" placeholder="">
                     <span class="input-group-addon"><input type="button" data-toggle="modal" data-target="#uploadfoto-active-student" class="btn btn-fill btn-sm btn-success" name="" value="Upload">     </span>
+
+                    @if ($errors->has('file_active_student'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('file_active_student') }}</strong>
+                        </span>
+                    @endif
                   </div>
                 </div>
               </div>
