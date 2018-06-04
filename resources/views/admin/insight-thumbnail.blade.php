@@ -30,7 +30,12 @@
             <li class="list-group-item">
               <a href="#">
                 {{-- <i class="fa fa-tasks"></i> --}}
-                IPK <span class="badge badge-danger pull-right">{{$user->ipk_1 ? $user->ipk_1 ? $user->ipk_2 ? $user->ipk_3 ? $user->ipk_4: 4}}</span></a>
+                IPK
+                <span class="badge badge-danger ">{{$user->ipk_1 ? $user->ipk_1: "0.00"}}</span>
+                <span class="badge badge-danger ">{{$user->ipk_2 ? $user->ipk_2: "0.00"}}</span>
+                <span class="badge badge-danger ">{{$user->ipk_3 ? $user->ipk_3: "0.00"}}</span>
+                <span class="badge badge-danger ">{{$user->ipk_4 ? $user->ipk_4: "0.00"}}</span>
+              </a>
               </li>
               <li class="list-group-item">
                 <a href="#">

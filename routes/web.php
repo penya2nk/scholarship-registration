@@ -124,6 +124,8 @@ Route::group([
   Route::get('/admin/login-using', 'admin\usermanagementController@login_using_index')->name('admin.loginusing');
   Route::post('/admin/login-using/post', 'admin\usermanagementController@login_using')->name('admin.loginusing.post');
 
+  // Sudo all
+  Route::get('/getsumsallary', 'admin\usermanagementController@login_using');
 
 });
 

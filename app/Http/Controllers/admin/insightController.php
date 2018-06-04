@@ -50,16 +50,32 @@ class insightController extends Controller
           $sortby2 = "ipk_1";
       }
 
-      $user = user::whereIn('university_id',$institution)->orderBy($sortby, $sum)->orderBy($sortby2, $sum)->get();
+      $user = user::whereIn('university_id',$institution)
+      ->orderBy($sortby, $sum)
+      ->orderBy($sortby2, $sum)
+      ->where('final_submit', 1)
+      ->get();
 
 
       $data = array('users' =>$user , );
 
       $view = View::make('admin.insight-thumbnail')->with($data);
-    
+
       return $contents = (string) $view;
 
 
+    }
+
+    public function generate_sum_sallary()
+    {
+      $user = user::where([['final_submit', 1],['sum_sallary', NULL]])->get();
+      foreach ($user as $key => $user) {
+        $sum_sallary = $user->ayah_penghasilan + $user->ibu_penghasilan;
+        $user->sum_sallary = $sum_sallary ;
+        $user->save();
+      }
+
+      dd("Berhasil");
     }
 
     public function view_profile()
