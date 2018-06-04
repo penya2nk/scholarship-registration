@@ -721,7 +721,7 @@
             function readFile(input) {
 
 
-              if (input.files && input.files[0] && input.files[0].size < 2000000) {
+              if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
@@ -800,7 +800,7 @@
 
               function readFile(input) {
 
-                if (input.files && input.files[0] && input.files[0].size < 2000000) {
+                if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                   var reader = new FileReader();
 
                   reader.onload = function (e) {
@@ -880,7 +880,7 @@
                 function readFile(input) {
 
 
-                  if (input.files && input.files[0] && input.files[0].size < 2000000) {
+                  if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
@@ -960,7 +960,7 @@
                   function readFile(input) {
 
 
-                    if (input.files && input.files[0] && input.files[0].size < 2000000) {
+                    if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                       var reader = new FileReader();
 
                       reader.onload = function (e) {
@@ -1040,7 +1040,7 @@
                     function readFile(input) {
 
 
-                      if (input.files && input.files[0] && input.files[0].size < 2000000) {
+                      if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                         var reader = new FileReader();
 
                         reader.onload = function (e) {
@@ -1120,7 +1120,7 @@
                       function readFile(input) {
 
 
-                        if (input.files && input.files[0] && input.files[0].size < 2000000) {
+                        if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
                           var reader = new FileReader();
 
                           reader.onload = function (e) {
