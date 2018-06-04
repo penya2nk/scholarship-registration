@@ -59,7 +59,7 @@ kerjakan.” <br><br>
                     <b>{{$validation['fill_percent']}} %</b>
                   </h1>
                   <h2>Lengkapi data Anda</h2>
-                  <p>Data hanya boleh disubmit setelah Anda melengkapi >90% pengisian </p>
+                  <p>Data hanya boleh disubmit setelah Anda melengkapi >70% pengisian </p>
                 </div>
             @endif
 

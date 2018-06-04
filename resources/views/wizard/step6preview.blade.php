@@ -585,7 +585,7 @@
                     <b>{{$validation['fill_percent']}} %</b>
                   </h1>
                   <h2>Lengkapi data Anda</h2>
-                  <p>Data akan muncul setelah Anda melengkapi >80% pengisian </p>
+                  <p>Data akan muncul setelah Anda melengkapi >70% pengisian </p>
                 </div>
             @endif
 
