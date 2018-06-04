@@ -757,9 +757,9 @@
         // });
 
           function readFile(input) {
-            if (input.files && input.files[0]) {
+            if (input.files && input.files[0] && input.files[0].size < 2000000 && input.files[0].type == 'image/jpeg') {
               var reader = new FileReader();
-
+              console.log(input.files[0]);
               reader.onload = function (e) {
                 $('#main-cropper').croppie('bind', {
                   url: e.target.result
@@ -769,6 +769,8 @@
               }
 
               reader.readAsDataURL(input.files[0]);
+            }else {
+              alert('gambar harus berformat jpg dan berukuran < 2 MB');
             }
           }
 
