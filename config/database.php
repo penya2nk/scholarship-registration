@@ -91,7 +91,7 @@ return [
             'database' => substr(parse_url(getenv("CLEARDB_DATABASE_URL"))["path"], 1),
             'username' => parse_url(getenv("CLEARDB_DATABASE_URL"))["user"],
             'password' => parse_url(getenv("CLEARDB_DATABASE_URL"))["pass"],
-            'charset'  => 'utf8',
+            'charset' => 'utf8mb4',
             'prefix'   => '',
             'schema'   => 'public',
         ],
