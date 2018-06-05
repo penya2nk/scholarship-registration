@@ -140,12 +140,12 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
         </div>
         <div class="row login-scholarship-nav" style="width:390px; margin:auto" >
 
-          <div class="col-xs-6">
+          {{-- <div class="col-xs-6">
             <a href="#" onclick="view('login')" class="btn btn-info btn-block btn-flat buttongssi">Login</a>
           </div>
           <div class="col-xs-6">
             <a href="#" onclick="view('signup')" id="buat-akun-baru" class="btn btn-warning btn-block btn-flat buttongssi">Registrasi</a>
-          </div>
+          </div> --}}
         </div>
 
         <!-- /.login-logo -->
@@ -196,7 +196,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
         </div>
       </form>
       <!-- /.social-auth-links -->
-      <div class="text-center helper-registrasi">
+      {{-- <div class="text-center helper-registrasi">
         <p>atau</p>
         <hr>
         <a href="#" onclick="view('signup')" class="btn btn-default btn-block btn-flat buttongssi">Registrasi</a>
@@ -204,7 +204,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
           <i></i>
         </span>
 
-      </div>
+      </div> --}}
 
     </div>
     <!-- /.login-box-body -->
@@ -212,7 +212,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
     <!-- /.login-box -->
 
     {{-- Rigester Box --}}
-    <div class="login-box" id="register-box" @if (Session::has('errorregistration')) @else style="display:none" @endif >
+    <div class="login-box" id="register-box-disabled" @if (Session::has('errorregistration')) @else style="display:none" @endif >
       <div class="register-logo" style="color:white">
         <b class="helper-registrasi">Registrasi</b><br>
           <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
@@ -321,7 +321,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-default btn-block btn-flat">Register</button>
+              {{-- <button type="submit" class="btn btn-default btn-block btn-flat">Register</button> --}}
             </div>
             <!-- /.col -->
           </div>
@@ -349,7 +349,7 @@ style="background:#42B549;background-image: url('{{asset('images/bg-repeat.png')
     </div>
 
     {{-- Not Sending Verification Email --}}
-    <div class="login-box" id="no-verf-box" @if (Session::has('errorregistration')) @else style="display:none" @endif>
+    <div class="login-box" id="no-verf-box-disable" @if (Session::has('errorregistration')) @else style="display:none" @endif>
       <div class="register-logo" style="color:white">
         <b>Resend Verification</b><br>
           <img src="{{asset('images/logo-white.svg')}}" style="width: 232px" alt="">
