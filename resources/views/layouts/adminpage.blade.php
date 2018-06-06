@@ -66,16 +66,20 @@
                         <a href="{{route('registered.index')}}"> <i class="menu-icon fa fa-user"></i>Registered </a>
                     </li>
 
-                    <li class="{{($routename == 'add.admin.index') ? 'active' : ''}}">
-                        <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
+                    <li class="{{($routename == 'index.statistic') ? 'active' : ''}}">
+                        <a href="{{route('index.statistic')}}"> <i class="menu-icon fa fa-bar-chart"></i>Statistic </a>
                     </li>
 
                     <li class="{{($routename == 'submitted.index') ? 'active' : ''}}">
-                        <a href="{{route('submitted.index')}}"> <i class="menu-icon fa fa-user"></i>Submitted </a>
+                        <a href="{{route('submitted.index')}}"> <i class="menu-icon fa fa-paper-plane"></i>Submitted </a>
                     </li>
 
                     <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
-                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Insight</a>
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Search Student</a>
+                    </li>
+
+                    <li class="{{($routename == 'add.admin.index') ? 'active' : ''}}">
+                        <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
 
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
