@@ -187,7 +187,7 @@ Statistik
     // Potensi Submitted
 
     $users_count = $univ->users()->where('final_submit', 0)->get();
-    dd($users_count);
+    
 
     $potensinya = 0;
 
