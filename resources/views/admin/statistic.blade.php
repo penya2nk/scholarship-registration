@@ -181,20 +181,18 @@ Statistik
 
 
   @php
-    $laki_count= $univ->users()->where([['gender', 'L'],['final_submit' , 1]])->count();
-    $perempuan_count= $univ->users()->where([['gender', 'P'],['final_submit', 1]])->count();
+    $laki_count= $univ->users()->where([['gender', 'L']])->count();
+    $perempuan_count= $univ->users()->where([['gender', 'P']])->count();
 
     // Potensi Submitted
 
     $users_count = $univ->users()->where('final_submit', 0)->get();
-
 
     $potensinya = 0;
 
     foreach ($users_count as $key => $usernya) {
 
       $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($usernya->email);
-
 
       if ($validation['fill_percent'] > 50) {
            $potensinya++;

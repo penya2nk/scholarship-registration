@@ -190,6 +190,81 @@ Members Submitted <br> (Yang Sudah Submit)
       });
 </script>
 
+@foreach ($university_labels as $univ)
+
+  @php
+    $laki_count= $univ->users()->where([['gender', 'L'],['final_submit' , 0]])->count();
+    $perempuan_count= $univ->users()->where([['gender', 'P'],['final_submit', 0]])->count();
+
+    // Potensi Submitted
+
+    $users_count = $univ->users()->where('final_submit', 0)->get();
+
+
+    $potensinya = 0;
+
+    foreach ($users_count as $key => $usernya) {
+
+      $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($usernya->email);
+
+
+      if ($validation['fill_percent'] > 50) {
+           $potensinya++;
+         }
+      }
+
+  @endphp
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4>{{$univ->institution_name}}</h4>
+      <h6 style="color:grey">{{$univ->users()->where('final_submit', 1)->count()}}/{{$univ->users->count()}} ({{round(($univ->users()->where('final_submit', 1)->count())/$univ->users->count() * 100)}} %) </h6>
+      <hr>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-user text-default border-default"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Laki-Laki</div>
+                      <div class="stat-digit">{{$laki_count}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-user text-danger border-danger"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Perempuan</div>
+                      <div class="stat-digit">{{$perempuan_count}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Potensi Submit (>50%)</div>
+                      <div class="stat-digit">{{$potensinya}} Peserta</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+@endforeach
+
 
 
   <div class="row">
