@@ -1,7 +1,7 @@
 @extends('layouts.adminpage')
 
 @section('title')
-Statistik
+Statistik Keseluruhan
 @endsection
 
 @section('content')
@@ -204,6 +204,7 @@ Statistik
   <div class="row">
     <div class="col-md-12">
       <h4>{{$univ->institution_name}} {{$univ->users->count()}}</h4>
+      <h6 style="color:grey">Submitted {{$univ->users()->where('final_submit', 1)->count()}}/{{$univ->users->count()}} ({{round(($univ->users()->where('final_submit', 1)->count())/$univ->users->count() * 100)}} %) </h6>
       <hr>
     </div>
   </div>
