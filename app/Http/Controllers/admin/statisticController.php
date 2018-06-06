@@ -46,12 +46,17 @@ class statisticController extends Controller
 
       $university_label = institution::all();
 
+      $laki = user::where('gender', 'L')->count();
+      $perempuan = user::where('gender', 'P')->count();
+
       $data = array(
         'labels' =>$days,
         'user_registered' =>$user_registered,
         'user_submitted' =>$user_submitted,
         'university_labels'=>$university_label,
-        'user_online'=>$activities
+        'user_online'=>$activities,
+        'laki'=>$laki,
+        'perempuan'=>$perempuan
        );
 
       return view('admin.statistic')->with($data);

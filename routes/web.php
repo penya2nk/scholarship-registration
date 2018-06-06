@@ -108,6 +108,11 @@ Route::group([
   Route::get('/admin/registered', 'admin\usermanagementController@registered_user')->name('registered.index');
   Route::get('/admin/registered/data', 'admin\usermanagementController@data_user_registered')->name('member.registered.data');
 
+  // Submitted
+  Route::get('/admin/submitted', 'admin\usermanagementController@submitted_user')->name('submitted.index');
+  Route::get('/admin/submitted/data', 'admin\usermanagementController@data_user_submitted')->name('member.submitted.data');
+
+
   // Insight
   Route::get('/admin/insight', 'admin\insightController@insight')->name('member.insight.index');
   Route::post('/admin/insight/dataload', 'admin\insightController@search')->name('member.insight.dataload');

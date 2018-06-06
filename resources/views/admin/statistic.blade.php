@@ -11,9 +11,9 @@ Statistik
       <div class="card">
           <div class="card-body">
               <div class="stat-widget-one">
-                  <div class="stat-icon dib"><i class="ti-user text-success border-success"></i></div>
+                  <div class="stat-icon dib"><i class="ti-desktop text-success border-success"></i></div>
                   <div class="stat-content dib">
-                      <div class="stat-text">Peserta Terdaftar</div>
+                      <div class="stat-text">Akun Terdaftar</div>
                       <div class="stat-digit">{{$user_registered}}</div>
                   </div>
               </div>
@@ -48,6 +48,37 @@ Statistik
     </div>
 
   </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-user text-default border-default"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Laki-Laki</div>
+                      <div class="stat-digit">{{$laki}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+          <div class="card-body">
+              <div class="stat-widget-one">
+                  <div class="stat-icon dib"><i class="ti-user text-danger border-danger"></i></div>
+                  <div class="stat-content dib">
+                      <div class="stat-text">Perempuan</div>
+                      <div class="stat-digit">{{$perempuan}}</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="row">
 
           <div class="col-lg-12">
