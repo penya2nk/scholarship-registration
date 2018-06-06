@@ -181,13 +181,13 @@ Statistik
 
 
   @php
-    $laki_count= $univ->users()->where('gender', 'L')->count();
-    $perempuan_count= $univ->users()->where('gender', 'P')->count();
+    $laki_count= $univ->users()->where([['gender', 'L'],['final_submit' , 1]])->count();
+    $perempuan_count= $univ->users()->where([['gender', 'P'],['final_submit', 1]])->count();
 
     // Potensi Submitted
 
     $users_count = $univ->users()->where('final_submit', 0)->get();
-    
+
 
     $potensinya = 0;
 
