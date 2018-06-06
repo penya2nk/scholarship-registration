@@ -100,6 +100,8 @@ Route::group([
   Route::get('/admin/statistic' ,'admin\statisticController@index')->name('index.statistic');
   Route::get('/admin/statistic/registered', 'admin\statisticController@user_registered');
   Route::get('/admin/statistic/university', 'admin\statisticController@user_university');
+  Route::get('/admin/statistic/university/submitted', 'admin\statisticController@user_university_submitted');
+
 
 
   Route::get('/admin/adduseradmin', 'admin\usermanagementController@add_admin_index')->name('add.admin.index');

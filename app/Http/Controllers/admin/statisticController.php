@@ -144,4 +144,40 @@ class statisticController extends Controller
 
       return response()->json($university_acc_10);
     }
+
+    public function user_university_submitted()
+    {
+
+      $univs = institution::all();
+
+      foreach ($univs as $key => $univ) {
+        $count_univ = User::where([['university_id', $univ->id],['final_submit', 1]])->count();
+        $label_univ = $univ->institution_name;
+
+        if ($univ->id == 1) {
+          $color = "#fad900";
+        }elseif ($univ->id == 2) {
+          $color = "#42b648";
+        }elseif ($univ->id == 3) {
+          $color = "#ff8a00";
+        }elseif ($univ->id == 4) {
+          $color = "#1aa1cc";
+        }elseif ($univ->id == 5) {
+          $color = "#b844ac";
+        }elseif ($univ->id == 6) {
+          $color = "#969696";
+        }
+
+        $university_acc_10[] = array(
+              'label' =>$label_univ ,
+              'data'  => [$count_univ],
+              'borderColor'  => $color,
+              'backgroundColor' => $color
+            );
+      }
+
+
+
+      return response()->json($university_acc_10);
+    }
 }

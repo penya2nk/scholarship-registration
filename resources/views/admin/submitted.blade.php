@@ -126,9 +126,72 @@ Members Submitted <br> (Yang Sudah Submit)
 
 
   <div class="row">
-
-
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mb-3">Univeristy </h4>
+                <canvas id="user-university"></canvas>
+            </div>
+        </div>
+    </div>
   </div>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+        $.ajax({
+          url: '/admin/statistic/university/submitted',
+          type: 'GET',
+          dataType: 'json',
+          // data: {tahun: 2017}
+        })
+        .done(function(datane) {
+          // console.log(datane)
+          // $('#loading-bar').modal('hide');
+          var ctx = $("#user-university");
+
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Univeristy"] ,
+                datasets: datane
+            },
+            options: {
+              legend:{
+                position:'right'
+              },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true,
+
+                      }
+                  }]
+              },
+
+              // Container for pan options
+              pan: {
+                  // Boolean to enable panning
+                  enabled: false,
+                  // Panning directions. Remove the appropriate direction to disable
+                  // Eg. 'y' would only allow panning in the y direction
+                  mode: 'y'
+              },
+              // Container for zoom options
+              zoom: {
+                  // Boolean to enable zooming
+                  enabled: false,
+                  // Zooming directions. Remove the appropriate direction to disable
+                  // Eg. 'y' would only allow zooming in the y direction
+                  mode: 'y',
+              }
+            }
+          });
+        });
+      });
+</script>
+
+
+
   <div class="row">
     <div class="col-md-12">
       <div class="card">
