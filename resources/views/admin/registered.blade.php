@@ -30,6 +30,7 @@ Members Registered
                 <th>Univ.</th>
                 <th>Phone</th>
                 <th>Kelengkapan Data</th>
+                <th>Status</th>
                 {{-- <th>Country</th>
                 <th>Salary</th> --}}
               </tr>
@@ -91,7 +92,28 @@ Members Registered
                   +'</div>'
                 }
 
-            }],
+            },
+
+            {
+                targets: [5],
+                mRender : function(data, type, full) {
+                  console.log(full)
+                  if (full.status == 1) {
+                    return '<button class="btn btn-sm btn-warning"> submitted </button>';
+                  }else if(full.progress > 50) {
+                    return '<a href="http://api.whatsapp.com/send?phone='+full.phone.replace("+","")+'" target="_blank" class="btn btn-sm btn-success"> Chat WA </a>';
+                  }else {
+                    return '';
+
+                  }
+
+
+                }
+
+            }
+
+
+          ],
             columns: [
 
             { data: 'name'},
@@ -99,6 +121,7 @@ Members Registered
             { data: 'univ'},
             { data: 'phone'},
             { data: "progress"},
+            { data: "status"},
 
           ]
 

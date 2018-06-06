@@ -93,12 +93,19 @@ class usermanagementController extends Controller
          </div>
          </div>';
 
+         if ($user->final_submit == 1) {
+           $submit_status = '<button class="btn btn-sm btn-warning"> submitted </button>';
+         }else {
+           $submit_status = '';
+         }
+
       $row = array();
         $row["name"] = $user->name;
         $row["phone"] = $user->phone;
         $row["email"] = $user->email;
         $row["univ"] = $institution;
         $row["progress"]=$validation['fill_percent'];
+        $row["status"]=$user->final_submit;
         // $row[] = $user->name;
         $data[] = collect($row);
     }
