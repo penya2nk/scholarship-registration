@@ -75,7 +75,7 @@
                     </li>
 
                     <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
-                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-rocket"></i>Search Student</a>
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-search"></i>Search Student</a>
                     </li>
 
                     <li class="{{($routename == 'add.admin.index') ? 'active' : ''}}">
