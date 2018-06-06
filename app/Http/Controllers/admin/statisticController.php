@@ -23,7 +23,7 @@ class statisticController extends Controller
 
       // Potensi Submitted
 
-      $users = User::all();
+      $users = User::where('final_submit', 0)->get();
 
       $potensi = 0;
 
