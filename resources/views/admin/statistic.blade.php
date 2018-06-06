@@ -187,6 +187,7 @@ Statistik
     // Potensi Submitted
 
     $users_count = $univ->users()->where('final_submit', 0)->get();
+    dd($users_count);
 
     $potensinya = 0;
 
@@ -204,7 +205,7 @@ Statistik
 
   <div class="row">
     <div class="col-md-12">
-      <h4>{{$univ->institution_name}}</h4>
+      <h4>{{$univ->institution_name}} {{$univ->users->count()}}</h4>
       <hr>
     </div>
   </div>
