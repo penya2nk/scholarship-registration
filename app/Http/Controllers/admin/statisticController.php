@@ -21,6 +21,28 @@ class statisticController extends Controller
     {
       $activities = Activity::users(1)->count();
 
+      // Potensi Submitted
+
+      $users = User::all();
+
+      $potensi = 0;
+
+      foreach ($users as $key => $user) {
+        $institution = $user->institution['institution_name'];
+        if ($institution !== NULL) {
+          $institution = explode('(',$institution);
+          $institution = str_replace(')', '',$institution[1]);
+        }else {
+          $institution = '';
+        }
+
+        $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($user->email);
+
+        if ($validation['fill_percent'] > 50) {
+             $potensi++;
+           }
+        }
+
 
       $start_day1 = Carbon::create(2018, 5, 7, 0, 0, 0, 'Asia/Jakarta');
       $start_day = $start_day1->setTime(0, 0, 0);
@@ -56,7 +78,8 @@ class statisticController extends Controller
         'university_labels'=>$university_label,
         'user_online'=>$activities,
         'laki'=>$laki,
-        'perempuan'=>$perempuan
+        'perempuan'=>$perempuan,
+        'potensi'=>$potensi
        );
 
       return view('admin.statistic')->with($data);
