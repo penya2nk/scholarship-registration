@@ -193,8 +193,8 @@ Members Submitted <br> (Yang Sudah Submit)
 @foreach ($university_labels as $univ)
 
   @php
-    $laki_count= $univ->users()->where([['gender', 'L'],['final_submit' , 0]])->count();
-    $perempuan_count= $univ->users()->where([['gender', 'P'],['final_submit', 0]])->count();
+    $laki_count= $univ->users()->where([['gender', 'L'],['final_submit' , 1]])->count();
+    $perempuan_count= $univ->users()->where([['gender', 'P'],['final_submit', 1]])->count();
 
     // Potensi Submitted
 
