@@ -31,6 +31,8 @@ Members Registered
                 <th>Phone</th>
                 <th>Kelengkapan Data</th>
                 <th>Status</th>
+                <th>Gender</th>
+                <th>Register</th>
                 {{-- <th>Country</th>
                 <th>Salary</th> --}}
               </tr>
@@ -122,6 +124,8 @@ Members Registered
             { data: 'phone'},
             { data: "progress"},
             { data: "status"},
+            { data: "gender"},
+            { data: "register"},
 
           ]
 

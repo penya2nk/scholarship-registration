@@ -70,7 +70,7 @@ class usermanagementController extends Controller
       $institution = $user->institution['institution_name'];
       if ($institution !== NULL) {
         $institution = explode('(',$institution);
-        $institution = str_replace(')', '',$institution[1]);
+        $institution = "-".str_replace(')', '',$institution[1])."-";
       }else {
         $institution = '';
       }
@@ -99,6 +99,14 @@ class usermanagementController extends Controller
            $submit_status = '';
          }
 
+         if ($user->gender = "L") {
+           $gender = "Laki-Laki";
+         }elseif ($user->gender = "P") {
+           $gender = "Perempuan";
+         }else {
+           $gender= "";
+         }
+
       $row = array();
         $row["name"] = $user->name;
         $row["phone"] = $user->phone;
@@ -106,6 +114,8 @@ class usermanagementController extends Controller
         $row["univ"] = $institution;
         $row["progress"]=$validation['fill_percent'];
         $row["status"]=$user->final_submit;
+        $row["gender"] = $gender;
+        $row["register"] = $user->created_at->format('d-M');
         // $row[] = $user->name;
         $data[] = collect($row);
     }
