@@ -82,6 +82,10 @@
                         <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
                     </li>
 
+                    <li>
+                      <hr style="border-top:1px solid rgb(56, 213, 68)">
+                    </li>
+
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
                     </li> --}}

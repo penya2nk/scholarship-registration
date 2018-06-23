@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\models\institution', 'university_id');
     }
+
+    public function status()
+    {
+        return $this->belongsTo('App\models\status', 'status_id');
+    }
 }

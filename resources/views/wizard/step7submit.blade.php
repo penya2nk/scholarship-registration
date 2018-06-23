@@ -39,7 +39,9 @@ kerjakan.” <br><br>
                     </h6>
                     <br><br>
 
-                    <input type="button" style="padding: 14px 122px;" class="btn btn-next btn-fill btn-default btn-wd btn-lg" value="Submitted">
+                    <input type="button" style="padding: 14px 122px;" class="btn btn-next btn-fill btn-default btn-wd btn-lg" value="Submitted"><br><br>
+                    <input type="button" id="unsubmit-data" style="padding: 14px 122px;border-bottom: 13px green solid;" class="btn btn-fill btn-success btn-wd btn-lg" value="Unsubmit">
+
                   @else
 
                     <h6>Demikian data-data ini saya buat dengan sesungguhnya, apabila dikemudian hari terbukti pernyataaan ini tidak benar.
@@ -143,6 +145,53 @@ kerjakan.” <br><br>
             'Berhasil !',
             // 'The Product '+ data.judul +' has been deleted.',
             'Data berhasil dikirim. Silahkan tunggu kabar selanjutnya'
+          )
+
+        }else {
+          swal(
+            'Gagal!',
+            // 'Training '+ data.judul +' ada peserta yang sedang bertransaksi.',
+            'error'
+          )
+        }
+
+      });
+
+    }
+  });
+    });
+  </script>
+
+  <script type="text/javascript">
+    $('#unsubmit-data').on('click', function() {
+      swal({
+        title: "Apakah Anda Ingin memperbaiki data?",
+        text: "Pastikan submit kembali jika data yang diberikan sudah benar. Panitia seleksi hanya menerima data yang telah disubmit.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#f44336",
+        confirmButtonText: "Ya, Saya Yakin !",
+        cancelButtonText: "Cancel",
+
+      }).then((result) => {
+    if (result.value) {
+      var id_user = {{$user->id}};
+
+      $.ajax({
+        url: '/scholarship/step/final_submit/undo',
+        type: 'POST',
+        dataType: 'json',
+        context:this,
+        data: {"_token": "{{ csrf_token() }}",
+               "id_user": id_user}
+      })
+      .done(function(data) {
+
+        if (data.status == "Success") {
+          swal(
+            'Berhasil !',
+            // 'The Product '+ data.judul +' has been deleted.',
+            'Data berhasil dibuka kembali. Jangan lupa ya untuk submit kembali setelah memperbaiki data. Panitia hanya menerima data yang sudah disubmit'
           )
 
         }else {

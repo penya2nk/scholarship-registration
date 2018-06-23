@@ -1084,6 +1084,28 @@ class RegWizardController extends Controller
     return response()->json($output);
     }
 
+    public function final_submit_undo(Request $request)
+    {
+      $user = Auth::user();
+
+      $sum_sallary = $user->ayah_penghasilan + $user->ibu_penghasilan;
+
+      $user->final_submit = 0;
+      $user->save();
+
+      if ($user) {
+        $status = "Success";
+      }else {
+        $status = "Gagal";
+      }
+
+      $output = array("status"  => $status,
+                    // "judul"   => $judul
+                  );
+
+    return response()->json($output);
+    }
+
 
 
 

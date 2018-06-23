@@ -68,6 +68,8 @@ Route::get('/scholarship/step/review_submit', 'student\RegWizardController@submi
 
 Route::get('/scholarship/step/final_submit', 'student\RegWizardController@final_submit')->name('step_final_submit');
 Route::post('/scholarship/step/final_submit', 'student\RegWizardController@final_submit_save')->name('step_final_submit_save');
+Route::post('/scholarship/step/final_submit/undo', 'student\RegWizardController@final_submit_undo')->name('step_final_submit_undo');
+
 
 
 
