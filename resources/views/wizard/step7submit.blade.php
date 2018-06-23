@@ -119,7 +119,7 @@ kerjakan.” <br><br>
     $('#submit-data').on('click', function() {
       swal({
         title: "Apakah Anda yakin?",
-        text: "Pastikan data yang Anda berikan sudah benar. Pembaharuan data tidak bisa dilakukan lagi setelah melakukan proses submit.",
+        text: "Pastikan data yang Anda berikan sudah benar ?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#f44336",
