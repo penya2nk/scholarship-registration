@@ -196,7 +196,7 @@ kerjakan.” <br><br>
             'Data berhasil dibuka kembali. Jangan lupa ya untuk submit kembali setelah memperbaiki data. Panitia hanya menerima data yang sudah disubmit'
           )
 
-          location.reload();
+          // location.reload();
 
         }else {
           swal(
