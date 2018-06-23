@@ -147,6 +147,8 @@ kerjakan.” <br><br>
             'Data berhasil dikirim. Silahkan tunggu kabar selanjutnya'
           )
 
+          location.reload();
+
         }else {
           swal(
             'Gagal!',
@@ -193,6 +195,8 @@ kerjakan.” <br><br>
             // 'The Product '+ data.judul +' has been deleted.',
             'Data berhasil dibuka kembali. Jangan lupa ya untuk submit kembali setelah memperbaiki data. Panitia hanya menerima data yang sudah disubmit'
           )
+
+          location.reload();
 
         }else {
           swal(
