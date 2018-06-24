@@ -136,6 +136,12 @@ Route::group([
   // Sudo all
   Route::get('/getsumsallary', 'admin\insightController@generate_sum_sallary');
 
+  // Seleksi Section
+  Route::get('/admin/seleksi', 'admin\seleksiController@index')->name('seleksi.index');
+  Route::get('/admin/seleksi/data', 'admin\seleksiController@member_data')->name('seleksi.data');
+
+
+
 });
 
 

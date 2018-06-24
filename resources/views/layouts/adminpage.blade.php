@@ -86,6 +86,10 @@
                       <hr style="border-top:1px solid rgb(56, 213, 68)">
                     </li>
 
+                    <li class="{{($routename == 'seleksi.index') ? 'active' : ''}}">
+                        <a href="{{route('seleksi.index')}}"> <i class="menu-icon fa fa-hand-lizard-o"></i>Seleksi</a>
+                    </li>
+
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
                     </li> --}}
