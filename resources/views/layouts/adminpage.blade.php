@@ -41,8 +41,10 @@
 
     @yield('css-section')
 
+
+
 </head>
-<body>
+<body class="">
         <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
@@ -345,6 +347,12 @@
         <!--  Chart js -->
     @yield('script')
 
+    <script type="text/javascript">
+    $('#menuToggle').on('click', function(event) {
+      $('body').toggleClass('open');
+      console.log("tes")
+    });
+    </script>
 
 </body>
 </html>

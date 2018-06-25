@@ -18,6 +18,21 @@ Members Registered
   </div>
   <div class="row">
     <div class="col-md-12">
+      <div>
+          Toggle column:
+          <a class="toggle-vis" class="btn btn-info" data-column="0">Nama</a> -
+          <a class="toggle-vis" class="btn btn-info" data-column="1">Email</a> -
+          <a class="toggle-vis" class="btn btn-info" data-column="2">Universitas</a> -
+          <a class="toggle-vis" class="btn btn-info" data-column="3">No HP</a> -
+          <a class="toggle-vis" class="btn btn-info" data-column="4">Kelengkapan Data</a> -
+          <a class="toggle-vis" class="btn btn-info" data-column="5">Status</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+
       <div class="card">
         {{-- <div class="card-header">Member</div> --}}
         <div class="card-body card-block">
@@ -60,7 +75,7 @@ Members Registered
 
   <script>
     $(document).ready(function() {
-        $('.datatable').DataTable({
+        var tablenya = $('.datatable').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 // 'copy',
@@ -99,17 +114,8 @@ Members Registered
             {
                 targets: [5],
                 mRender : function(data, type, full) {
-                  console.log(full)
-                  if (full.status == 1) {
-                    return '<button class="btn btn-sm btn-warning"> submitted </button>';
-                  }else if(full.progress > 50) {
-                    return '<a href="http://api.whatsapp.com/send?phone='+full.phone.replace("+","")+'" target="_blank" class="btn btn-sm btn-success"> Chat WA </a>';
-                  }else {
-                    return '';
-
-                  }
-
-
+                  // console.log(full)
+                    return '<a href="/admin/profile/view/'+full.user_id+'" target="_blank" class="btn btn-sm btn-info"> View </a>';
                 }
 
             }
@@ -130,23 +136,23 @@ Members Registered
           ]
 
         });
-    });
-  </script>
 
-  <script type="text/javascript">
-    $(document).ready(function() {
-      
-      $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
 
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
+    $('a.toggle-vis').on( 'click', function (e) {
+      e.preventDefault();
+      console.log(tablenya)
 
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-      } );
+      // Get the column API object
+      var column = tablenya.column( $(this).attr('data-column') );
+      // Toggle the visibility
+      column.visible( ! column.visible() );
     } );
+
+    });
+
   </script>
+
+
 
   @endsection
 

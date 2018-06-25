@@ -17,7 +17,7 @@ class seleksiController extends Controller
 
     public function member_data()
     {
-      $users = User::all();
+      $users = User::where('final_submit',1)->get();
 
       foreach ($users as $key => $user) {
 
@@ -70,6 +70,7 @@ class seleksiController extends Controller
           $row["status"]=$user->final_submit;
           $row["gender"] = $gender;
           $row["register"] = $user->created_at->format('d-M');
+          $row["user_id"] = $user->id;
           // $row[] = $user->name;
           $data[] = collect($row);
       }
