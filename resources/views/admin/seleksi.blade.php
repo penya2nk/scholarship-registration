@@ -17,15 +17,28 @@ Members Registered
 
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <div>
-          Toggle column:
-          <a class="toggle-vis" class="btn btn-info" data-column="0">Nama</a> -
-          <a class="toggle-vis" class="btn btn-info" data-column="1">Email</a> -
-          <a class="toggle-vis" class="btn btn-info" data-column="2">Universitas</a> -
-          <a class="toggle-vis" class="btn btn-info" data-column="3">No HP</a> -
-          <a class="toggle-vis" class="btn btn-info" data-column="4">Kelengkapan Data</a> -
-          <a class="toggle-vis" class="btn btn-info" data-column="5">Status</a>
+    <div class="col-md-3">
+      <div class="card">
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="0,1,2,3">Nama</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="1">Email</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="2">Universitas</a>
+
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="3">No HP</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="4">Kelengkapan Data</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="5">Status</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="6">Gender</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="7">Register Date</a>
+
       </div>
     </div>
   </div>
@@ -43,6 +56,7 @@ Members Registered
                 <th>Name</th>
                 <th>Email</th>
                 <th>Univ.</th>
+                <th>Semester</th>
                 <th>Phone</th>
                 <th>Kelengkapan Data</th>
                 <th>Status</th>
@@ -88,7 +102,7 @@ Members Registered
             serverSide: false,
             ajax: '{{route('seleksi.data')}}',
             columnDefs: [{
-                targets: [4],
+                targets: [5],
                 mRender : function(data, type, full) {
 
                   if (full.progress == 100) {
@@ -112,7 +126,7 @@ Members Registered
             },
 
             {
-                targets: [5],
+                targets: [6],
                 mRender : function(data, type, full) {
                   // console.log(full)
                     return '<a href="/admin/profile/view/'+full.user_id+'" target="_blank" class="btn btn-sm btn-info"> View </a>';
@@ -127,6 +141,7 @@ Members Registered
             { data: 'name'},
             { data: 'email'},
             { data: 'univ'},
+            { data: 'semester'},
             { data: 'phone'},
             { data: "progress"},
             { data: "status"},
@@ -140,10 +155,11 @@ Members Registered
 
     $('a.toggle-vis').on( 'click', function (e) {
       e.preventDefault();
-      console.log(tablenya)
-
+      $(this).toggleClass('btn-warning','btn-default');
       // Get the column API object
       var column = tablenya.column( $(this).attr('data-column') );
+      console.log($(this).attr('data-column'))
+      console.log(column)
       // Toggle the visibility
       column.visible( ! column.visible() );
     } );

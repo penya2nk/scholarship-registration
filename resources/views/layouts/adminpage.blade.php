@@ -92,6 +92,10 @@
                         <a href="{{route('seleksi.index')}}"> <i class="menu-icon fa fa-hand-lizard-o"></i>Seleksi</a>
                     </li>
 
+                    <li class="{{($routename == 'parameter.index') ? 'active' : ''}}">
+                        <a href="{{route('parameter.index')}}"> <i class="menu-icon fa fa-child"></i>Parameter Penilaian</a>
+                    </li>
+
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
                     </li> --}}

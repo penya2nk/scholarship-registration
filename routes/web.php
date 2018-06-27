@@ -140,6 +140,11 @@ Route::group([
   Route::get('/admin/seleksi', 'admin\seleksiController@index')->name('seleksi.index');
   Route::get('/admin/seleksi/data', 'admin\seleksiController@member_data')->name('seleksi.data');
 
+  // Parameter Seleksi
+  Route::get('/admin/seleksi/parameter', 'admin\seleksiController@parameter_index')->name('parameter.index');
+  Route::post('/admin/seleksi/parameter/add', 'admin\seleksiController@parameter_post')->name('parameter.post');
+  Route::post('/admin/seleksi/parameter/edit', 'admin\seleksiController@parameter_edit')->name('parameter.edit');
+  Route::post('/admin/seleksi/parameter/delete', 'admin\seleksiController@parameter_delete')->name('parameter.delete');
 
 
 });

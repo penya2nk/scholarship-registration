@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DataTables;
 use App\User;
+use Carbon\Carbon;
+use App\models\parameter;
 
 
 class seleksiController extends Controller
@@ -61,6 +63,42 @@ class seleksiController extends Controller
              $gender= "";
            }
 
+
+
+
+           if ($user->generation !== NULL) {
+             $year = $user->generation;
+             $semt_1 = Carbon::createFromDate($user->generation,9,1,'Asia/Jakarta');
+             $now = Carbon::now();
+             $diff = $semt_1->diffInMonths($now);
+
+             if ($diff < 6) {
+               $semester = 1;
+             }elseif ($diff < 12) {
+               $semester = 2;
+             }elseif ($diff < 18) {
+               $semester = 3;
+             }elseif ($diff < 24) {
+               $semester = 4;
+             }elseif ($diff < 30) {
+               $semester = 5;
+             }elseif ($diff < 36) {
+               $semester = 6;
+             }elseif ($diff < 42) {
+               $semester = 7;
+             }elseif ($diff < 48) {
+               $semester = 8;
+             }elseif ($diff < 54) {
+               $semester = 9;
+             }else {
+               $semester = ">9";
+             }
+
+           }else {
+             $semester = "-";
+           }
+
+
         $row = array();
           $row["name"] = $user->name;
           $row["phone"] = $user->phone;
@@ -71,6 +109,80 @@ class seleksiController extends Controller
           $row["gender"] = $gender;
           $row["register"] = $user->created_at->format('d-M');
           $row["user_id"] = $user->id;
+          $row["photo_profile"] = $user->photo_profile;
+          $row["address"] = $user->address;
+          $row["born_place"] = $user->born_place;
+          $row["born_date"] = $user->born_date !== NULL ? $user->born_date->format('d-m-Y'): '-';
+          $row["anak_ke"] = $user->anak_ke;
+          $row["bersaudara"] = $user->bersaudara;
+          $row["university"] = $user->university_id !== NULL ? $user->institution->institution_name : '-';
+          $row["nip_mahasiswa"] = $user->nip_mahasiswa;
+          $row["faculty"] = $user->faculty;
+          $row["mayor"] = $user->mayor;
+          $row["religion"] = $user->religion;
+          $row["nik_ktp"] = $user->nik_ktp;
+          $row["body_length"] = $user->body_length;
+          $row["body_weight"] = $user->body_weight;
+          $row["instagram_id"] = $user->instagram_id;
+          $row["facebook_id"] = $user->facebook_id;
+          $row["blog_address"] = $user->blog_address;
+          $row["generation"] = $user->generation;
+
+          $row["semester"] = $semester;
+
+          $row["ayah_name"] = $user->ayah_name;
+          $row["ayah_suku"] = $user->ayah_suku;
+          $row["ayah_tempat_lahir"] = $user->ayah_tempat_lahir;
+          $row["ayah_tanggal_lahir"] = $user->ayah_tanggal_lahir;
+          $row["ayah_pendidikan"] = $user->ayah_pendidikan;
+          $row["ayah_pekerjaan"] = $user->ayah_pekerjaan;
+          $row["ayah_penghasilan"] = $user->ayah_penghasilan;
+          $row["ayah_tanggungan"] = $user->ayah_tanggungan;
+          $row["ayah_alamat"] = $user->ayah_alamat;
+          $row["ayah_phone"] = $user->ayah_phone;
+          $row["ayah_wafat"] = $user->ayah_wafat == "1" ? "Wafat" : '-';
+
+          $row["ibu_name"] = $user->ibu_name;
+          $row["ibu_suku"] = $user->ibu_suku;
+          $row["ibu_tempat_lahir"] = $user->ibu_tempat_lahir;
+          $row["ibu_tanggal_lahir"] = $user->ibu_tanggal_lahir;
+          $row["ibu_pendidikan"] = $user->ibu_pendidikan;
+          $row["ibu_pekerjaan"] = $user->ibu_pekerjaan;
+          $row["ibu_penghasilan"] = $user->ibu_penghasilan;
+          $row["ibu_tanggungan"] = $user->ibu_tanggungan;
+          $row["ibu_alamat"] = $user->ibu_alamat;
+          $row["ibu_phone"] = $user->ibu_phone;
+          $row["ibu_wafat"] = $user->ibu_wafat == "1" ? "Wafat" : '-';
+
+          $row["lifeplan_summary"] = $user->lifeplan_summary;
+          $row["commitment"] = $user->commitment;
+          $row["why_accepted"] = $user->why_accepted;
+          $row["photo_ktp"] = $user->photo_ktp;
+          $row["photo_kk"] = $user->photo_kk;
+          $row["photo_ktm"] = $user->photo_ktm;
+          $row["photo_sktm"] = $user->photo_sktm;
+          $row["photo_parent_sallary"] = $user->photo_parent_sallary;
+          $row["photo_transcript_score"] = $user->photo_transcript_score;
+          $row["photo_active_student"] = $user->photo_active_student;
+
+          $row["photo_home_front"] = $user->photo_home_front;
+          $row["photo_home_side"] = $user->photo_home_side;
+          $row["photo_home_in"] = $user->photo_home_in;
+          $row["photo_home_out"] = $user->photo_home_out;
+          $row["ip_1"] = $user->ip_1;
+          $row["ip_2"] = $user->ip_2;
+          $row["ip_3"] = $user->ip_3;
+          $row["ip_4"] = $user->ip_4;
+
+          $row["ipk_1"] = $user->ip_1;
+          $row["ipk_2"] = $user->ip_2;
+          $row["ipk_3"] = $user->ip_3;
+          $row["ipk_4"] = $user->ip_4;
+
+          $row["toefl"] = $user->toefl;
+          $row["sum_sallary"] = $user->sum_sallary;
+
+
           // $row[] = $user->name;
           $data[] = collect($row);
       }
@@ -78,5 +190,41 @@ class seleksiController extends Controller
 
 
       return Datatables::of($data)->make(true);
+    }
+
+    public function parameter_index()
+    {
+
+      $parameter = parameter::all();
+
+      $data = array('parameters' =>$parameter , );
+      return view('admin.parameterpenilaian')->with($data);
+    }
+
+    public function parameter_post(Request $request)
+    {
+      $add = new parameter;
+      $add->parameter_name = $request->parameter;
+      $add->save();
+
+      return redirect()->route('parameter.index')->with('alert','Menambahkan');
+    }
+
+    public function parameter_edit(Request $request)
+    {
+      $add = parameter::find($request->parameter_edit_id);
+      $add->parameter_name = $request->parameter_name;
+      $add->save();
+
+      return redirect()->route('parameter.index')->with('alert','Edit');
+
+    }
+
+    public function parameter_delete(Request $request)
+    {
+      $delete = parameter::find($request->parameter_id_delete);
+      $delete->delete();
+
+      return redirect()->route('parameter.index')->with('alert_delete','success');
     }
 }
