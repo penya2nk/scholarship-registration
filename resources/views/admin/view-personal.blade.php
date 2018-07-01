@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
   <link href="{{asset('assets/css/gsdk-bootstrap-wizard.css')}}" rel="stylesheet" />
 
   <div class="row justify-content-center">
@@ -588,6 +589,64 @@
     <hr>
 
   </div>
+
+  {{-- Komponen Penilaian --}}
+
+  @if ($_GET['seleksi'])
+    <div class="seleksi-wrapper">
+        @foreach (App\models\parameter::all()->chunk(4) as $parameters)
+          <div class="row">
+            @foreach ($parameters as $parameter)
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="">{{$parameter->parameter_name}}</label>
+                <input type="text" class="form-control input-sm parameter-seleksi" name="{{$parameter->id}}" id="" placeholder="">
+              </div>
+            </div>
+            @endforeach
+          </div>
+        @endforeach
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" id="save-score" class="btn btn-block btn-default">
+              Save
+            </button>
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#save-score').on('click', function() {
+          var nilai = $('.parameter-seleksi').serialize();
+          console.log(nilai)
+
+          $.ajax({
+            url: '{{route('score.save')}}',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              "_token": "{{ csrf_token() }}",
+              "score": nilai,
+              "user_id":{{$user->id}}
+            }
+          })
+          .done(function() {
+            console.log("success");
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+
+
+
+
+        });
+      });
+    </script>
+  @endif
 
   @section('script')
 

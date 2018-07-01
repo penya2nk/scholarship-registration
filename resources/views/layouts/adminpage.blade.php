@@ -88,14 +88,17 @@
                       <hr style="border-top:1px solid rgb(56, 213, 68)">
                     </li>
 
-                    <li class="{{($routename == 'seleksi.index') ? 'active' : ''}}">
-                        <a href="{{route('seleksi.index')}}"> <i class="menu-icon fa fa-hand-lizard-o"></i>Seleksi</a>
+                    <li class="{{($routename == 'stage.index') ? 'active' : ''}}">
+                        <a href="{{route('stage.index')}}"> <i class="menu-icon fa fa-location-arrow"></i>Tahapan Seleksi</a>
                     </li>
 
                     <li class="{{($routename == 'parameter.index') ? 'active' : ''}}">
                         <a href="{{route('parameter.index')}}"> <i class="menu-icon fa fa-child"></i>Parameter Penilaian</a>
                     </li>
 
+                    <li class="{{($routename == 'seleksi.index') ? 'active' : ''}}">
+                      <a href="{{route('seleksi.index')}}"> <i class="menu-icon fa fa-hand-lizard-o"></i>Seleksi</a>
+                    </li>
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>
                     </li> --}}

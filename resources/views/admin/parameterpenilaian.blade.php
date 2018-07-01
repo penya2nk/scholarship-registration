@@ -5,29 +5,73 @@ Parameters Selection
 @endsection
 
 @section('content')
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">Add Parameters</div>
-        <div class="card-body card-block">
 
-          <form class="" action="{{route('parameter.post')}}" method="post">
-            {{ csrf_field() }}
-            <div class="form-group">
-              <div class="input-group">
-                <input type="parameter" id="email-admin" name="parameter" placeholder="ex: Organisasi" class="form-control">
-              </div>
-            </div>
-
-            <div class="form-actions form-group">
-              <button type="submit" id="add-admin" class="btn btn-success btn-sm">Add</button>
-            </div>
-          </form>
-
+  @if ($stages->count()== 0)
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="alert alert-primary" role="alert">
+          <h5>Tahapan Seleksi belum dibuat. Silahkan mengisi data tahapan seleksi pada menu selksi</h5>
         </div>
       </div>
     </div>
-  </div>
+
+    @else
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">Add Parameters</div>
+            <div class="card-body card-block">
+
+              <form class="" action="{{route('parameter.post')}}" method="post">
+                {{ csrf_field() }}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Induk Tahapan Seleksi</label>
+                      <select class="form-control" name="stage_id">
+                        @foreach ($stages as $stage)
+                          <option value="{{$stage->id}}">{{$stage->stage_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="text" id="email-admin" name="parameter" placeholder="Nama Parameter Penilaian" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="number" id="skala-admin" name="skala" placeholder="Skala Skor Maksimum" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+
+                      <div class="input-group">
+                        <input type="number" id="percentage-admin" name="percentage" placeholder="Persentase Bobot" class="form-control">
+                        <span class="input-group-addon">%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-actions form-group">
+                  <button type="submit" id="add-admin" class="btn btn-success btn-sm">Add</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  @endif
 
   <div class="row">
     <div class="col-md-12">
@@ -40,33 +84,42 @@ Parameters Selection
             <thead>
               <th>No</th>
               <th>Parameter</th>
+              <th>Tahapan Seleksi</th>
+              <th>Skala Maksimum</th>
+              <th>Presentase Bobot</th>
               <th>Action</th>
             </thead>
             <tbody>
               @php
                 $i = 1;
+
               @endphp
-              @foreach ($parameters as $parameter)
-                <tr>
-                  <td>{{$i++}}</td>
-                  <td>{{$parameter->parameter_name}}</td>
-                  <td>
-                    <button type="button" data-toggle="modal" data-target="#edit-{{$parameter->id}}" class="btn btn-warning">
-                      Edit
-                    </button>
-                    <form class="" style="display:inline" action="{{route('parameter.delete')}}" method="post">
-                      {{ csrf_field() }}
-                      <input type="hidden" name="parameter_id_delete" value="{{$parameter->id}}">
-                      <button type="button" id="delete-button" class="btn btn-danger">
-                        Delete
+              @if ($parameters->count() !== 0)
+                @foreach ($parameters as $parameter)
+                  <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$parameter->parameter_name}}</td>
+                    <td>{{$parameter->stage->stage_name}}</td>
+                    <td>{{$parameter->skala}}</td>
+                    <td>{{$parameter->percentage}} %</td>
+                    <td>
+                      <button type="button" data-toggle="modal" data-target="#edit-{{$parameter->id}}" class="btn btn-warning">
+                        Edit
                       </button>
-                    </form>
-                  </td>
-                </tr>
-              @endforeach
+                      <form class="" style="display:inline" action="{{route('parameter.delete')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="parameter_id_delete" value="{{$parameter->id}}">
+                        <button type="button" id="" class="btn btn-danger delete-button">
+                          Delete
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
+              @endif
 
               <script type="text/javascript">
-                $('#delete-button').on('click', function() {
+                $('.delete-button').on('click', function() {
                   event.preventDefault();
                   /* Act on the event */
 
@@ -93,6 +146,12 @@ Parameters Selection
               </script>
 
             </tbody>
+            <tfoot>
+              @if ($parameters->count() !== 0)
+                <th colspan="4" style="text-align:right">Total</th>
+                <th style="{{$parameter->sum('percentage') > 100 ? 'color:red' : ''}}">{{$parameter->sum('percentage')}} % {{$parameter->sum('percentage') > 100 ? 'WARNING ! (>100%)' : ''}}</th>
+              @endif
+            </tfoot>
           </table>
         </div>
       </div>
@@ -124,8 +183,27 @@ Parameters Selection
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
+                      <label for="">Tahapan Seleksi</label>
+                      <select class="form-control" name="stage_id">
+                        @foreach ($stages as $stage)
+                          <option value="{{$stage->id}}" {{$parameter->stage_id == $stage->id ? 'selected' :false}}>{{$stage->stage_name}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
                       <input type="hidden" class="form-control" name="parameter_edit_id"  id="" value="{{$parameter->id}}" placeholder="">
                       <input type="text" class="form-control" name="parameter_name" id="" value="{{$parameter->parameter_name}}" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Skala</label>
+                      <input type="number" class="form-control" name="skala" id="" value="{{$parameter->skala}}" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Persentase Bobot Penilaian</label>
+                      <div class="input-group">
+                        <input type="number" class="form-control" name="percentage" id="" value="{{$parameter->percentage}}" placeholder="">
+                        <span class="input-group-addon">%</span>
+                      </div>
                     </div>
                   </div>
                 </div>

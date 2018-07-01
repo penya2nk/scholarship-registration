@@ -8,6 +8,7 @@ use DataTables;
 use App\User;
 use Carbon\Carbon;
 use App\models\parameter;
+use App\models\stage;
 
 
 class seleksiController extends Controller
@@ -192,12 +193,64 @@ class seleksiController extends Controller
       return Datatables::of($data)->make(true);
     }
 
+    // CRUD TAHAPAN SELEKSI
+
+    public function stage_index()
+    {
+
+      $stage = stage::all();
+
+      $data = array('stages' =>$stage , );
+      return view('admin.stagepenilaian')->with($data);
+    }
+
+    public function stage_post(Request $request)
+    {
+      $add = new stage;
+      $add->stage_name = $request->stage;
+      $add->start_date = $request->start_date;
+      $add->end_date = $request->end_date;
+      $add->color = $request->color;
+
+      $add->save();
+
+      return redirect()->route('stage.index')->with('alert','Menambahkan');
+    }
+
+    public function stage_edit(Request $request)
+    {
+      $add = stage::find($request->stage_edit_id);
+      $add->stage_name = $request->stage_name;
+      $add->start_date = $request->start_date;
+      $add->end_date = $request->end_date;
+      $add->color = $request->color;
+      $add->save();
+
+      return redirect()->route('stage.index')->with('alert','Edit');
+
+    }
+
+    public function stage_delete(Request $request)
+    {
+      $delete = stage::find($request->stage_id_delete);
+      $delete->delete();
+
+      return redirect()->route('stage.index')->with('alert_delete','success');
+    }
+
+
+
+    // CRUD PARAMETER
     public function parameter_index()
     {
 
       $parameter = parameter::all();
+      $stage = stage::all();
 
-      $data = array('parameters' =>$parameter , );
+      $data = array(
+        'parameters' =>$parameter,
+        'stages' =>$stage ,
+      );
       return view('admin.parameterpenilaian')->with($data);
     }
 
@@ -205,6 +258,10 @@ class seleksiController extends Controller
     {
       $add = new parameter;
       $add->parameter_name = $request->parameter;
+      $add->skala = $request->skala;
+      $add->stage_id = $request->stage_id;
+      $add->percentage = $request->percentage;
+
       $add->save();
 
       return redirect()->route('parameter.index')->with('alert','Menambahkan');
@@ -214,6 +271,9 @@ class seleksiController extends Controller
     {
       $add = parameter::find($request->parameter_edit_id);
       $add->parameter_name = $request->parameter_name;
+      $add->stage_id = $request->stage_id;
+      $add->skala = $request->skala;
+      $add->percentage = $request->percentage;
       $add->save();
 
       return redirect()->route('parameter.index')->with('alert','Edit');
@@ -226,5 +286,21 @@ class seleksiController extends Controller
       $delete->delete();
 
       return redirect()->route('parameter.index')->with('alert_delete','success');
+    }
+
+    public function save_score()
+    {
+      $request = $_REQUEST['score'];
+      $explodes = explode('&',$request);
+
+      foreach ($explodes as $value) {
+        // Memecah = menjadi satuan
+        $scores = explode('=', $value);
+        $id_parameter = $scores[0];
+        $score = $scores[1];
+      }
+
+
+
     }
 }

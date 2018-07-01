@@ -82,6 +82,8 @@ class insightController extends Controller
     {
       $user = user::find($id);
 
+      // dd($_GET['seleksi']);
+
       $data = array('user' =>$user , );
       return view('admin.view-personal')->with($data);
     }

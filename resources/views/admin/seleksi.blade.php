@@ -19,7 +19,7 @@ Members Registered
   <div class="row">
     <div class="col-md-3">
       <div class="card">
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="0,1,2,3">Nama</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="0">Nama</a>
           <a class="toggle-vis btn btn-sm btn-warning" data-column="1">Email</a>
           <a class="toggle-vis btn btn-sm btn-warning" data-column="2">Universitas</a>
 
@@ -129,7 +129,7 @@ Members Registered
                 targets: [6],
                 mRender : function(data, type, full) {
                   // console.log(full)
-                    return '<a href="/admin/profile/view/'+full.user_id+'" target="_blank" class="btn btn-sm btn-info"> View </a>';
+                    return '<a href="/admin/profile/view/'+full.user_id+'?seleksi=true" target="_blank" class="btn btn-sm btn-info"> View </a>';
                 }
 
             }

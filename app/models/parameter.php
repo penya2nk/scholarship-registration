@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class parameter extends Model
 {
     use SoftDeletes;
+
+    public function stage()
+    {
+      return $this->belongsTo('App\models\stage','stage_id');
+    }
 }

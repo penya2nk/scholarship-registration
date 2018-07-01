@@ -140,11 +140,22 @@ Route::group([
   Route::get('/admin/seleksi', 'admin\seleksiController@index')->name('seleksi.index');
   Route::get('/admin/seleksi/data', 'admin\seleksiController@member_data')->name('seleksi.data');
 
+  // Tahapan Seleksi
+  Route::get('/admin/seleksi/stage', 'admin\seleksiController@stage_index')->name('stage.index');
+  Route::post('/admin/seleksi/stage/add', 'admin\seleksiController@stage_post')->name('stage.post');
+  Route::post('/admin/seleksi/stage/edit', 'admin\seleksiController@stage_edit')->name('stage.edit');
+  Route::post('/admin/seleksi/stage/delete', 'admin\seleksiController@stage_delete')->name('stage.delete');
+
+
   // Parameter Seleksi
   Route::get('/admin/seleksi/parameter', 'admin\seleksiController@parameter_index')->name('parameter.index');
   Route::post('/admin/seleksi/parameter/add', 'admin\seleksiController@parameter_post')->name('parameter.post');
   Route::post('/admin/seleksi/parameter/edit', 'admin\seleksiController@parameter_edit')->name('parameter.edit');
   Route::post('/admin/seleksi/parameter/delete', 'admin\seleksiController@parameter_delete')->name('parameter.delete');
+
+  Route::post('/admin/seleksi/score/punch', 'admin\seleksiController@save_score')->name('score.save');
+
+
 
 
 });

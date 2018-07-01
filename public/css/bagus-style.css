@@ -9,3 +9,18 @@ button.dt-button.buttons-excel.buttons-html5 {
     border-radius:  24px;
     border: none;
 }
+
+.seleksi-wrapper{
+  background: #dee0db;
+  padding: 34px;
+  position: fixed;
+  bottom: 0px;
+  width: 75%;
+}
+
+span.help-block.with-errors {
+    color: white;
+    background: #ff6262;
+    text-align: center;
+    display:  block;
+}
