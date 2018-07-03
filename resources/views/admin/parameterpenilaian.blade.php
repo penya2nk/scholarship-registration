@@ -99,7 +99,7 @@ Parameters Selection
                   <tr>
                     <td>{{$i++}}</td>
                     <td>{{$parameter->parameter_name}}</td>
-                    <td>{{$parameter->stage->stage_name}}</td>
+                    <td>{{$parameter->stage['stage_name']}}</td>
                     <td>{{$parameter->skala}}</td>
                     <td>{{$parameter->percentage}} %</td>
                     <td>
