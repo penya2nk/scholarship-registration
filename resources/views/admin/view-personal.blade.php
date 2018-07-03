@@ -599,8 +599,39 @@
             @foreach ($parameters as $parameter)
             <div class="col-md-3">
               <div class="form-group">
-                <label for="">{{$parameter->parameter_name}}</label>
-                <input type="text" class="form-control input-sm parameter-seleksi" name="{{$parameter->id}}" id="" placeholder="">
+                <label for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
+
+                <div class="input-group">
+
+
+                  <input class="form-control input-sm parameter-seleksi" min="0"
+                  max="{{$parameter->skala}}"
+                  name="{{$parameter->id}}"
+                  @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
+                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "1")
+                      disabled
+                      type="password"
+                    @else
+                      type="number"
+                    @endif
+                  @else
+                    type="number"
+                  @endif
+                  value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
+
+
+                  <span class="grup-lock">
+                    <form class="" action="{{route('score.lock')}}" method="post">
+                      {{ csrf_field() }}
+                      <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                      <input type="hidden" name="user_id" value="{{$user->id}}">
+
+                      <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
+                        Lock
+                      </button>
+                    </form>
+                  </span>
+                </div>
               </div>
             </div>
             @endforeach

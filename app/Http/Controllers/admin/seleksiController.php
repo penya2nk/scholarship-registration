@@ -11,6 +11,7 @@ use App\models\parameter;
 use App\models\stage;
 
 
+
 class seleksiController extends Controller
 {
     public function index()
@@ -291,6 +292,7 @@ class seleksiController extends Controller
     public function save_score()
     {
       $request = $_REQUEST['score'];
+      $user_id = $_REQUEST['user_id'];
       $explodes = explode('&',$request);
 
       foreach ($explodes as $value) {
@@ -298,8 +300,33 @@ class seleksiController extends Controller
         $scores = explode('=', $value);
         $id_parameter = $scores[0];
         $score = $scores[1];
+
+        $user = user::find($user_id);
+
+        $count_exist = $user->parameters()->where('parameter_id', $id_parameter)->first();
+        // dd($count_exist !== NULL);
+
+        if ($count_exist !== NULL) {
+          $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score]);
+        }else {
+          $user->parameters()->attach($id_parameter, ['score' => $score]);
+        }
+
       }
 
+      dd("berhasil Save");
+
+    }
+
+    public function lock_score(Request $request)
+    {
+      $parameter_id = $_REQUEST['parameter_id'];
+      $user_id = $_REQUEST['user_id'];
+      $user = user::find($user_id);
+
+      $user->parameters()->updateExistingPivot($parameter_id, ['lock' => 1]);
+
+      return redirect('/admin/profile/view/'.$user_id.'?seleksi=true');
 
 
     }

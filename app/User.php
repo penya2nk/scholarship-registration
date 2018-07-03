@@ -71,4 +71,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\models\status', 'status_id');
     }
+
+    public function parameters()
+    {
+      return $this->belongsToMany('App\models\parameter','user_parameter')
+        ->withPivot('score','lock')
+        ->withTimestamps();
+    }
 }

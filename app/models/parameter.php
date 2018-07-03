@@ -14,4 +14,11 @@ class parameter extends Model
     {
       return $this->belongsTo('App\models\stage','stage_id');
     }
+
+    public function users()
+    {
+      return $this->belongsToMany('App\user','user_parameter')
+        ->withPivot('score','lock')
+        ->withTimestamps();
+    }
 }

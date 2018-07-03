@@ -118,6 +118,11 @@
     .switch.switch-default.switch-xs .switch-input:checked ~ .switch-handle {
       left: 10px; }
 
+      span.grup-lock {
+          background:  white;
+          padding: 3px;
+      }
+
 .switch.switch-text {
   position: relative;
   display: inline-block;

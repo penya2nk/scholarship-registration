@@ -11,7 +11,10 @@
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
 
-
+span.grup-lock {
+    background:  white;
+    padding: 3px;
+}
 
 .help-block .with-errors{
   color:#d14135 !important;
