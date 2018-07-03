@@ -10,7 +10,9 @@ Parameters Selection
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="alert alert-primary" role="alert">
-          <h5>Tahapan Seleksi belum dibuat. Silahkan mengisi data tahapan seleksi pada menu selksi</h5>
+          <h5>Tahapan Seleksi belum dibuat. Silahkan mengisi data tahapan seleksi pada menu
+            <a href="{{route('stage.index')}}">"tahapan seleksi"</a>
+            </h5>
         </div>
       </div>
     </div>
