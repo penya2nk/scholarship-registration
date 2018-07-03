@@ -620,17 +620,30 @@
                   value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
 
 
-                  <span class="grup-lock">
-                    <form class="" action="{{route('score.lock')}}" method="post">
-                      {{ csrf_field() }}
-                      <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
-                      <input type="hidden" name="user_id" value="{{$user->id}}">
+                  @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
+                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
+                      <span class="grup-lock">
+                        <form class="" action="{{route('score.lock')}}" method="post">
+                          {{ csrf_field() }}
+                          <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                          <input type="hidden" name="user_id" value="{{$user->id}}">
 
-                      <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
-                        Lock
-                      </button>
-                    </form>
-                  </span>
+                          <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
+                            Lock
+                          </button>
+                        </form>
+                      </span>
+                    @else
+                      {{-- type="number" --}}
+                    @endif
+                  @else
+                    {{-- type="number" --}}
+                  @endif
+
+
+
+
+
                 </div>
               </div>
             </div>
