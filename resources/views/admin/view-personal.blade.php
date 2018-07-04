@@ -225,7 +225,7 @@
                                     <b>{{$com->committee_name}}</b>
                                   </h4>
                                   <p class="no-margin">{{$com->date_from ? $com->date_from->format('d M Y'): ''}} - {{$com->date_end ? $com->date_end->format('d M Y') : ''}}</p>
-                                  <p class="no-margin">{{$com->date_from ? $com->positions->position_name : ''}} {{$com->position}}</p>
+                                  <p class="no-margin">{{$com->position_name ? $com->positions->position_name : ''}} {{$com->position}}</p>
                                 </li>
                               @endforeach
                             </ul>
@@ -624,7 +624,6 @@
                       <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
 
                       <div class="input-group">
-
                         <form class="" action="{{route('score.each.save')}}" method="post" style="display: inherit;">
                           {{ csrf_field() }}
 
@@ -673,10 +672,6 @@
                         @else
                           {{-- type="number" --}}
                         @endif
-
-
-
-
 
                       </div>
                     </div>
