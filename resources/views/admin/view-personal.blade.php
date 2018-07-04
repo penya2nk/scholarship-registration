@@ -615,7 +615,7 @@
               <hr>
             </div>
           </div>
-          @foreach ($stage->parameters()->get()->chunk(4) as $parameters)
+          @foreach ($stage->parameters()->get()->chunk(5) as $parameters)
             <div class="">
               <div class="row">
                 @foreach ($parameters as $parameter)
