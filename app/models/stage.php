@@ -11,8 +11,8 @@ class stage extends Model
       use SoftDeletes;
       protected $dates = ['start_date','end_date'];
 
-      public function parameteres()
+      public function parameters()
       {
-        return $this->hasMany('App\parameter', 'stage_id');
+        return $this->hasMany('App\models\parameter', 'stage_id');
       }
 }

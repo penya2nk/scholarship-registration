@@ -14,6 +14,8 @@ button.dt-button.buttons-excel.buttons-html5 {
   background: #dee0db;
   padding: 34px;
   position: fixed;
+  padding-top:10px;
+  padding-bottom:10px;
   bottom: 0px;
   width: 75%;
 }

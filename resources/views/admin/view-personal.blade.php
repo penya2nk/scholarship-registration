@@ -520,7 +520,7 @@
                                   </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" style="margin-bottom:100px">
                                   <div class="col-sm-6">
                                     <label for="">Foto Rumah dari Samping</label>
                                     <img @if ($user->photo_home_side == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_side}}"  @endif id="profileimage-home-side" class="img img-responsive" alt="">
@@ -593,75 +593,97 @@
   {{-- Komponen Penilaian --}}
 
   @if (isset($_GET['seleksi']))
-    <div class="seleksi-wrapper">
-        @foreach (App\models\parameter::all()->chunk(4) as $parameters)
+    <div class="seleksi-wrapper" >
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-fill btn-block btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Penilaian
+          </button>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample">
+
+        @foreach (App\models\stage::all() as $stage)
           <div class="row">
-            @foreach ($parameters as $parameter)
-            <div class="col-md-3">
-              <div class="form-group">
-                <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
+            <div class="col-md-12">
+              <h5>{{$stage->stage_name}}</h5>
+              <hr>
+            </div>
+          </div>
+          @foreach ($stage->parameters()->get()->chunk(4) as $parameters)
+            <div class="">
+              <div class="row">
+                @foreach ($parameters as $parameter)
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
 
-                <div class="input-group">
+                      <div class="input-group">
 
-                  <form class="" action="{{route('score.each.save')}}" method="post" style="display: inherit;">
-                  {{ csrf_field() }}
-
-                  <input class="form-control input-sm parameter-seleksi" min="0"
-                  max="{{$parameter->skala}}"
-                  step="0.01"
-                  name="{{$parameter->id}}"
-                  @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
-                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "1")
-                      disabled
-                      type="password"
-                    @else
-                      type="number"
-                    @endif
-                  @else
-                    type="number"
-                  @endif
-                  value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
-
-                    <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
-                    <input type="hidden" name="user_id" value="{{$user->id}}">
-
-                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first() == NULL || $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
-                      <button type="submit" class="btn btn-sm btn-fill btn-default lock-this">
-                        Save
-                      </button>
-                    @endif
-                  </form>
-
-                  @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
-                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
-                      <span class="grup-lock">
-                        <form class="" action="{{route('score.lock')}}" method="post">
+                        <form class="" action="{{route('score.each.save')}}" method="post" style="display: inherit;">
                           {{ csrf_field() }}
+
+                          <input class="form-control input-sm parameter-seleksi" min="0"
+                          max="{{$parameter->skala}}"
+                          step="0.01"
+                          name="{{$parameter->id}}"
+                          @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
+                            @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "1")
+                              disabled
+                              type="password"
+                            @else
+                              type="number"
+                            @endif
+                          @else
+                            type="number"
+                          @endif
+                          value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
+
                           <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
                           <input type="hidden" name="user_id" value="{{$user->id}}">
 
-                          <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
-                            Lock
-                          </button>
+                          @if ($user->parameters()->where('parameter_id', $parameter->id)->first() == NULL || $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
+                            <button type="submit" class="btn btn-sm btn-fill btn-default lock-this">
+                              Save
+                            </button>
+                          @endif
                         </form>
-                      </span>
-                    @else
-                      {{-- type="number" --}}
-                    @endif
-                  @else
-                    {{-- type="number" --}}
-                  @endif
+
+                        @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
+                          @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
+                            <span class="grup-lock">
+                              <form class="" action="{{route('score.lock')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
+
+                                <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
+                                  Lock
+                                </button>
+                              </form>
+                            </span>
+                          @else
+                            {{-- type="number" --}}
+                          @endif
+                        @else
+                          {{-- type="number" --}}
+                        @endif
 
 
 
 
 
-                </div>
+                      </div>
+                    </div>
+                  </div>
+                @endforeach
               </div>
             </div>
-            @endforeach
-          </div>
+          @endforeach
+
         @endforeach
+      </div>
+
         {{-- <div class="row">
           <div class="col-md-12">
             <button type="button" id="save-score" class="btn btn-block btn-default">
