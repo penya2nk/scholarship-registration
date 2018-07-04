@@ -62,6 +62,9 @@ Members Registered
                 <th>Status</th>
                 <th>Gender</th>
                 <th>Register</th>
+                @foreach (App\models\parameter::all() as $element)
+
+                @endforeach
                 {{-- <th>Country</th>
                 <th>Salary</th> --}}
               </tr>

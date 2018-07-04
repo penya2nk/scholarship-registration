@@ -38,7 +38,7 @@
                         <p>{{$user->phone}}</p>
                         <p>{{$user->address}}</p>
                         <p>Anak ke {{$user->anak_ke}} dari {{$user->bersaudara}} bersaudara</p>
-                        
+
                         IPK
                         Smt 1 : <span class="badge badge-danger ">{{$user->ipk_1 ? $user->ipk_1: "0.00"}}</span>
                          2 : <span class="badge badge-danger ">{{$user->ipk_2 ? $user->ipk_2: "0.00"}}</span>
@@ -619,7 +619,7 @@
             <div class="">
               <div class="row">
                 @foreach ($parameters as $parameter)
-                  <div class="col-md-3">
+                  <div class="col-md-2 no-padding">
                     <div class="form-group">
                       <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
 
