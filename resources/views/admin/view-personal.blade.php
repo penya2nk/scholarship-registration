@@ -599,13 +599,16 @@
             @foreach ($parameters as $parameter)
             <div class="col-md-3">
               <div class="form-group">
-                <label for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
+                <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
 
                 <div class="input-group">
 
+                  <form class="" action="{{route('score.each.save')}}" method="post" style="display: inherit;">
+                  {{ csrf_field() }}
 
                   <input class="form-control input-sm parameter-seleksi" min="0"
                   max="{{$parameter->skala}}"
+                  step="0.01"
                   name="{{$parameter->id}}"
                   @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
                     @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "1")
@@ -619,6 +622,15 @@
                   @endif
                   value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
 
+                    <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
+
+                    @if ($user->parameters()->where('parameter_id', $parameter->id)->first() == NULL || $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
+                      <button type="submit" class="btn btn-sm btn-fill btn-default lock-this">
+                        Save
+                      </button>
+                    @endif
+                  </form>
 
                   @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
                     @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
@@ -650,13 +662,13 @@
             @endforeach
           </div>
         @endforeach
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-md-12">
             <button type="button" id="save-score" class="btn btn-block btn-default">
               Save
             </button>
           </div>
-        </div>
+        </div> --}}
     </div>
     <script type="text/javascript">
       $(document).ready(function() {

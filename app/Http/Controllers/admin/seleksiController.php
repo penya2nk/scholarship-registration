@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use DataTables;
 use App\User;
@@ -307,9 +309,9 @@ class seleksiController extends Controller
         // dd($count_exist !== NULL);
 
         if ($count_exist !== NULL) {
-          $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score]);
+          $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
         }else {
-          $user->parameters()->attach($id_parameter, ['score' => $score]);
+          $user->parameters()->attach($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
         }
 
       }
@@ -328,6 +330,31 @@ class seleksiController extends Controller
 
       return redirect('/admin/profile/view/'.$user_id.'?seleksi=true');
 
+
+    }
+
+    public function save_score_each(Request $request)
+    {
+
+      $parameter = $request->parameter_id;
+      $user_id = $request->user_id;
+      $scores = $request->$parameter;
+
+      $id_parameter = $parameter;
+      $score = $scores;
+
+      $user = user::find($user_id);
+
+      $count_exist = $user->parameters()->where('parameter_id', $id_parameter)->first();
+      // dd($count_exist !== NULL);
+
+      if ($count_exist !== NULL) {
+        $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
+      }else {
+        $user->parameters()->attach($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
+      }
+
+      return redirect('/admin/profile/view/'.$user_id.'?seleksi=true');
 
     }
 }
