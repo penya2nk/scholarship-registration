@@ -38,7 +38,12 @@
                         <p>{{$user->phone}}</p>
                         <p>{{$user->address}}</p>
                         <p>Anak ke {{$user->anak_ke}} dari {{$user->bersaudara}} bersaudara</p>
-                        <br><br>
+                        
+                        IPK
+                        Smt 1 : <span class="badge badge-danger ">{{$user->ipk_1 ? $user->ipk_1: "0.00"}}</span>
+                         2 : <span class="badge badge-danger ">{{$user->ipk_2 ? $user->ipk_2: "0.00"}}</span>
+                         3 : <span class="badge badge-danger ">{{$user->ipk_3 ? $user->ipk_3: "0.00"}}</span>
+                         4 : <span class="badge badge-danger ">{{$user->ipk_4 ? $user->ipk_4: "0.00"}}</span>
                       </div>
                     </div>
 
