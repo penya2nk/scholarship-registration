@@ -1,10 +1,7 @@
 @extends('layouts.adminpage')
 
 @section('title')
-  @php
-    dd($user);
-  @endphp
-{{$user['name']}}
+{{$user->name}}
 @endsection
 
 @section('content')
