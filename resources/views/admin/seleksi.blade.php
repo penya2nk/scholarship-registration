@@ -28,16 +28,16 @@ Members Registered
     <div class="col-md-3">
       <div class="card">
 
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="3">No HP</a>
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="4">Kelengkapan Data</a>
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="5">Status</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="3">Semester</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="5">Kelengkapan Data</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="6">Status</a>
       </div>
     </div>
     <div class="col-md-3">
       <div class="card">
 
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="6">Gender</a>
-          <a class="toggle-vis btn btn-sm btn-warning" data-column="7">Register Date</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="7">Gender</a>
+          <a class="toggle-vis btn btn-sm btn-warning" data-column="8">Register Date</a>
 
       </div>
     </div>

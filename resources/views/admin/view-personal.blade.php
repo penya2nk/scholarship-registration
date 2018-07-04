@@ -1,7 +1,7 @@
 @extends('layouts.adminpage')
 
 @section('title')
-{{$user->name}}
+{{$user['name']}}
 @endsection
 
 @section('content')
