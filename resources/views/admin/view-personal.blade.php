@@ -592,7 +592,7 @@
 
   {{-- Komponen Penilaian --}}
 
-  @if ($_GET['seleksi'])
+  @if (isset($_GET['seleksi']))
     <div class="seleksi-wrapper">
         @foreach (App\models\parameter::all()->chunk(4) as $parameters)
           <div class="row">
