@@ -18,7 +18,9 @@ class seleksiController extends Controller
 {
     public function index()
     {
-      return view('admin.seleksi');
+      $users = User::where('final_submit',1)->get();
+      $data = array('users' =>$users , );
+      return view('admin.seleksi')->with($data);
     }
 
     public function member_data()
@@ -35,9 +37,9 @@ class seleksiController extends Controller
           $institution = '';
         }
 
-        $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($user->email);
+          $validation = app('App\Http\Controllers\admin\ValidationController')->count_null($user->email);
 
-        if ($validation['fill_percent'] == 100) {
+          if ($validation['fill_percent'] == 100) {
              $bar_progress = 'progress-bar-success';
            }elseif ($validation['fill_percent'] >80) {
              $bar_progress = 'progress-bar-info';
@@ -102,6 +104,8 @@ class seleksiController extends Controller
              $semester = "-";
            }
 
+
+           $status_score = '<a class="btn btn-fill btn-default"> Check </a>' ;
 
         $row = array();
           $row["name"] = $user->name;
@@ -185,6 +189,7 @@ class seleksiController extends Controller
 
           $row["toefl"] = $user->toefl;
           $row["sum_sallary"] = $user->sum_sallary;
+          $row["status_score"] = $status_score;
 
 
           // $row[] = $user->name;

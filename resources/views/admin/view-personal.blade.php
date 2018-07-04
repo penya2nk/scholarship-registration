@@ -30,7 +30,7 @@
                             {{$user->name}}
                           </b>
                         </h2>
-                        <h4>{{$user->institution->institution_name}} ({{$user->generation}})</h4>
+                        <h4>{{$user->institution['institution_name']}} ({{$user->generation}})</h4>
                         <h5>{{$user->faculty}} </h5>
                         <h5>{{$user->mayor}} ({{$user->nip_mahasiswa}}) </h5>
 
