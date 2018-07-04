@@ -1,6 +1,9 @@
 @extends('layouts.adminpage')
 
 @section('title')
+  @php
+    dd($user);
+  @endphp
 {{$user['name']}}
 @endsection
 
