@@ -11,6 +11,7 @@ use App\User;
 use Carbon\Carbon;
 use App\models\parameter;
 use App\models\stage;
+use App\models\user_parameter;
 
 
 
@@ -361,5 +362,27 @@ class seleksiController extends Controller
 
       return redirect('/admin/profile/view/'.$user_id.'?seleksi=true');
 
+    }
+
+    public function unlock_all(Request $request)
+    {
+      $user_param = user_parameter::where([['parameter_id', $request->parameter_id],['lock', 1]])->get();
+      foreach ($user_param as $key => $value) {
+        $value->lock = 0;
+        $value->save();
+      }
+
+      return redirect()->route('parameter.index')->with('alert','Unlock Nilai Pada');
+    }
+
+    public function lock_all(Request $request)
+    {
+      $user_param = user_parameter::where([['parameter_id', $request->parameter_id],['lock', 1]])->get();
+      foreach ($user_param as $key => $value) {
+        $value->lock = 1;
+        $value->save();
+      }
+
+      return redirect()->route('parameter.index')->with('alert','Lock Nilai Pada');
     }
 }

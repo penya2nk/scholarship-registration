@@ -105,14 +105,28 @@ Parameters Selection
                     <td>{{$parameter->skala}}</td>
                     <td>{{$parameter->percentage}} %</td>
                     <td>
-                      <button type="button" data-toggle="modal" data-target="#edit-{{$parameter->id}}" class="btn btn-warning">
+                      <button type="button" data-toggle="modal" data-target="#edit-{{$parameter->id}}" class="btn btn-sm btn-warning">
                         Edit
                       </button>
                       <form class="" style="display:inline" action="{{route('parameter.delete')}}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="parameter_id_delete" value="{{$parameter->id}}">
-                        <button type="button" id="" class="btn btn-danger delete-button">
+                        <button type="button" id="" class="btn btn-sm btn-danger delete-button">
                           Delete
+                        </button>
+                      </form>
+                      <form class="" style="display:inline" action="{{route('unlock.all')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                        <button type="submit" id="" class="btn btn-sm btn-primary">
+                          Unlock All
+                        </button>
+                      </form>
+                      <form class="" style="display:inline" action="{{route('lock.all')}}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
+                        <button type="submit" id="" class="btn btn-sm btn-success">
+                          Unlock All
                         </button>
                       </form>
                     </td>
@@ -151,7 +165,7 @@ Parameters Selection
             <tfoot>
               @if ($parameters->count() !== 0)
                 <th colspan="4" style="text-align:right">Total</th>
-                <th style="{{$parameter->sum('percentage') > 100 ? 'color:red' : ''}}">{{$parameter->sum('percentage')}} % {{$parameter->sum('percentage') > 100 ? 'WARNING ! (>100%)' : ''}}</th>
+                <th style="{{$parameter->sum('percentage') > 100 ? 'color:red' : ''}}">{{$parameter->sum('percentage')}} % {{$parameter->sum('percentage') > 100 ? '' : ''}}</th>
               @endif
             </tfoot>
           </table>

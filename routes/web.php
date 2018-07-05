@@ -157,6 +157,8 @@ Route::group([
   Route::post('/admin/seleksi/score/lock','admin\seleksiController@lock_score')->name('score.lock');
   Route::post('/admin/seleksi/score/save','admin\seleksiController@save_score_each')->name('score.each.save');
 
+  Route::post('/admin/seleksi/score/lock-all','admin\seleksiController@lock_all')->name('lock.all');
+  Route::post('/admin/seleksi/score/unlock-all','admin\seleksiController@unlock_all')->name('unlock.all');
 
 
 
