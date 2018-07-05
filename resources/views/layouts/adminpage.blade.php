@@ -54,8 +54,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="{{asset('images/logo-white.svg')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{asset('images/pm-logo-white.svg')}}" alt="Logo"></a>
+                <a class="navbar-brand" href="/"><img src="{{asset('images/logo-white.svg')}}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="/"><img src="{{asset('images/pm-logo-white.svg')}}" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -98,6 +98,10 @@
 
                     <li class="{{($routename == 'seleksi.index') ? 'active' : ''}}">
                       <a href="{{route('seleksi.index')}}"> <i class="menu-icon fa fa-hand-lizard-o"></i>Seleksi</a>
+                    </li>
+
+                    <li class="{{($routename == 'seleksi.result') ? 'active' : ''}}">
+                      <a href="{{route('seleksi.result')}}"> <i class="menu-icon fa fa-gavel"></i>Hasil Penilaian</a>
                     </li>
                     {{-- <li class="{{($routename == 'admin.email') ? 'active' : ''}}">
                         <a href="{{route('admin.email')}}"> <i class="menu-icon fa fa-send"></i>E-mail Blast</a>

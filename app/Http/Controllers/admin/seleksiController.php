@@ -390,4 +390,11 @@ class seleksiController extends Controller
 
       return redirect()->route('parameter.index')->with('alert','Lock Nilai Pada');
     }
+
+    public function score_result(Request $request)
+    {
+      $users = User::where('final_submit',1)->get();
+      $data = array('users' =>$users , );
+      return view('admin.hasil-seleksi')->with($data);
+    }
 }

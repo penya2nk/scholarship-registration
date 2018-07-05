@@ -160,6 +160,8 @@ Route::group([
   Route::post('/admin/seleksi/score/lock-all','admin\seleksiController@lock_all')->name('lock.all');
   Route::post('/admin/seleksi/score/unlock-all','admin\seleksiController@unlock_all')->name('unlock.all');
 
+  // Hasil Seleksi
+  Route::get('/admin/seleksi/score/result','admin\seleksiController@score_result')->name('seleksi.result');
 
 
 

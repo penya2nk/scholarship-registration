@@ -75,7 +75,7 @@ class User extends Authenticatable
     public function parameters()
     {
       return $this->belongsToMany('App\models\parameter','user_parameter')
-        ->withPivot('score','lock','comment')
+        ->withPivot('score','lock','comment','user_submit')
         ->withTimestamps();
     }
 }
