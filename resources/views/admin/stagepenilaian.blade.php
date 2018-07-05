@@ -42,11 +42,20 @@ stages Selection
                   </div>
                 </div>
               </div>
-              <div class="col-md-2">
+              {{-- <div class="col-md-2">
                 <div class="form-group">
                   <span class="label">Warna</span>
                   <div class="input-group">
                     <input type="text" id="skala-admin" name="color" placeholder="Warna" class="form-control mycp">
+                  </div>
+                </div>
+              </div> --}}
+              <div class="col-md-2">
+                <div class="form-group">
+                  <span class="label">Presentase</span>
+                  <div class="input-group">
+                    <input type="number" id="" min="0" max="100" name="percentage" placeholder="Persentase" class="form-control mycp">
+                    <span class="input-group-addon">%</span>
                   </div>
                 </div>
               </div>
@@ -75,7 +84,7 @@ stages Selection
               <th>stage</th>
               <th>Tanggal Mulai</th>
               <th>Tanggal Selesai</th>
-              <th>Warna</th>
+              <th>Persentase</th>
               <th>Action</th>
             </thead>
             <tbody>
@@ -90,7 +99,8 @@ stages Selection
                     <td>{{$stage->stage_name}}</td>
                     <td>{{$stage->start_date !== NULL ? $stage->start_date->format('d-m-Y'): ''}}</td>
                     <td>{{$stage->end_date !== NULL ? $stage->end_date->format('d-m-Y'): ''}} </td>
-                    <td style="background:{{$stage->color}};">{{$stage->color}} </td>
+                    {{-- <td style="background:{{$stage->color}};">{{$stage->color}} </td> --}}
+                    <td>{{$stage->percentage}} %</td>
                     <td>
                       <button type="button" data-toggle="modal" data-target="#edit-{{$stage->id}}" class="btn btn-warning">
                         Edit
@@ -136,7 +146,10 @@ stages Selection
 
             </tbody>
             <tfoot>
-
+              @if ($stages->count() !== 0)
+                <th colspan="4" style="text-align:right">Total</th>
+                <th style="{{$stages->sum('percentage') > 100 ? 'color:red' : ''}}">{{$stages->sum('percentage')}} % {{$stages->sum('percentage') > 100 ? '' : ''}}</th>
+              @endif
             </tfoot>
           </table>
         </div>
@@ -181,9 +194,10 @@ stages Selection
                       <input type="date" class="form-control" name="end_date" id="" value="{{$stage->end_date !== NULL ? $stage->end_date->format('Y-m-d'): ''}}" placeholder="">
                     </div>
                     <div class="form-group">
-                      <label for="">Warna</label>
+                      <label for="">Persentase</label>
                       <div class="input-group">
-                        <input type="text" class="form-control mycp" name="color" id="" value="{{$stage->color}}" placeholder="">
+                        <input type="number" id="" min="0" max="100" value="{{$stage->percentage}}" name="percentage" placeholder="Persentase" class="form-control">
+                        <span class="input-group-addon">%</span>
                       </div>
                     </div>
                   </div>

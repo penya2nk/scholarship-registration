@@ -243,9 +243,9 @@ Members Registered
        { targets: 8, visible:false },
        { targets: 9, visible:false },
      ],
-
      "fnDrawCallback": function( oSettings ) {
        $('[data-toggle="tooltip"]').tooltip();
+       // $('[data-toggle="tooltip"]').tooltip();
        // $('body').tooltip({selector: '[data-toggle="tooltip"]'});
        // alert( 'DataTables has redrawn the table' );
      },
@@ -270,7 +270,7 @@ Members Registered
 
     <script>
     $(document).ready(function(){
-      // $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="tooltip"]').tooltip();
     });
     </script>
 

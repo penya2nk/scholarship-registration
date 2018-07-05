@@ -219,7 +219,8 @@ class seleksiController extends Controller
       $add->stage_name = $request->stage;
       $add->start_date = $request->start_date;
       $add->end_date = $request->end_date;
-      $add->color = $request->color;
+      // $add->color = $request->color;
+      $add->percentage = $request->percentage;
 
       $add->save();
 
@@ -233,6 +234,8 @@ class seleksiController extends Controller
       $add->start_date = $request->start_date;
       $add->end_date = $request->end_date;
       $add->color = $request->color;
+      $add->percentage = $request->percentage;
+
       $add->save();
 
       return redirect()->route('stage.index')->with('alert','Edit');
