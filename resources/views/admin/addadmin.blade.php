@@ -45,7 +45,33 @@ Admin Members
 
   </div>
   <div class="row">
-
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Join</th>
+          </tr>
+        </thead>
+        @php
+          $i =1;
+        @endphp
+        <tbody>
+          @foreach ($admins as $admin)
+            <tr>
+              <td>{{$i++}}</td>
+              <td>{{$admin->name}}</td>
+              <td>{{$admin->email}}</td>
+              <td>{{$admin->phone}}</td>
+              <td>{{$admin->created_at->format('d-m-Y H:i:s')}}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
 
 
   </div>
