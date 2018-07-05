@@ -68,17 +68,54 @@ Hasil Penilaian
             width="100%" role="grid" style="width: 100%;">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                @if (App\models\parameter::all()->count() !== 0)
-                  @foreach (App\models\parameter::all() as $parameter)
-                    <th>{{$parameter->parameter_name}}</th>
+                <th rowspan="2">No</th>
+                <th rowspan="2">Name</th>
+                <th rowspan="2">Univ</th>
+                <th rowspan="2">Email</th>
+                <th rowspan="2">Phone</th>
+                @if (App\models\stage::all()->count() !== 0)
+                  @foreach (App\models\stage::all() as $stage)
+
+                    <th colspan="{{$stage->parameters()->count()}}" style="background:orange; color:black">
+                      {{$stage->stage_name}}
+                      <br>
+                      ({{$stage->percentage}} %)
+
+                    </th>
+                  @endforeach
+                @endif
+                @if (App\models\stage::all()->count() !== 0)
+                  @foreach (App\models\stage::all() as $stage)
+                    {{-- Menghitung Skor Maksimum Pada Header--}}
+                    @php
+                      $skor_maks_stage = [];
+                      $theparam = $stage->parameters()->get();
+                      foreach ($theparam as $key => $param) {
+                        $skor_maks_stage[] = $param->skala * $param->percentage/100;
+                      }
+                    @endphp
+                    <th rowspan="2" style="background:orange; color:black;text-align:center">{{$stage->stage_name}} ({{array_sum($skor_maks_stage)}})</th>
                   @endforeach
                 @endif
                 {{-- <th>Country</th>
                 <th>Salary</th> --}}
               </tr>
+
+              {{-- Untuk Kolom Bawah --}}
+              <tr>
+                @if (App\models\parameter::all()->count() !== 0)
+                  @foreach (App\models\parameter::all() as $parameter)
+                    <th style="font-size:9pt">
+                      {{$parameter->parameter_name}}
+                      <br>
+                      ({{$parameter->percentage}} %)
+
+                    </th>
+                  @endforeach
+                @endif
+              </tr>
+
+
             </thead>
             <tbody>
               @php
@@ -87,17 +124,26 @@ Hasil Penilaian
               @foreach ($users as $user)
                 @php
 
-                  $parameter = App\models\parameter::all();
+                $institution = $user->institution['institution_name'];
+                if ($institution !== NULL) {
+                  $institution = explode('(',$institution);
+                  $institution = "-".str_replace(')', '',$institution[1])."-";
+                }else {
+                  $institution = '';
+                }
 
                 @endphp
                 <tr>
                   <td>{{$i++}}</td>
                   <td>{{$user->name}}</td>
+                  <td>{{$institution}}</td>
                   <td>{{$user->email}}</td>
+                  <td>{{$user->phone}}</td>
+
+                  {{-- TAHAP PARAMETER --}}
                   @if (App\models\parameter::all()->count() !== 0)
                     @foreach (App\models\parameter::all() as $parameter)
                       @php
-
                         $check = $user->parameters()->where('parameter_id',$parameter->id)->first();
                         if ($check == NULL) {
                           $score = '-';
@@ -116,6 +162,32 @@ Hasil Penilaian
                         color: white;
                         ">{{$stamp}}</span>
                       </td>
+                    @endforeach
+                  @endif
+                  {{-- TAHAP STAGES --}}
+                  @if (App\models\stage::all()->count() !== 0)
+                    @foreach (App\models\stage::all() as $stage)
+                      @php
+                        $par_score =[];
+                      @endphp
+                      {{-- Perhitungan Persentase per Parameter --}}
+                      @foreach ($stage->parameters()->get() as $parameter)
+
+                        @php
+                          $check = $user->parameters()->where('parameter_id',$parameter->id)->first();
+                          if ($check == NULL) {
+                            $par_score[] = 0;
+                          }else{
+                            $par_score[] = $check->pivot->score * $parameter->percentage/100;
+                          }
+                        @endphp
+
+                      @endforeach
+                      @php
+                          $skor_parameter = array_sum($par_score);
+                      @endphp
+
+                      <td style="background:orange;text-align:center">{{$skor_parameter}}</td>
                     @endforeach
                   @endif
 
@@ -144,13 +216,21 @@ Hasil Penilaian
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables-colvis/1.1.2/js/dataTables.colVis.js"></script>
 
     @php
-      $s = 3;
+      $s = 5;
     @endphp
 
   <script>
     $(document).ready(function() {
         var tablenya = $('.datatable').DataTable({
-          "sDom": 'C<"clear">lfrtip',
+          "sDom": 'BC<"clear">lfrtip',
+          // dom: 'Bfrtip',
+          buttons: [
+              // 'copy',
+              // 'csv',
+              'excel',
+              // 'pdf',
+              // 'print'
+            ],
 
       // membuat beberapa data tidak muncul dulu
       'columnDefs': [
