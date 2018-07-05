@@ -345,22 +345,24 @@ class seleksiController extends Controller
       $parameter = $request->parameter_id;
       $user_id = $request->user_id;
       $scores = $request->$parameter;
+      $comment = $request->comment;
 
       $id_parameter = $parameter;
       $score = $scores;
 
       $user = user::find($user_id);
+      $parameter =parameter::find($parameter);
 
       $count_exist = $user->parameters()->where('parameter_id', $id_parameter)->first();
       // dd($count_exist !== NULL);
 
       if ($count_exist !== NULL) {
-        $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
+        $user->parameters()->updateExistingPivot($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name, 'comment'=>$comment]);
       }else {
-        $user->parameters()->attach($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name]);
+        $user->parameters()->attach($id_parameter, ['score' => $score, 'user_submit'=>Auth::user()->name,'comment'=>$comment]);
       }
 
-      return redirect('/admin/profile/view/'.$user_id.'?seleksi=true');
+      return redirect('/admin/profile/view/'.$user_id.'?seleksi=true')->with('saved','Nilai '.$parameter->parameter_name.' Berhasil Disimpan');
 
     }
 

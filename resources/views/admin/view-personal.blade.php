@@ -505,8 +505,6 @@
                                   </div>
                                 </div>
 
-
-
                                 <div class="row">
                                   <hr>
                                 </div>
@@ -606,7 +604,7 @@
           </button>
         </div>
       </div>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseExample" style="overflow: scroll !important; max-height: 600px !important;">
 
         @foreach (App\models\stage::all() as $stage)
           <div class="row">
@@ -615,15 +613,16 @@
               <hr>
             </div>
           </div>
-          @foreach ($stage->parameters()->get()->chunk(5) as $parameters)
+          @foreach ($stage->parameters()->get()->chunk(6) as $parameters)
             <div class="">
               <div class="row">
                 @foreach ($parameters as $parameter)
-                  <div class="col-md-2 no-padding">
+                  <div class="col-md-2">
                     <div class="form-group">
                       <label style="font-size: 10pt; font-weight: 100;" for="">{{$parameter->parameter_name}} (0-{{$parameter->skala}})</label>
 
-                      <div class="input-group">
+                      <div class="">
+
                         <form class="" action="{{route('score.each.save')}}" method="post" style="display: inherit;">
                           {{ csrf_field() }}
 
@@ -641,16 +640,39 @@
                           @else
                             type="number"
                           @endif
-                          value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}" id="" placeholder="">
+                          value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->score : '0'}}"
+                          id="" placeholder="">
+
+                          <input
+                          {{-- type="text" --}}
+                          class="form-control"
+                          placeholder="komentar"
+                          style="font-size:8pt"
+                          name="comment"
+                          value="{{$user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL ? $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->comment : ''}}"
+                          @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
+                            @if ($user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "1")
+                              disabled
+                              type="password"
+                            @else
+                              type="text"
+                            @endif
+                          @else
+                            type="text"
+                          @endif
+                          >
 
                           <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
                           <input type="hidden" name="user_id" value="{{$user->id}}">
 
                           @if ($user->parameters()->where('parameter_id', $parameter->id)->first() == NULL || $user->parameters()->where('parameter_id', $parameter->id)->first()->pivot->lock == "0")
-                            <button type="submit" class="btn btn-sm btn-fill btn-default lock-this">
+                            <button type="submit" class="btn btn-sm btn-block btn-fill btn-success">
                               Save
                             </button>
                           @endif
+
+
+
                         </form>
 
                         @if ($user->parameters()->where('parameter_id', $parameter->id)->first() !== NULL)
@@ -661,16 +683,12 @@
                                 <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
 
-                                <button type="submit" class="btn btn-block btn-sm btn-default lock-this">
+                                <button type="submit" class="btn btn-block btn-sm btn-fill btn-default lock-this">
                                   Lock
                                 </button>
                               </form>
                             </span>
-                          @else
-                            {{-- type="number" --}}
                           @endif
-                        @else
-                          {{-- type="number" --}}
                         @endif
 
                       </div>
@@ -727,6 +745,16 @@
   @endif
 
   @section('script')
+
+    @if (session()->has('saved'))
+      <script type="text/javascript">
+        swal({
+            title:'{{session()->get('saved')}}',
+            type:'success'
+          },
+        );
+      </script>
+    @endif
 
   @endsection
 

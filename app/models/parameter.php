@@ -18,7 +18,7 @@ class parameter extends Model
     public function users()
     {
       return $this->belongsToMany('App\user','user_parameter')
-        ->withPivot('score','lock')
+        ->withPivot('score','lock','comment')
         ->withTimestamps();
     }
 }

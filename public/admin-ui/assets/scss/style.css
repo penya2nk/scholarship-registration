@@ -120,7 +120,8 @@
 
       span.grup-lock {
           background:  white;
-          padding: 3px;
+          /* padding: 3px; */
+          /* float: left */
       }
 
 .switch.switch-text {
