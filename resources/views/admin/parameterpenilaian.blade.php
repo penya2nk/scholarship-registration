@@ -126,7 +126,7 @@ Parameters Selection
                         {{ csrf_field() }}
                         <input type="hidden" name="parameter_id" value="{{$parameter->id}}">
                         <button type="submit" id="" class="btn btn-sm btn-success">
-                          Unlock All
+                          Lock All
                         </button>
                       </form>
                     </td>
