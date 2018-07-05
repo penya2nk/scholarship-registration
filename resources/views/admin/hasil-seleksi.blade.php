@@ -135,10 +135,17 @@ Hasil Penilaian
                 @endphp
                 <tr>
                   <td>{{$i++}}</td>
-                  <td>{{$user->name}}</td>
+                  <td>
+                    <a href="/admin/profile/view/{{$user->id}}?seleksi=true" target="_blank">
+                      {{$user->name}}</td>
+                    </a>
                   <td>{{$institution}}</td>
                   <td>{{$user->email}}</td>
-                  <td>{{$user->phone}}</td>
+                  <td>
+                    <a href="http://api.whatsapp.com/send?phone={{str_replace("+","",$user->phone)}}" target="_blank" class="btn btn-sm btn-success">
+                      {{$user->phone}}
+                    </a>
+                  </td>
 
                   {{-- TAHAP PARAMETER --}}
                   @if (App\models\parameter::all()->count() !== 0)
