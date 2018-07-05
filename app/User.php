@@ -78,4 +78,9 @@ class User extends Authenticatable
         ->withPivot('score','lock','comment','user_submit')
         ->withTimestamps();
     }
+
+    public function stage()
+    {
+        return $this->belongsTo('App\models\stage', 'stage_id');
+    }
 }

@@ -397,4 +397,32 @@ class seleksiController extends Controller
       $data = array('users' =>$users , );
       return view('admin.hasil-seleksi')->with($data);
     }
+
+    public function change_stage(Request $request)
+    {
+      $user_id = $_REQUEST['user_id'];
+      $stage_id = $_REQUEST['stage_id'];
+
+      if (isset($user_id) && isset($stage_id)) {
+        $user = user::find($user_id);
+        $stage = stage::find($stage_id);
+        $user->stage_id = $stage_id;
+        $user->save();
+
+        $data = array(
+        'status' => 'success',
+        'name'   => $user->name,
+        'stage'   => $stage->stage_name
+        );
+      }else {
+        $data = array(
+        'status' => 'gagal',
+        // 'name'   => $user->name,
+        // 'stage'   => $stage->stage_name
+        );
+      }
+
+      return response()->json($data);
+    }
+
 }

@@ -84,6 +84,8 @@ Hasil Penilaian
                     </th>
                   @endforeach
                 @endif
+
+
                 @if (App\models\stage::all()->count() !== 0)
                   @foreach (App\models\stage::all() as $stage)
                     {{-- Menghitung Skor Maksimum Pada Header--}}
@@ -99,6 +101,7 @@ Hasil Penilaian
                 @endif
                 {{-- <th>Country</th>
                 <th>Salary</th> --}}
+                  <th rowspan="2">Masuk Tahap</th>
               </tr>
 
               {{-- Untuk Kolom Bawah --}}
@@ -198,6 +201,18 @@ Hasil Penilaian
                     @endforeach
                   @endif
 
+                  <td>
+                    @if (App\models\stage::all()->count() !== 0)
+                      <input type="hidden" class="user_id" name="" value="{{$user->id}}">
+                      {{-- <small style="display:inline-block;text-align:center;width:100%" class="tahap_name">{{$user->stage_id !== NULL ? $user->stage->stage_name : 'Seleksi Berkas'}}</small> --}}
+                      <select class="seleksi-tahap" name="seleksi_tahap" data-search="Done">                      
+                        @foreach (App\models\stage::all() as $stage)
+                          <option @if($user->stage_id !== NULL) @if($user->stage_id == $stage->id) selected @endif @endif value="{{$stage->id}}">{{$stage->stage_name}}</option>
+                          @endforeach
+                      </select>
+                    @endif
+                  </td>
+
                 </tr>
               @endforeach
 
@@ -254,12 +269,93 @@ Hasil Penilaian
      "fnDrawCallback": function( oSettings ) {
 
      },
+        });
+
+        @if(App\models\stage::all()->count() !== 0)
+        // Ajax untuk perubahan status seleksi
+        $('.seleksi-tahap').on('change', function() {
+          var user_id = $(this).parent().find('.user_id').val();
+          var stage_id = $(this).parent().find('.seleksi-tahap').val();
+
+          $.ajax({
+            url: '{{route('stage.status.save')}}',
+            type: 'POST',
+            context:this,
+            dataType: 'json',
+            data: { "_token": "{{ csrf_token() }}",
+                   "user_id": user_id,
+                   "stage_id": stage_id
+                        },
+          })
+          .done(function(data) {
+
+            if (data.status == "success") {
+              swal({
+                  title:'Berhasil Mengubah Status '+data.name+' ke tahap '+data.stage+'',
+                  type:'success'
+                },
+              );
+            }
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+
 
         });
+        @endif
+
 
     });
 
   </script>
+
+  <script type="text/javascript">
+
+
+    if (typeof(buildFilterRegex) !== "function") {
+      function buildFilterRegex(filterValue) {
+
+          if (filterValue.indexOf('&') === -1) {
+              return '[~>]\\s*' + jQuery.fn.dataTable.util.escapeRegex(filterValue) + '\\s*[<~]';
+          } else {
+              var tempDiv = document.createElement('div');
+              tempDiv.innerHTML = filterValue;
+
+              return '\\s*' + jQuery.fn.dataTable.util.escapeRegex(tempDiv.innerText) + '\\s*';
+          }
+      }
+    }
+
+    $(".view-filter-btns a").click(function(e) {
+      var filterValue = $(this).find("span").not('.badge').html().trim();
+      var dataTable = $('#tableServicesList').DataTable();
+      var filterValueRegex;
+      if ($(this).hasClass('active')) {
+                      $(this).removeClass('active');
+              $(this).find("i.fa.fa-dot-circle-o").removeClass('fa-dot-circle-o').addClass('fa-circle-o');
+                  dataTable.column(3).search('').draw();
+      } else {
+              $('.view-filter-btns .list-group-item').removeClass('active');
+              $('i.fa.fa-dot-circle-o').removeClass('fa-dot-circle-o').addClass('fa-circle-o');
+              $(this).addClass('active');
+              $(this).find(jQuery("i.fa.fa-circle-o")).removeClass('fa-circle-o').addClass('fa-dot-circle-o');
+                  filterValueRegex = buildFilterRegex(filterValue);
+          dataTable.column(3)
+              .search(filterValueRegex, true, false, false)
+              .draw();
+      }
+
+      // Prevent jumping to the top of the page
+      // when no matching tag is found.
+      e.preventDefault();
+    });
+  </script>
+
+
 
     <script>
     $(document).ready(function(){

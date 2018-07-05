@@ -163,7 +163,7 @@ Route::group([
   // Hasil Seleksi
   Route::get('/admin/seleksi/score/result','admin\seleksiController@score_result')->name('seleksi.result');
 
-
+  Route::post('/admin/seleksi/score/stage-change','admin\seleksiController@change_stage')->name('stage.status.save');
 
 });
 
