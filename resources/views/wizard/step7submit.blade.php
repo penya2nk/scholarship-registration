@@ -44,14 +44,14 @@ kerjakan.” <br><br>
 
                   @else
 
-                    {{-- <h6>Demikian data-data ini saya buat dengan sesungguhnya, apabila dikemudian hari terbukti pernyataaan ini tidak benar.
+                    <h6>Demikian data-data ini saya buat dengan sesungguhnya, apabila dikemudian hari terbukti pernyataaan ini tidak benar.
                       saya bersedia menerima segala tindakan yang diberikan oleh panitia.
-                    </h6> --}}
-                    <h6>Pendaftaran Ditutup
+                    </h6>
+                    {{-- <h6>Pendaftaran Ditutup --}}
                     </h6>
                     <br><br>
 
-                    {{-- <input type="button" id="submit-data" style="padding: 14px 122px;border-bottom: 13px green solid;" class="btn btn-next btn-fill btn-success btn-wd btn-lg" value="Submit"> --}}
+                    <input type="button" id="submit-data" style="padding: 14px 122px;border-bottom: 13px green solid;" class="btn btn-next btn-fill btn-success btn-wd btn-lg" value="Submit">
                   @endif
 
 
