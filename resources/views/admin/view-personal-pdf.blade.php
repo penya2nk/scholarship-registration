@@ -1,7 +1,9 @@
 
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <link href="{{asset('assets/css/gsdk-bootstrap-wizard.css')}}" rel="stylesheet" />
 <link rel="stylesheet" href="{{asset('admin-ui/assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin-ui/assets/scss/style.css')}}">
+
 
   <div class="row justify-content-center">
     <div class="col-sm-12">
@@ -541,7 +543,7 @@
                                   <hr>
                                 </div>
 
-                                
+
 
                                 <div class="row">
                                   <hr>
@@ -792,3 +794,10 @@
         );
       </script>
     @endif
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        window.print();
+      });
+    </script>
