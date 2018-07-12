@@ -2,6 +2,10 @@
 
 @section('title')
 {{$user->name}}
+  <a  href="{{route('profile.print',['id'=>$user->id])}}" class="btn btn-sm btn-default" style="margin-left:10px">
+    <span class="menu-icon fa fa-print"></span>
+  </a>
+
 @endsection
 
 @section('content')

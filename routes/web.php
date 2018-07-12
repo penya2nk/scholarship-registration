@@ -62,6 +62,8 @@ Route::post('/scholarship/step/4/document/save', 'student\RegWizardController@up
 Route::get('/scholarship/step/5/preview', 'student\RegWizardController@preview')->name('step_preview');
 Route::post('/scholarship/step/5/preview/save', 'student\RegWizardController@update_preview')->name('step_preview_save');
 
+
+
 // Route::get('/scholarship/step/6/other', 'student\RegWizardController@other')->name('step_other');
 // Route::post('/scholarship/step/6/other/save', 'student\RegWizardController@update_other');
 Route::get('/scholarship/step/review_submit', 'student\RegWizardController@submit_review')->name('step_submit_review');
@@ -124,6 +126,9 @@ Route::group([
 
   // Profil Preview
   Route::get('/admin/profile/view/{id}', 'admin\insightController@view_profile')->name('member.user.preview');
+
+  // Print
+  Route::get('/admin/profile/view/{id}/print','admin\insightController@print_profile')->name('profile.print');
 
   // Email Blast
   Route::get('/admin/email','admin\EmailBlastController@index')->name('admin.email');

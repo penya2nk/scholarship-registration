@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\models\institution;
 use Illuminate\Support\Facades\View;
+use PDF;
 
 
 class insightController extends Controller
@@ -86,6 +87,18 @@ class insightController extends Controller
 
       $data = array('user' =>$user , );
       return view('admin.view-personal')->with($data);
+    }
+
+    public function print_profile($id)
+    {
+      // dd($id);
+      $user = user::find($id);
+
+      $pdf = PDF::loadView('admin.view-personal', compact('user'));
+      return $pdf->stream();
+
+      // $data = array('user' =>$user , );
+      // return view('admin.view-personal')->with($data);
     }
 
 
