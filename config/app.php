@@ -217,6 +217,7 @@ return [
         'Activity' => Kim\Activity\ActivityFacade::class,
 
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         // 'Datatables'=> Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],

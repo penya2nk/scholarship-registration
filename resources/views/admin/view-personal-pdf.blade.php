@@ -1,21 +1,12 @@
 
 <link href="{{asset('assets/css/gsdk-bootstrap-wizard.css')}}" rel="stylesheet" />
-
-<div class="row">
-  {{$user->name}}
-  <a  href="{{route('profile.print',['id'=>$user->id])}}" class="btn btn-sm btn-default" style="margin-left:10px">
-    <span class="menu-icon fa fa-print"></span>
-  </a>
-
-</div>
-
+<link rel="stylesheet" href="{{asset('admin-ui/assets/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin-ui/assets/scss/style.css')}}">
 
   <div class="row justify-content-center">
-    <div class="col-sm-10">
-
+    <div class="col-sm-12">
         <div class="tab-content">
           <div class="container">
-
                 <div class="row">
                   <div class="col-sm-12">
 
@@ -23,7 +14,7 @@
                     <div class="row">
                       <div class="col-sm-4">
                         <img class="img img-responsive" src="{{$user->photo_profile}}" alt="">
-                        <img @if ($user->photo_home_in == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_in}}"  @endif class="img img-responsive" alt="" style="margin-top :10px">
+                        {{-- <img @if ($user->photo_home_in == NULL) src="{{asset('images/photonull/ktpnull.jpg')}}" @else src="{{$user->photo_home_in}}"  @endif class="img img-responsive" alt="" style="margin-top :10px"> --}}
 
                       </div>
                       <div class="col-sm-8">
@@ -50,7 +41,7 @@
                     </div>
 
                     {{-- Data Diri --}}
-                      <div class="row">
+                      <div class="row" style="margin-top:80px">
                         <div class="col-md-3">
                           <h4><b>Tempat, Tanggal Lahir</b></h4>
                           <p>{{$user->born_place}}, <br> {{$user->born_date ? $user->born_date->format('d-m-Y'): ''}}</p>
@@ -201,31 +192,32 @@
 
                           @if ($user->organizations()->count() !== 0)
                           <h3><b>Pengalaman Organisasi</b></h3>
+                          <hr>
                           <div class="@if($user->organizations()->count() >4) column-2 @endif">
                             <ul>
                               @foreach ($user->organizations as $org)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$org->organization}}</b>
-                                  </h4>
+                                  </h5>
                                   <p class="no-margin">{{$org->date_from ? $org->date_from->format('d M Y'): ''}} - {{$org->date_end ? $org->date_end->format('d M Y'): ''}}</p>
                                   <p class="no-margin">{{$org->positions->position_name}} {{$org->position}}</p>
                                 </li>
                               @endforeach
                             </ul>
                           </div>
-                          <hr>
                           @endif
 
                           @if ($user->committees()->count() !== 0)
                           <h3><b>Pengalaman Kepanitiaan</b></h3>
+                          <hr>
                           <div class="@if($user->committees()->count() >4) column-2 @endif">
                             <ul>
                               @foreach ($user->committees as $com)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$com->committee_name}}</b>
-                                  </h4>
+                                  </h5>
                                   <p class="no-margin">{{$com->date_from ? $com->date_from->format('d M Y'): ''}} - {{$com->date_end ? $com->date_end->format('d M Y') : ''}}</p>
                                   <p class="no-margin">{{$com->position_name ? $com->positions->position_name : ''}} {{$com->position}}</p>
                                 </li>
@@ -237,31 +229,33 @@
 
                           @if ($user->trainings()->count() !== 0)
                           <h3><b>Pengalaman Pelatihan / Kursus</b></h3>
+                          <hr>
                           <div class="@if($user->trainings()->count() >4) column-2 @endif">
                             <ul>
                               @foreach ($user->trainings as $train)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$train->training}}</b>
-                                  </h4>
+                                  </h5>
                                   <p class="no-margin">{{$train->date ? $train->date->format('d M Y'): ''}}</p>
                                   <p class="no-margin">{{$train->content}} | {{$train->organizer}}</p>
                                 </li>
                               @endforeach
                             </ul>
                           </div>
-                          <hr>
+
                           @endif
 
                           @if ($user->competitions()->count() !== 0)
                           <h3><b>Prestasi Kompetisi dan Kejuaraan Terbaik</b></h3>
+                          <hr>
                           <div class="@if($user->competitions()->count() >=4) column-2 @endif">
                             <ul>
                               @foreach ($user->competitions as $comp)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$comp->title}}</b>
-                                  </h4>
+                                  </h5>
                                   <span class="badge">{{$comp->level}} | {{$comp->type}}</span>
                                   <p class="no-margin">{{$comp->competition_name}}</p>
                                   <p class="no-margin">{{$comp->location}}</p>
@@ -271,18 +265,19 @@
                               @endforeach
                             </ul>
                           </div>
-                          <hr>
+
                           @endif
 
                           @if ($user->charities()->count() !== 0)
                           <h3><b>Aktivitas Sosial dan Kerelawanan</b></h3>
+                          <hr>
                           <div class="@if($user->charities()->count() >=4) column-2 @endif">
                             <ul>
                               @foreach ($user->charities as $char)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$char->activity_name}}</b>
-                                  </h4>
+                                  </h5>
                                   <p class="no-margin">{{$char->role}}</p>
                                   <p class="no-margin">{{$char->location}}</p>
                                   <p class="no-margin">+/- <span class="badge">{{$char->person_impacted}}</span> orang penerima manfaat</p>
@@ -291,18 +286,19 @@
                               @endforeach
                             </ul>
                           </div>
-                          <hr>
+
                           @endif
 
                           @if ($user->publications()->count() !== 0)
                           <h3><b>Artikel dan/atau karya tulis yang pernah dipublikasikan</b></h3>
+                          <hr>
                           <div class="">
                             <ul>
                               @foreach ($user->publications as $pub)
                                 <li>
-                                  <h4 class="">
+                                  <h5 class="">
                                     <b>{{$pub->publication_name}}</b>
-                                  </h4>
+                                  </h5>
                                   <p class="no-margin">{{$pub->year}} | {{$pub->role}}</p>
                                   <p class="no-margin">{{$pub->author}}</p>
                                   <p class="no-margin">{{$pub->abstract}}</p>
@@ -311,7 +307,6 @@
                               @endforeach
                             </ul>
                           </div>
-                          <hr>
                           @endif
 
 

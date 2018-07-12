@@ -94,9 +94,11 @@ class insightController extends Controller
       // dd($id);
       $user = user::find($id);
 
-      $pdf = PDF::loadView('admin.view-personal', compact('user'));
+      // $pdf = PDF::loadView('admin.view-personal-pdf', compact('user'));
+      // return $pdf->stream();
 
-      return $pdf->stream();
+      $data = array('user' => $user, );
+      return view('admin.view-personal-pdf')->with($data);
 
     //   $html = View::make('path.to.pdf_view', ['data' => $data])->render();
     // $html = preg_replace('/>\s+</', '><', $html);
