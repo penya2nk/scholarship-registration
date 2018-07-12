@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-12">
         <div class="tab-content">
-          <div class="container">
+          <div class="fluid-container">
                 <div class="row">
                   <div class="col-sm-12">
 
@@ -41,232 +41,366 @@
                     </div>
 
                     {{-- Data Diri --}}
-                      <div class="row" style="margin-top:80px">
-                        <div class="col-md-3">
-                          <h4><b>Tempat, Tanggal Lahir</b></h4>
-                          <p>{{$user->born_place}}, <br> {{$user->born_date ? $user->born_date->format('d-m-Y'): ''}}</p>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>Agama</b></h4>
-                          <p>{{$user->religion}}</p>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>Tinggi Badan</b></h4>
-                          <p>{{$user->body_length}} cm</p>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>Berat Badan</b></h4>
-                          <p>{{$user->body_weight}} kg</p>
-                        </div>
-                      </div>
+                    <table class="table" style="margin-top:80px">
+                      <tbody>
+                        <tr>
+                          <td><h4><b>Tempat, Tanggal Lahir</b></h4>
+                            <p>{{$user->born_place}}, <br> {{$user->born_date ? $user->born_date->format('d-m-Y'): ''}}</p>
+                          </td>
+                          <td>
+                            <h4><b>Agama</b></h4>
+                            <p>{{$user->religion}}</p>
+                          </td>
+                          <td>
+                            <h4><b>Tinggi Badan</b></h4>
+                            <p>{{$user->body_length}} cm</p>
+                          </td>
+                          <td>
+                            <h4><b>Berat Badan</b></h4>
+                            <p>{{$user->body_weight}} kg</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h4><b>Facebook</b></h4>
+                            <p>
+                              <a href="http://www.facebook.com/{{$user->facebook_id}}" class="btn btn-primary btn-fill" target="_blank">{{$user->facebook_id}}</a>
+                            </p>
+                          </td>
+                          <td>
+                            <h4><b>Instagram</b></h4>
+                            <a href="http://www.instagram.com/{{$user->instagram_id}}" class="btn btn-primary btn-fill" target="_blank">@ {{$user->instagram_id}}</a>
+                          </td>
+                          <td>
+                            <h4><b>Blog</b></h4>
+                            <p>
+                              @if ($user->blog_id == NULL)
+                                -
+                              @else
+                                <a href="http://{{$user->blog_id}}" class="btn btn-primary btn-fill" target="_blank">{{$user->blog_id}}</a>
+                              @endif
 
-                      <div class="row">
-                        <div class="col-md-3">
-                          <h4><b>Facebook</b></h4>
-                          <p>
-                            <a href="http://www.facebook.com/{{$user->facebook_id}}" class="btn btn-primary btn-fill" target="_blank">{{$user->facebook_id}}</a>
-                          </p>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>Instagram</b></h4>
-                          <a href="http://www.instagram.com/{{$user->instagram_id}}" class="btn btn-primary btn-fill" target="_blank">@ {{$user->instagram_id}}</a>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>Blog</b></h4>
-                          <p>
-                            @if ($user->blog_id == NULL)
-                              -
-                            @else
-                              <a href="http://{{$user->blog_id}}" class="btn btn-primary btn-fill" target="_blank">{{$user->blog_id}}</a>
-                            @endif
-
-                          </p>
-                        </div>
-                        <div class="col-md-3">
-                          <h4><b>NIK/KTP</b></h4>
-                          <p>{{$user->nik_ktp}}</p>
-                        </div>
-                      </div>
+                            </p>
+                          </td>
+                          <td>
+                            <h4><b>NIK/KTP</b></h4>
+                            <p>{{$user->nik_ktp}}</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
 
 
-                      <div class="row">
-                        <div class="col-md-12">
-                          <hr>
-
-                          <div class="col-md-6">
+                    <table class="table" style="margin-top:80px">
+                      <tbody>
+                        <tr>
+                          <td colspan="2">
                             <h3><b>Ayah</b></h3>
                             <h3>{{$user->ayah_name}}</h3>
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <th>TTL</th>
-                                  <td>{{$user->ayah_tempat_lahir}}, {{$user->ayah_tanggal_lahir ? $user->ayah_tanggal_lahir->format('d-m-Y'): ''}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Alamat</th>
-                                  <td>{{$user->ayah_alamat}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Suku</th>
-                                  <td>{{$user->ayah_suku}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Pendidikan Terakhir</th>
-                                  @php
-                                    $pendidikan_ayah = explode(' ',$user->ayah_pendidikan);
-                                  @endphp
-                                  <td>{{$pendidikan_ayah[1]}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Pekerjaan</th>
-                                  <td>{{$user->ayah_pekerjaan}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Penghasilan / Bulan</th>
-                                  <td>Rp. {{$user->ayah_penghasilan ? format_uang($user->ayah_penghasilan) : ''}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Nomor HP</th>
-                                  <td>{{$user->ayah_phone}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Jumlah Tanggungan</th>
-                                  <td>{{$user->ayah_tanggungan}} orang</td>
-                                </tr>
-                              </tbody>
-                            </table>
-
-                          </div>
-                          <div class="col-md-6">
+                          </td>
+                          <td colspan="2">
                             <h3><b>Ibu</b></h3>
                             <h3>{{$user->ibu_name}}</h3>
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <th>TTL</th>
-                                  <td>{{$user->ibu_tempat_lahir}}, {{$user->ibu_tanggal_lahir ? $user->ibu_tanggal_lahir->format('d-m-Y'): ''}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Alamat</th>
-                                  <td>{{$user->ibu_alamat}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Suku</th>
-                                  <td>{{$user->ibu_suku}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Pendidikan Terakhir</th>
-                                  @php
-                                    $pendidikan_ibu = explode(' ',$user->ibu_pendidikan);
-                                  @endphp
-                                  <td>{{$pendidikan_ibu[1]}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Pekerjaan</th>
-                                  <td>{{$user->ibu_pekerjaan}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Penghasilan / Bulan</th>
-                                  <td>Rp. {{$user->ibu_penghasilan ? format_uang($user->ibu_penghasilan): ''}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Nomor HP</th>
-                                  <td>{{$user->ibu_phone}}</td>
-                                </tr>
-                                <tr>
-                                  <th>Jumlah Tanggungan</th>
-                                  <td>{{$user->ibu_tanggungan}} orang</td>
-                                </tr>
-                              </tbody>
-                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>TTL</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_tempat_lahir}}, {{$user->ayah_tanggal_lahir ? $user->ayah_tanggal_lahir->format('d-m-Y'): ''}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>TTL</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_tempat_lahir}}, {{$user->ibu_tanggal_lahir ? $user->ibu_tanggal_lahir->format('d-m-Y'): ''}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Alamat</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_alamat}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Alamat</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_alamat}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Suku</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_suku}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Suku</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_suku}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Pendidikan Terakhir</b>
+                          </td>
+                          <td>
+                            @php
+                              $pendidikan_ayah = explode(' ',$user->ayah_pendidikan);
+                            @endphp
+                            <span>{{$pendidikan_ayah[1]}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Pendidikan Terakhir</b>
+                          </td>
+                          <td>
+                            @php
+                              $pendidikan_ibu = explode(' ',$user->ibu_pendidikan);
+                            @endphp
+                            <span>{{$pendidikan_ibu[1]}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Pekerjaan</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_pekerjaan}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Pekerjaan</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_pekerjaan}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Penghasilan per Bulan</b>
+                          </td>
+                          <td>
+                            <span>Rp. {{$user->ayah_penghasilan ? format_uang($user->ayah_penghasilan) : ''}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Penghasilan per Bulan</b>
+                          </td>
+                          <td>
+                            <span>Rp. {{$user->ibu_penghasilan ? format_uang($user->ibu_penghasilan) : ''}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Nomor Hp</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_phone}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Nomor Hp</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_phone}}</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          {{-- // Ayah --}}
+                          <td>
+                            <b>Jumlah Tanggungan</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ayah_tanggungan}}</span>
+                          </td>
+                          {{-- Ibu --}}
+                          <td>
+                            <b>Jumlah Tanggungan</b>
+                          </td>
+                          <td>
+                            <span>{{$user->ibu_tanggungan}}</span>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
 
 
-                          </div>
+
 
                         </div>
                       </div>
+
+                      <div class="row" style="margin-top:250px">
+                        <div class="col-md-12 text-center">
+                          <h3>Pengalaman Organisasi</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Pengalaman Organisasi</th>
+                                <th>Tahun</th>
+                                <th>Posisi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->organizations->count() !== 0)
+                                @foreach ($user->organizations as $org)
+                                  <tr>
+                                    <td>{{$org->organization}}</td>
+                                    <td>{{$org->date_from ? $org->date_from->format('d M Y'): ''}} - {{$org->date_end ? $org->date_end->format('d M Y'): ''}}</td>
+                                    <td>{{$org->positions->position_name}} {{$org->position}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top:20px">
+                        <div class="col-md-12 text-center">
+                          <h3>Pengalaman Kepanitiaan</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Pengalaman Kepanitiaan</th>
+                                <th>Tahun</th>
+                                <th>Posisi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->committees->count() !== 0)
+                                @foreach ($user->committees as $com)
+                                  <tr>
+                                    <td>{{$com->committee_name}}</td>
+                                    <td>{{$com->date_from ? $com->date_from->format('d M Y'): ''}} - {{$com->date_end ? $com->date_end->format('d M Y'): ''}}</td>
+                                    <td>{{$com->positions->position_name}} {{$com->position}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top:20px">
+                        <div class="col-md-12 text-center">
+                          <h3>Pengalaman Pelatihan / Kursus</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Pengalaman Pelatihan / Kursus</th>
+                                <th>Tahun</th>
+                                <th>Posisi</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->committees->count() !== 0)
+                                @foreach ($user->trainings as $train)
+                                  <tr>
+                                    <td>{{$train->training}}</td>
+                                    <td>{{$train->date ? $train->date->format('d M Y'): ''}}</td>
+                                    <td>{{$train->content}} {{$train->organizer}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top:20px">
+                        <div class="col-md-12 text-center">
+                          <h3>Prestasi Kompetisi dan Kejuaraan Terbaik</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Level</th>
+                                <th>Prestasi Kompetisi dan Kejuaraan Terbaik</th>
+                                <th>Lokasi</th>
+                                <th>Web</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->competitions->count() !== 0)
+                                @foreach ($user->competitions as $comp)
+                                  <tr>
+                                    <td>{{$comp->level}} | {{$comp->type}}</td>
+                                    <td>{{$comp->competition_name}}</td>
+                                    <td>{{$comp->location}}</td>
+                                    <td>{{$comp->web}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top:20px">
+                        <div class="col-md-12 text-center">
+                          <h3>Aktivitas Sosial dan Kerelawanan</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Nama Aktivitas</th>
+                                <th>Peran</th>
+                                <th>Lokasi</th>
+                                <th>Waktu</th>
+                                <th>Jumlah Penerima Manfaat</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->charities->count() !== 0)
+                                @foreach ($user->charities as $char)
+                                  <tr>
+                                    <td>{{$char->activity_name}}</td>
+                                    <td>{{$char->role}}</td>
+                                    <td>{{$char->location}}</td>
+                                    <td>{{$char->start_date}}</td>
+                                    <td>{{$char->person_impacted}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+
 
                       <div class="row">
                         <hr>
-                        <div class="col-md-12">
-
-                          @if ($user->organizations()->count() !== 0)
-                          <h3><b>Pengalaman Organisasi</b></h3>
-                          <hr>
-                          <div class="@if($user->organizations()->count() >4) column-2 @endif">
-                            <ul>
-                              @foreach ($user->organizations as $org)
-                                <li>
-                                  <h5 class="">
-                                    <b>{{$org->organization}}</b>
-                                  </h5>
-                                  <p class="no-margin">{{$org->date_from ? $org->date_from->format('d M Y'): ''}} - {{$org->date_end ? $org->date_end->format('d M Y'): ''}}</p>
-                                  <p class="no-margin">{{$org->positions->position_name}} {{$org->position}}</p>
-                                </li>
-                              @endforeach
-                            </ul>
-                          </div>
-                          @endif
-
-                          @if ($user->committees()->count() !== 0)
-                          <h3><b>Pengalaman Kepanitiaan</b></h3>
-                          <hr>
-                          <div class="@if($user->committees()->count() >4) column-2 @endif">
-                            <ul>
-                              @foreach ($user->committees as $com)
-                                <li>
-                                  <h5 class="">
-                                    <b>{{$com->committee_name}}</b>
-                                  </h5>
-                                  <p class="no-margin">{{$com->date_from ? $com->date_from->format('d M Y'): ''}} - {{$com->date_end ? $com->date_end->format('d M Y') : ''}}</p>
-                                  <p class="no-margin">{{$com->position_name ? $com->positions->position_name : ''}} {{$com->position}}</p>
-                                </li>
-                              @endforeach
-                            </ul>
-                          </div>
-                          <hr>
-                          @endif
-
-                          @if ($user->trainings()->count() !== 0)
-                          <h3><b>Pengalaman Pelatihan / Kursus</b></h3>
-                          <hr>
-                          <div class="@if($user->trainings()->count() >4) column-2 @endif">
-                            <ul>
-                              @foreach ($user->trainings as $train)
-                                <li>
-                                  <h5 class="">
-                                    <b>{{$train->training}}</b>
-                                  </h5>
-                                  <p class="no-margin">{{$train->date ? $train->date->format('d M Y'): ''}}</p>
-                                  <p class="no-margin">{{$train->content}} | {{$train->organizer}}</p>
-                                </li>
-                              @endforeach
-                            </ul>
-                          </div>
-
-                          @endif
-
-                          @if ($user->competitions()->count() !== 0)
-                          <h3><b>Prestasi Kompetisi dan Kejuaraan Terbaik</b></h3>
-                          <hr>
-                          <div class="@if($user->competitions()->count() >=4) column-2 @endif">
-                            <ul>
-                              @foreach ($user->competitions as $comp)
-                                <li>
-                                  <h5 class="">
-                                    <b>{{$comp->title}}</b>
-                                  </h5>
-                                  <span class="badge">{{$comp->level}} | {{$comp->type}}</span>
-                                  <p class="no-margin">{{$comp->competition_name}}</p>
-                                  <p class="no-margin">{{$comp->location}}</p>
-                                  <p class="no-margin">{{$comp->web}}</p>
-
-                                </li>
-                              @endforeach
-                            </ul>
-                          </div>
-
-                          @endif
+                        <div class="col-md-12 text-center">
 
                           @if ($user->charities()->count() !== 0)
                           <h3><b>Aktivitas Sosial dan Kerelawanan</b></h3>
