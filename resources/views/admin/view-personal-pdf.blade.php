@@ -376,7 +376,7 @@
                                 <th>Peran</th>
                                 <th>Lokasi</th>
                                 <th>Waktu</th>
-                                <th>Jumlah Penerima Manfaat</th>
+                                <th>Jumlah Penerima Manfaat (+/-)</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -386,7 +386,7 @@
                                     <td>{{$char->activity_name}}</td>
                                     <td>{{$char->role}}</td>
                                     <td>{{$char->location}}</td>
-                                    <td>{{$char->start_date}}</td>
+                                    <td>{{$char->date_from !== NULL ? $char->date_from->format('d M Y'):'' }}</td>
                                     <td>{{$char->person_impacted}}</td>
                                   </tr>
                                 @endforeach
@@ -396,32 +396,42 @@
                         </div>
                       </div>
 
+                      <div class="row" style="margin-top:20px">
+                        <div class="col-md-12 text-center">
+                          <h3>Artikel dan/atau karya tulis yang pernah dipublikasikan</h3>
+                          <hr>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Judul Karya</th>
+                                <th>Abstrak</th>
+                                <th>Peran</th>
+                                <th>Author</th>
+                                <th>Tahun Release</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @if ($user->publications->count() !== 0)
+                                @foreach ($user->publications as $char)
+                                  <tr>
+                                    <td>{{$char->publication_name}}</td>
+                                    <td>{{$char->abstract}}</td>
+                                    <td>{{$char->role}}</td>
+                                    <td>{{$char->author}}</td>
+                                    <td>{{$char->release}}</td>
+                                  </tr>
+                                @endforeach
+                              @endif
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
 
 
-                      <div class="row">
+                      {{-- <div class="row">
                         <hr>
                         <div class="col-md-12 text-center">
 
-                          @if ($user->charities()->count() !== 0)
-                          <h3><b>Aktivitas Sosial dan Kerelawanan</b></h3>
-                          <hr>
-                          <div class="@if($user->charities()->count() >=4) column-2 @endif">
-                            <ul>
-                              @foreach ($user->charities as $char)
-                                <li>
-                                  <h5 class="">
-                                    <b>{{$char->activity_name}}</b>
-                                  </h5>
-                                  <p class="no-margin">{{$char->role}}</p>
-                                  <p class="no-margin">{{$char->location}}</p>
-                                  <p class="no-margin">+/- <span class="badge">{{$char->person_impacted}}</span> orang penerima manfaat</p>
-
-                                </li>
-                              @endforeach
-                            </ul>
-                          </div>
-
-                          @endif
 
                           @if ($user->publications()->count() !== 0)
                           <h3><b>Artikel dan/atau karya tulis yang pernah dipublikasikan</b></h3>
@@ -445,7 +455,7 @@
 
 
                         </div>
-                      </div>
+                      </div> --}}
 
                       {{-- Motivasi --}}
                       <div class="row">
@@ -531,110 +541,7 @@
                                   <hr>
                                 </div>
 
-                                <div class="row">
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="form-group">
-                                      <label for="">Upload Surat Keterangan Tidak Mampu</label>
-                                      <div class="input-group">
-                                        @if ($user->photo_sktm == NULL)
-                                          <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
-                                            @php
-                                              $link_photo_sktm = "";
-                                            @endphp
-                                          @else
-                                            <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
-                                            @php
-                                             $link_photo_sktm = explode('/',$user->photo_sktm);
-                                             $link_photo_sktm = $link_photo_sktm[9];
-                                            @endphp
-                                        @endif
-
-                                        <input type="text" readonly value="{{$link_photo_sktm}}" class="form-control input-lg" id="" placeholder="">
-                                        <span class="input-group-addon">
-                                          <a class="btn btn-fill btn-sm btn-success" href="{{$user->photo_sktm}}" target="_blank">Download</a>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="form-group">
-                                      <label for="">Upload slip gaji orang tua atau surat keterangan penghasilan orang tua</label>
-                                      <div class="input-group">
-                                        @if ($user->photo_parent_sallary == NULL)
-                                          <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
-                                            @php
-                                              $link_photo_parent_sallary = "";
-                                            @endphp
-                                          @else
-                                            <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
-                                            @php
-                                             $link_photo_parent_sallary = explode('/',$user->photo_parent_sallary);
-                                             $link_photo_parent_sallary = $link_photo_parent_sallary[9];
-                                            @endphp
-                                        @endif
-                                        <input type="text" readonly value="{{$link_photo_parent_sallary}}" class="form-control input-lg" id="" placeholder="">
-                                        <span class="input-group-addon">
-                                          <a class="btn btn-fill btn-sm btn-success" href="{{$user->photo_parent_sallary}}" target="_blank">Download</a>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="form-group">
-                                      <label for="">Upload transkrip nilai terakhir, atau raport kelas 11-12 untuk pendaftar dari Poltek</label>
-                                      <div class="input-group">
-                                        @if ($user->photo_transcript_score == NULL)
-                                            @php
-                                              $link_photo_transcript_score = "";
-                                            @endphp
-                                          <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
-                                          @else
-                                            <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
-                                            @php
-                                             $link_photo_transcript_score = explode('/',$user->photo_transcript_score);
-                                             $link_photo_transcript_score = $link_photo_transcript_score[9];
-                                            @endphp
-                                        @endif
-                                        <input type="text" readonly value="{{$link_photo_transcript_score}}" class="form-control input-lg" id="" placeholder="">
-                                        <span class="input-group-addon">
-                                          <a class="btn btn-fill btn-sm btn-success" href="{{$user->photo_transcript_score}}" target="_blank">Download</a>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                    <div class="form-group">
-                                      <label for="">Upload surat keterangan mahasiswa aktif dari fakultas atau departemen atau surat pengantar dari sekolah</label>
-                                      <div class="input-group">
-                                        @if ($user->photo_active_student == NULL)
-                                          <span class="input-group-addon btn-fill btn-danger"><i class="fa fa-window-close"></i> Belum Diunggah</span>
-                                            @php
-                                              $link_photo_active_student = "";
-                                            @endphp
-                                          @else
-                                            <span class="input-group-addon btn-fill btn-success"><i class="fa fa-check-square"></i> Sudah Diunggah</span>
-                                            @php
-                                             $link_photo_active_student = explode('/',$user->photo_active_student);
-                                             $link_photo_active_student = $link_photo_active_student[9];
-                                            @endphp
-                                        @endif
-                                        <input type="text" readonly value="{{$link_photo_active_student}}" class="form-control input-lg" id="" placeholder="">
-                                        <span class="input-group-addon">
-                                          <a class="btn btn-fill btn-sm btn-success" href="{{$user->photo_active_student}}" target="_blank">Download</a>
-                                        </span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                                
 
                                 <div class="row">
                                   <hr>
