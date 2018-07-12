@@ -160,6 +160,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
         Bogardo\Mailgun\MailgunServiceProvider::class,
         Kim\Activity\ActivityServiceProvider::class,
         // Yajra\Datatables\DatatablesServiceProvider::class,
@@ -214,6 +215,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Mailgun' => Bogardo\Mailgun\Facades\Mailgun::class,
         'Activity' => Kim\Activity\ActivityFacade::class,
+
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         // 'Datatables'=> Yajra\Datatables\DatatablesServiceProvider::class,
 
     ],
