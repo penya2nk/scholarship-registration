@@ -1,5 +1,4 @@
 @foreach ($users as $user)
-
   <div class="col-md-4">
     <aside class="profile-nav alt">
       <section class="card">
@@ -41,7 +40,10 @@
                 <a href="#">
                   {{-- <i class="fa fa-bell-o"></i> --}}
                   Pengalaman Organisasi <span class="badge badge-success pull-right">{{$user->organizations ? $user->organizations->count() : 0}}</span></a>
-                </li>
+              </li>
+              <li class="list-group-item">
+                  Status <span class="badge badge-success pull-right">{{$user->stage_id == NULL  ? '-' : $user->stages->stage_name }}</span></a>
+              </li>
                 {{-- <li class="list-group-item">
                 <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>
               </li> --}}

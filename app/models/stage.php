@@ -15,4 +15,9 @@ class stage extends Model
       {
         return $this->hasMany('App\models\parameter', 'stage_id');
       }
+
+      public function stage_position()
+      {
+          return $this->hasMany('App\User', 'stage_id');
+      }
 }

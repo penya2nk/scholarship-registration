@@ -24,7 +24,7 @@ class insightController extends Controller
       return view('admin.insight')->with($data);
     }
 
-    public function search()
+    public function sort()
     {
       $institution = [$_POST['institution']];
       $sortby = $_POST['sortby'];
@@ -55,6 +55,48 @@ class insightController extends Controller
       ->orderBy($sortby, $sum)
       ->orderBy($sortby2, $sum)
       ->where('final_submit', 1)
+      ->get();
+
+
+      $data = array('users' =>$user , );
+
+      $view = View::make('admin.insight-thumbnail')->with($data);
+
+      return $contents = (string) $view;
+
+
+    }
+
+
+    public function search_index()
+    {
+      $inst = institution::all();
+
+      $data = array(
+        'inst' => $inst,
+
+      );
+
+      return view('admin.search-member')->with($data);
+    }
+
+    public function search()
+    {
+      $institution = [$_POST['institution']];
+      $searchby = $_POST['searchby'];
+      $keyword = $_POST['keyword'];
+
+      $institu = institution::all();
+
+
+      if ($_POST['institution'] == "all") {
+        foreach ($institu as $inst) {
+          $institution[]= $inst->id;
+        }
+      }
+
+      $user = user::whereIn('university_id',$institution)
+      ->where($searchby ,'like', '%'.$keyword.'%')
       ->get();
 
 

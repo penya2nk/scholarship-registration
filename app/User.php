@@ -79,7 +79,7 @@ class User extends Authenticatable
         ->withTimestamps();
     }
 
-    public function stage()
+    public function stages()
     {
         return $this->belongsTo('App\models\stage', 'stage_id');
     }

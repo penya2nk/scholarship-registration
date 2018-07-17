@@ -76,9 +76,11 @@
                         <a href="{{route('submitted.index')}}"> <i class="menu-icon fa fa-paper-plane"></i>Submitted </a>
                     </li>
 
-                    <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
-                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-search"></i>Search Student</a>
+
+                    <li class="{{($routename == 'member.search.index') ? 'active' : ''}}">
+                        <a href="{{route('member.search.index')}}"> <i class="menu-icon fa fa-search"></i>Search Student</a>
                     </li>
+
 
                     <li class="{{($routename == 'add.admin.index') ? 'active' : ''}}">
                         <a href="{{route('add.admin.index')}}"> <i class="menu-icon fa fa-suitcase"></i>Admin Users</a>
@@ -86,6 +88,10 @@
 
                     <li>
                       <hr style="border-top:1px solid rgb(56, 213, 68)">
+                    </li>
+
+                    <li class="{{($routename == 'member.insight.index') ? 'active' : ''}}">
+                        <a href="{{route('member.insight.index')}}"> <i class="menu-icon fa fa-search fa-angle-double-right"></i>Sort Student</a>
                     </li>
 
                     <li class="{{($routename == 'stage.index') ? 'active' : ''}}">

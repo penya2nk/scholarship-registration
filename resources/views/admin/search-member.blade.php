@@ -14,7 +14,7 @@ Student Insight
         <div class="card-body card-block">
           <div class="row">
             <div class="col-md-1">
-              <label class="label">Urutkan</label>
+              <label class="label">Cari</label>
             </div>
             <div class="col-md-3">
               <select class="form-control" id="institution" name="sort">
@@ -25,24 +25,21 @@ Student Insight
               </select>
             </div>
             <div class="col-md-3">
-              <select class="form-control" id="sortby" name="sort">
-                <option value="sum_sallary">Gaji Orang Tua</option>
-                <option value="ipk">IPK</option>
-                {{-- <option value="organization">Pengalaman Organisasi</option> --}}
+              <select class="form-control" id="searchby" name="sort">
+                <option value="name">Nama</option>
+                <option value="email">E-mail</option>
+                <option value="born_place">Tempat Lahir</option>
+                <option value="faculty">Fakultas</option>
+                <option value="mayor">Jurusan</option>
+                <option value="lifeplan_summary">Life Plan</option>
+                <option value="commitment">Komitmen</option>
+                <option value="address">Alamat</option>
               </select>
             </div>
-            <div class="col-md-3">
-              <select class="form-control" id="sortby2" name="sort">
-                <option value="sum_sallary">Gaji Orang Tua</option>
-                <option value="ipk">IPK</option>
-                {{-- <option value="organization">Pengalaman Organisasi</option> --}}
-              </select>
-            </div>
-            <div class="col-md-2">
-              <select class="form-control" id="sum" name="sortsum">
-                <option value="desc">Terbesar</option>
-                <option value="asc">Terkecil</option>
-              </select>
+            <div class="col-md-5">
+              <div class="form-group">
+                <input type="text" class="form-control" id="keyword" placeholder="Keyword">
+              </div>
             </div>
           </div>
 
@@ -78,19 +75,18 @@ Student Insight
     <script type="text/javascript">
       $('#search').on('click', function() {
         var institution = $('#institution').val();
-        var sortby = $('#sortby').val();
-        var sortby2 = $('#sortby2').val();
+        var searchby = $('#searchby').val();
+        var keyword = $('#keyword').val();
         var sum = $('#sum').val();
-        var tes = searchproduct(institution, sortby, sortby2, sum);
-        $('#search-result').hide();
+        var tes = searchproduct(institution, searchby, keyword, sum);
+
       });
 
-      function searchproduct(institution, sortby, sortby2, sum) {
+      function searchproduct(institution, searchby, keyword, sum) {
         $('#loading').show();
         $('#search').hide();
-        $('#search-result').show();
-        $('#search-result').load('/admin/insight/dataload',{
-        "institution":institution, "sortby":sortby, "sortby2":sortby2, "sum":sum, "_token": "{{ csrf_token() }}" },
+        $('#search-result').load('/admin/search/dataload',{
+        "institution":institution, "searchby":searchby, "keyword":keyword, "_token": "{{ csrf_token() }}" },
           function(){
           $('#loading').hide();
           $('#search').show();
